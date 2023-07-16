@@ -1,0 +1,14 @@
+// TODO: make this fancy scss mixin malarky, not pure css.
+
+@font-face {
+  font-family: "BitterPro";
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/BitterPro-Black.ttf') format("truetype"); 
+}
+@font-face {
+  font-family: "BitterPro";
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/BitterPro-Regular.ttf') format("truetpe");
+}
