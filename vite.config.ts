@@ -10,10 +10,18 @@ export default defineConfig({
     vue(),
     vueJsx(),
   ],
+  define: {
+    'process.env': {},
+    global: 'window'
+  },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      
     }
+  },
+  optimizeDeps: {
+    exclude: []
   },
   css: {
     preprocessorOptions: {
