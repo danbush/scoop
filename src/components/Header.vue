@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  /************************** 
+  Base header component for the whole site
+  ***************************/
 defineProps<{
   msg: string
 }>()
