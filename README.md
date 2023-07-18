@@ -1,5 +1,20 @@
 # scoop
 
+## NOTE:
+Project temporarily requires CORS Anywhere to run.
+
+```sh
+docker run -p 8181:8080 testcab/cors-anywhere
+```
+
+[
+    TODO:
+    - make this more clear
+    - don't hardcode the port
+    - move into Dockfile (?)
+    - actually figure out CORS lolz
+]
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
