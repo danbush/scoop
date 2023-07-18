@@ -157,31 +157,7 @@ card-group
 
 
 <style scoped lang="scss">
-  button.button {
-    border-radius: 16px;
-    background-color: blue;
-    border: 0;
-    text-align: center;
-    background-color: #cccccc;
-    padding: 0 20px;
-    line-height: 2.5;
-    font-weight: bold;
-//    position: absolute;
-//    bottom: 1rem;
-//    right: 1rem;
-    opacity: 75%;
-    cursor: pointer;
-    &:hover {
-      opacity: 100%;
-      transition: all 0.5s ease-in-out;
-      filter: drop-shadow(0 0 15px $background-dark);
-    }
-  
-    &.action_intent-primary {
-      background-color: $background-light;
-    }
-  
-  }
+
 /*
   article.top-story {
     flex: 3;
