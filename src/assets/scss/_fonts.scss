@@ -19,3 +19,42 @@
   font-weight: 400;
   src: url('../fonts/Vollkorn-Regular.woff2') format("woff2");
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  // todo: use font mixins here
+  font-family: "BitterPro", 'Courier New', Courier, monospace;
+}
+
+h1 {
+  
+}
+
+h2 {
+  
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1.8rem;
+}
+
+h4 {
+  
+}
+
+h5 {
+  
+}
+
+h6 {
+  
+}
+

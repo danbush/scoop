@@ -64,13 +64,7 @@
     }
   }
   article.top-story {
-    flex: 3;
-    width: 100%;
-    min-height: 200px;
-    min-width: 800px;
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
+
     
     .article-logo {
       display: block;
@@ -85,16 +79,7 @@
       float: left;
     }
     h2 {
-      background-color: $accent-priority-one;
-      padding: 0.5rem;
-      
-      
-      font-family: "BitterPro", 'Courier New', Courier, monospace;
-      font-weight: bold;
-      font-size: 0.8rem;
-      // todo: make these fonts a mixin.
-      
-      text-align: center;
+
     }
     h3 {
       margin: 0.5rem 1rem 1rem 1rem;
