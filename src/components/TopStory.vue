@@ -57,6 +57,7 @@
     right: 1rem;
     opacity: 75%;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
     &:hover {
       opacity: 100%;
       transition: all 0.5s ease-in-out;
