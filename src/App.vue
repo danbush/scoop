@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import Header from './components/Header.vue'
 import TopStory from './components/TopStory.vue'
+import SingleVideo from './components/SingleVideo.vue'
 </script>
 
 <template>
   <Header msg="scoopy" />
     <section class="module-row">
-      <TopStory headline="fuck this" body="Microsoft and Sony have resolved a bitter dispute about the future of Call of Duty on PlayStation. Sony has agreed to a 10-year deal with Microsoft." />
-      <div class="item">huds</div>
-      <div class="item">camels</div>
-      <div class="item">camels</div>
+      <TopStory headline="" body="" />
+      <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
+      <div class="extra-item">camels</div>
+      <div class="extra-item">camels</div>
     </section>
 </template>
 
@@ -20,8 +21,8 @@ import TopStory from './components/TopStory.vue'
     margin: 1rem;
     flex-wrap: wrap;
   }
-  .item {
-    width: 100%;
+  .extra-item {
+    width: 400px;
     background-color: #799461;
     flex: 1;
     min-width: 200px;
