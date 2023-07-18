@@ -34,10 +34,33 @@
     <img :src="article_1['og:image']" alt="ham">
     <h3>{{ article_1['og:title'] }}</h3>
     <p>{{ article_1_body }}</p>
+    <a href="https://duckduckgo.com"><button class="button read-more" type="button">
+      Read More
+    </button></a>
   </article>
 </template>
 
 <style scoped lang="scss">
+  button.button {
+    border-radius: 16px;
+    background-color: blue;
+    border: 0;
+    text-align: center;
+    background-color: $background-light;
+    padding: 0 20px;
+    line-height: 2.5;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    opacity: 75%;
+    cursor: pointer;
+    &:hover {
+      opacity: 100%;
+      transition: all 0.5s ease-in-out;
+      filter: drop-shadow(0 0 15px $background-dark);
+    }
+  }
   article.top-story {
     flex: 3;
     width: 100%;
@@ -45,10 +68,13 @@
     min-width: 800px;
     background-color: $background-lighter;
     border-radius: 8px;
+    position: relative;
     
     .article-logo {
       display: block;
       max-height: 20px;
+      position: absolute;
+      margin: 20px;
     }
     
     img {
