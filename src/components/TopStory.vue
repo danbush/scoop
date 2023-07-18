@@ -12,6 +12,7 @@
   var article_1: any = {}
   var article_1_body: string = ""
   var article_1_logo: string = ""
+  var article_1_url: string = ""
   urlMetadata('http://localhost:8181/https://www.theverge.com/2023/7/17/23798368/neopets-relaunch-website-flash-games', {
     requestHeaders: {
     }
@@ -21,6 +22,7 @@
     console.log(article_1['description'])
     article_1_body = article_1.jsonld.articleBody.substring(0,1000) + "..."
     article_1_logo = article_1.jsonld.publisher.logo.url
+    article_1_url = article_1.canonical
     // do stuff with the metadata
   }).catch((err) => {
     console.log(err)
@@ -34,7 +36,7 @@
     <img :src="article_1['og:image']" alt="ham">
     <h3>{{ article_1['og:title'] }}</h3>
     <p>{{ article_1_body }}</p>
-    <a href="https://duckduckgo.com"><button class="button read-more" type="button">
+    <a :href="article_1_url"><button class="button read-more" type="button">
       Read More
     </button></a>
   </article>
