@@ -19,7 +19,6 @@
   }).then((metadata: any) => {
     article_1 = metadata
     console.log(article_1)
-    console.log(article_1['description'])
     article_1_body = article_1.jsonld.articleBody.substring(0,1000) + "..."
     article_1_logo = article_1.jsonld.publisher.logo.url
     article_1_url = article_1.canonical
