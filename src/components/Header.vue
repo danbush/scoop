@@ -2,6 +2,9 @@
   /************************** 
   Base header component for the whole site
   ***************************/
+
+  import GodBar from './GodBar/GodBar.vue'
+  
 defineProps<{
   msg: string
 }>()
@@ -9,25 +12,37 @@ defineProps<{
 
 <template>
   <header class="main-header">
-    {{msg}}
+
+    <h1 class="app-title">{{msg}}</h1>
+    
+    <GodBar />
+
   </header>
 </template>
 
 <style scoped lang="scss">
 header.main-header {
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
   width: 100%;
-  height: 50px;
-
-  font-family: "BitterPro", 'Courier New', Courier, monospace;
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1.3;
-  text-align: center;
-
+  height: auto;
+  padding: 0 1rem;
+  
   color: $foreground-primary;
 
   background-color: $background-light;
+
+  .app-title {
+    font-family: "BitterPro", 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+  }
 
 }
 </style>
