@@ -11,6 +11,8 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "favicon-fetch": "^1.0.0",
+    "htmlparser2": "^9.0.0",
     "link-meta-extractor": "^1.3.4",
     "pinia": "^2.1.3",
     "url-metadata": "^3.0.2",
