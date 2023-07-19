@@ -15,14 +15,19 @@ defineProps<{
 
 <style scoped lang="scss">
 header.main-header {
+
   width: 100%;
   height: 50px;
-  background-color: $background-light;
-  color: black;
-  text-align: center;
+
   font-family: "BitterPro", 'Courier New', Courier, monospace;
-  font-weight: 900;
   font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+  text-align: center;
+
   color: $foreground-primary;
+
+  background-color: $background-light;
+
 }
 </style>

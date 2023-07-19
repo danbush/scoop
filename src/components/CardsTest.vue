@@ -30,18 +30,6 @@
 </script>
 
 <template>
-
-<!--
-
-media-text
-media-video
-media-audio
-
-card-single
-card-group
-
--->
-
   <div class="card card-single card_top-story">
     <header class="card-header">
       <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
@@ -158,52 +146,6 @@ card-group
 
 <style scoped lang="scss">
 
-/*
-  article.top-story {
-    flex: 3;
-    width: 100%;
-    min-height: 200px;
-    min-width: 800px;
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
-    
-    .article-logo {
-      display: block;
-      max-height: 20px;
-      position: absolute;
-      margin: 20px;
-    }
-    
-    img {
-      max-width: 50%;
-      margin: 1rem 1rem 0 1rem;
-      float: left;
-    }
-    h2 {
-      background-color: $accent-priority-one;
-      padding: 0.5rem;
-      
-      
-      font-family: "BitterPro", 'Courier New', Courier, monospace;
-      font-weight: bold;
-      font-size: 0.8rem;
-      // todo: make these fonts a mixin.
-      
-      text-align: center;
-    }
-    h3 {
-      margin: 0.5rem 1rem 1rem 1rem;
-      
-      font-family: "BitterPro", 'Courier New', Courier, monospace;
-      font-weight: bold;
-      font-size: 2.2rem;
-    }
-    */
-    p {
-      font-family: "Vollkorn", 'Times New Roman', serif;
-      margin: 1rem;
-      font-size: 1.02rem;
-      line-height: 1.4rem;
-    }
+
+
 </style>
