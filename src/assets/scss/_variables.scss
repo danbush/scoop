@@ -1,0 +1,25 @@
+/* Global */
+
+
+
+/* Transition Defaults / Mixin */
+
+$transitionType:    all;
+$transitionSpeed:   0.25s;
+$transitionEffect:  ease-in-out;
+
+
+@mixin transition( $type: $transitionType, $speed: $transitionSpeed, $effect: $transitionEffect ) {
+    transition: $type $speed $effect;
+}
+
+
+
+/* Cards */
+
+$card_min-height: 30rem;
+
+$card_background-color: #ffffff;
+$card_border-color: #666666;
+$card_border-radius:  0.8rem;
+$card_padding-internal: 1rem;
