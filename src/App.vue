@@ -2,12 +2,14 @@
 import Header from './components/Header.vue'
 import TopStory from './components/TopStory.vue'
 import SingleVideo from './components/SingleVideo.vue'
+
+import TopStory_rss from './components/TopStory_rss.vue'
 </script>
 
 <template>
   <Header msg="scoopy" />
     <section class="module-row">
-      <TopStory headline="" body="" />
+      <TopStory_rss headline="" body="" />
       <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
       <div class="extra-item">camels</div>
       <div class="extra-item">camels</div>
