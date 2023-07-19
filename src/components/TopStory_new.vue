@@ -5,30 +5,21 @@
   ***************************/
 
   import CardFooter from './CardFooter.vue'
+  import { chocolateSauce } from './helpers/chocolate_sauce'
 
   defineProps<{
     headline: string,
     body: string
   }>()
   
-  import urlMetadata from 'url-metadata'
-  var article_1: any = {}
-  var article_1_body: string = ""
-  var article_1_logo: string = ""
-  var article_1_url: string = ""
-  urlMetadata('http://localhost:8181/https://www.theverge.com/2023/7/17/23798368/neopets-relaunch-website-flash-games', {
-    requestHeaders: {
-    }
-  }).then((metadata: any) => {
-    article_1 = metadata
-    console.log(article_1)
-    article_1_body = article_1.jsonld.articleBody.substring(0,1000) + "..."
-    article_1_logo = article_1.jsonld.publisher.logo.url
-    article_1_url = article_1.canonical
-    // do stuff with the metadata
-  }).catch((err) => {
-    console.log(err)
+  var articleArray: any = {}
+  chocolateSauce('https://www.theverge.com/23798723/nothing-ceo-carl-pei-interview-phone-2-earbuds')
+  .then((result) => {
+    articleArray = result
   })
+  .catch((err) => {
+    console.log(err);
+  });
 </script>
 
 <template>
@@ -39,17 +30,16 @@
     <div class="card-content">
       <article class="top-story">
         <header class="article-header">
-          <img :src="article_1['og:image']" alt="ham">
+          <img :src="articleArray.article_image" alt="ham">
           <div class="article-meta">
             <span class="item-source">
               <!-- todo: allow for image or text fallback -->
-              <img class="article-logo" :src="article_1_logo" alt="llamas">
+              <img class="article-logo" :src="articleArray.article_logo" alt="llamas">
             </span>
-            date, author, readtime, etc.
           </div>
         </header>
-        <h3 class="item-title">{{ article_1['og:title'] }}</h3>
-        <div class="item-body">{{ article_1_body }}</div>
+        <h3 class="item-title">{{ articleArray.article_title }}</h3>
+        <div class="item-body">{{ articleArray.article_body }}</div>
        </article>
     </div>
 
