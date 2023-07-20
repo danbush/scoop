@@ -5,6 +5,9 @@
     - fill out this section
     - pass in props from parent (until then, URLS are dummies)
   ***************************/
+  defineProps<{
+    article_url: string
+  }>()
 </script>
 
 <template>
@@ -26,7 +29,7 @@
         <a href="#"><button class="button" type="button">
           [hide]
         </button></a>
-        <a href="#"><button class="button action_intent-primary" type="button">
+        <a :href="article_url"><button class="button action_intent-primary" type="button">
           Read More
         </button></a>
       </div>
