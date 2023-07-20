@@ -15,9 +15,9 @@ async function fetchUrl(url: string) {
   }
 }
 
-async function fetchAppleTouchIcon(url) {
+async function fetchAppleTouchIcon(url: string) {
   try {
-	const html = await fetchUrl(url, { headers: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}});
+	const html = await fetchUrl(url);
 
 	// Regular expression to extract the Apple Touch Icon URL
 	const appleTouchIconRegex = /<link[^>]*rel=["']apple-touch-icon(-precomposed)?["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
@@ -27,13 +27,30 @@ async function fetchAppleTouchIcon(url) {
 	  const appleTouchIconUrl = match[2];
 	  return appleTouchIconUrl;
 	} else {
-	  console.log('Apple Touch Icon not found.');
-	  return null;
+	  // Regular expression to extract the regular favicon URL
+	  const faviconRegex = /<link[^>]*rel=["']icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
+	  const faviconMatch = html.match(faviconRegex);
+	  
+	  if (faviconMatch) {
+		const faviconUrl = faviconMatch[1];
+		return faviconUrl;
+	  } else {
+		console.log('Apple Touch Icon and Favicon not found.');
+		return null;
+	  }
 	}
   } catch (error) {
 	console.error('Error fetching URL:', error);
 	return null;
   }
+}
+
+function removeHTMLTags(html: any) {
+  return html.replace(/<figcaption>.*?<\/figcaption>/gs, '')
+   .replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
+	 return content ? `[${content}]` : '';
+   })
+   .replace(/<[^>]+>/g, '');
 }
 
 export async function chocolateSauce(url: string) {
@@ -59,7 +76,7 @@ export async function chocolateSauce(url: string) {
 	  article = feed;
 	  article_url = feed.items[0].id;
 	  article_title = feed.items[0].title;
-	  article_body = decode(feed.items[0].description);
+	  article_body = removeHTMLTags(decode(feed.items[0].description));
 	  article_image = feed.items[0].media[0];
 	  article_logo = null
 	  article_publisher = feed.title
@@ -116,7 +133,7 @@ export async function chocolateSauce(url: string) {
 	  article_publisher = article['og:site_name'];
 	  const proxied_article_url = "http://localhost:8181/" + article_url;
 	  if (article.jsonld.articlebody) {
-		article_body = article.jsonld.articleBody.substring(0, 1000) + '...';
+		article_body = article.jsonld.articleBody.substring(0, 350) + '...';
 	  } else {
 		  article_body = article.description;
 	  }
