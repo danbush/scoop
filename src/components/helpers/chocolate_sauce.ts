@@ -44,6 +44,7 @@ export async function chocolateSauce(url: string) {
   var article_image: string = '';
   var article_logo: string = '';
   var article_url: string = '';
+  var article_publisher: string = '';
 
   // Check if it is rss/atom, or other
   if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed/')) {
@@ -60,6 +61,7 @@ export async function chocolateSauce(url: string) {
 	  article_body = feed.items[0].description;
 	  article_image = feed.items[0].media[0];
 	  article_logo = null
+	  article_publisher = feed.title
 	  
 	  const proxied_article_url = "http://localhost:8181/" + article_url;
 
@@ -85,6 +87,7 @@ export async function chocolateSauce(url: string) {
 		article_image,
 		article_logo,
 		article_url,
+		article_publisher
 	  };
 	} catch (err) {
 	  console.log(err);
@@ -96,6 +99,7 @@ export async function chocolateSauce(url: string) {
 		article_image,
 		article_logo,
 		article_url,
+		article_publisher
 	  };
 	}
   } else {
@@ -108,6 +112,7 @@ export async function chocolateSauce(url: string) {
 	  article_url = article.canonical;
 	  article_image = article['og:image'];
 	  article_title = article['og:title'];
+	  article_publisher = article['og:site_name'];
 	  const proxied_article_url = "http://localhost:8181/" + article_url;
 	  if (article.jsonld.articlebody) {
 		article_body = article.jsonld.articleBody.substring(0, 1000) + '...';
@@ -129,6 +134,7 @@ export async function chocolateSauce(url: string) {
 		article_image,
 		article_logo,
 		article_url,
+		article_publisher
 	  };
 	} catch (err) {
 	  console.log(err);
@@ -140,6 +146,7 @@ export async function chocolateSauce(url: string) {
 		article_image,
 		article_logo,
 		article_url,
+		article_publisher
 	  };
 	}
   }
