@@ -14,7 +14,7 @@
   <footer class="card-footer">
     <div class="card-actions">
       <div class="button-group">
-        <a href="#"><button class="button" type="button">
+        <!-- <a href="#"><button class="button" type="button">
           [share]
         </button></a>
         <a href="#"><button class="button" type="button">
@@ -28,7 +28,7 @@
         </button></a>
         <a href="#"><button class="button" type="button">
           [hide]
-        </button></a>
+        </button></a> -->
         <a :href="article_url"><button class="button action_intent-primary" type="button">
           Read More
         </button></a>
@@ -38,7 +38,20 @@
 </template>
 
 <style scoped lang="scss">
-
-
-
+  .card-footer {
+    margin-top: 2.4rem;
+    padding: $card_padding-internal;
+    background-color: #e2e2e2;
+    width: 100%;
+  }
+  .card-actions {
+  
+    display: flex;
+    justify-content: flex-end;
+  
+    .button {
+      margin-left: .8rem;
+    }
+  
+  }
 </style>
