@@ -5,9 +5,6 @@
     - fill out this section
     - pass in props from parent (until then, URLS are dummies)
   ***************************/
-
-  
-
 </script>
 
 <template>

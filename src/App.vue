@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import Header from './components/Header.vue'
-  import TopStory from './components/TopStory.vue'
+  import TopStory_new from './components/TopStory_new.vue'
   import SingleVideo from './components/SingleVideo.vue'
 </script>
 
@@ -8,7 +8,7 @@
   <Header msg="scoopy" />
   <section class="module-row">
 
-    <TopStory headline="" body="" />
+    <TopStory_new headline="" body="" />
 
     <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
 
