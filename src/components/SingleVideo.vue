@@ -15,7 +15,7 @@
 
   <article class="card card-single card_video">
     <header class="card-header">
-      <h2 class="card-title">New Video</h2><span class="devtip"> // .card-single .card_video</span>
+      <h2 class="card-title">New Video</h2><span class="devtip">.card-single .card_video</span>
     </header>
     <div class="card-content">
       <div class="videoWrapper">

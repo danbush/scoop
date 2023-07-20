@@ -5,9 +5,9 @@
     - fill out this section
     - pass in props from parent (until then, URLS are dummies)
   ***************************/
-  defineProps<{
-    url: string
-  }>()
+
+  
+
 </script>
 
 <template>

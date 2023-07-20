@@ -35,7 +35,7 @@
 <template>
   <article class="card card-single card_top-story">
     <header class="card-header">
-      <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
+      <h2 class="card-title">Top Story</h2><span class="devtip">.card-single .card_top-story</span>
     </header>
     <div class="card-content">
       <article class="top-story">
