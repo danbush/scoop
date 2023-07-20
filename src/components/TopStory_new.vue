@@ -13,9 +13,10 @@
   }>()
   
   var articleArray: any = {}
-  chocolateSauce('https://www.theverge.com/23798723/nothing-ceo-carl-pei-interview-phone-2-earbuds')
+  chocolateSauce('https://techcrunch.com/feed/')
   .then((result) => {
     articleArray = result
+    console.log(articleArray)
   })
   .catch((err) => {
     console.log(err);
@@ -43,7 +44,7 @@
        </article>
     </div>
 
-    <CardFooter />
+    <CardFooter :article_url="articleArray.article_url"/>
 
   </article>
 </template>
