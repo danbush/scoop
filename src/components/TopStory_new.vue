@@ -30,6 +30,7 @@
     </header>
     <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
     <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+    <span class="article-publisher">{{ articleArray.article_publisher }}</span>
     <h3 class="article-title">{{ articleArray.article_title }}</h3>
     <div class="article-body">{{ articleArray.article_body }}</div>
     <CardFooter :article_url="articleArray.article_url"/>
@@ -54,6 +55,16 @@
     .article-logo {
       max-width: 30px;
       margin-top: 1rem;
+      vertical-align: middle;
+    }
+    
+    .article-publisher {
+      margin: 0.9rem 0 0 0.5rem;
+      vertical-align: middle;
+      display: inline-block;
+      
+      font-size: 0.9rem;
+      font-weight: 600;
     }
     
     .article-image-wraper {
