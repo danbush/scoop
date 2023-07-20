@@ -1,6 +1,7 @@
 import urlMetadata from 'url-metadata';
 import * as htmlparser2 from 'htmlparser2';
 import fetch from 'node-fetch';
+import {decode} from 'html-entities';
 
 
 async function fetchUrl(url: string) {
@@ -58,7 +59,7 @@ export async function chocolateSauce(url: string) {
 	  article = feed;
 	  article_url = feed.items[0].id;
 	  article_title = feed.items[0].title;
-	  article_body = feed.items[0].description;
+	  article_body = decode(feed.items[0].description);
 	  article_image = feed.items[0].media[0];
 	  article_logo = null
 	  article_publisher = feed.title
