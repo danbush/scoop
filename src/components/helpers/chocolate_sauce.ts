@@ -8,6 +8,7 @@ async function fetchUrl(url: string) {
   try {
 	const response = await fetch(url, { headers: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}});
 	const body = await response.text();
+	console.log("body is " + body)
 	return body;
   } catch (error) {
 	console.error('Error fetching URL:', error);
@@ -30,13 +31,33 @@ async function fetchAppleTouchIcon(url: string) {
 	  // Regular expression to extract the regular favicon URL
 	  const faviconRegex = /<link[^>]*rel=["']icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
 	  const faviconMatch = html.match(faviconRegex);
-	  
+
 	  if (faviconMatch) {
 		const faviconUrl = faviconMatch[1];
 		return faviconUrl;
 	  } else {
-		console.log('Apple Touch Icon and Favicon not found.');
-		return null;
+		// Regular expression to extract the shortcut favicon URL
+		const shortcutIconRegex = /<link[^>]*rel=["']shortcut icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
+		const shortcutIconMatch = html.match(shortcutIconRegex);
+
+		if (shortcutIconMatch) {
+		  const shortcutIconUrl = shortcutIconMatch[1];
+		  return shortcutIconUrl;
+		} else {
+			console.log("made it to final else")
+		  // Fallback to using the base domain to fetch the icon from icon.horse
+		  const corsProxy = 'http://localhost:8181/';
+		  const modifiedUrl = url.replace(corsProxy, ''); // Remove the corsProxy part from the URL
+		  const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
+		  if (baseDomainMatch && baseDomainMatch[0]) {
+				const baseDomain = baseDomainMatch[0].replace('https://','').replace('www.','');
+				const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain
+				return shortcutIconUrl;
+		  } else {
+			console.log('Invalid URL format.');
+			return null;
+		  }
+		}
 	  }
 	}
   } catch (error) {
@@ -45,13 +66,20 @@ async function fetchAppleTouchIcon(url: string) {
   }
 }
 
+
 function removeHTMLTags(html: any) {
-  return html.replace(/<figcaption>.*?<\/figcaption>/gs, '')
-   .replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
-	 return content ? `[${content}]` : '';
-   })
-   .replace(/<[^>]+>/g, '');
+  return html
+	.replace(/<!\[CDATA\[(.*?)]]>/gs, (_: string, content: string) => {
+	  return content ? content : ''; // Keep the content inside CDATA and remove the CDATA tags
+	})
+	.replace(/<figcaption>.*?<\/figcaption>/gs, '') // Remove figcaption tags
+	.replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
+	  return content ? `[${content}]` : ''; // Wrap content inside <a> tags with []
+	})
+	.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
+
+
 
 export async function chocolateSauce(url: string) {
   // Set some defaults
@@ -65,7 +93,7 @@ export async function chocolateSauce(url: string) {
   var article_publisher: string = '';
 
   // Check if it is rss/atom, or other
-  if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed/')) {
+  if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
 	try {
 	  const rawFeed = await fetchUrl(url);
 	  const feed = htmlparser2.parseFeed(rawFeed, {
@@ -74,22 +102,48 @@ export async function chocolateSauce(url: string) {
 		recognizeSelfClosing: true,
 	  });
 	  article = feed;
-	  article_url = feed.items[0].id;
-	  article_title = feed.items[0].title;
+	  // Check if the id is a link (starts with "http://" or "https://")
+		if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
+			article_url = feed.items[0].id;
+		} else {
+			// Fallback to finding <link> tag for URL
+			const linkUrlRegex = /(?<=<item>.*<link>)(.*?)(?=<\/link>.*<\/item>)/i;
+			const linkMatch = await rawFeed.match(linkUrlRegex);
+		
+			if (linkMatch) {
+			article_url = linkMatch[1];
+			} else {
+			// If no link tag found and the id is not a link, fallback to using the original id
+			article_url = "no article url, what the fuck dude";
+			}
+		}
+	  
+	  article_title = removeHTMLTags(feed.items[0].title);
 	  article_body = removeHTMLTags(decode(feed.items[0].description));
 	  article_image = feed.items[0].media[0];
 	  article_logo = null
 	  article_publisher = feed.title
 	  
 	  const proxied_article_url = "http://localhost:8181/" + article_url;
-
-	  if (article_image === undefined || article_image.length === 0 || typeof article_image != 'string') {
-		const metadata: any = await urlMetadata(proxied_article_url, {
-			requestHeaders: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36','Origin': 'https://example.reqbin.com' , 'X-Requested-With':'XMLHttpRequest'}
-		  });
-		console.log(metadata)
-		article_image = metadata['og:image'];
+	  
+	 if (typeof article_image === 'object') {
+		const mediaContentRegex = /<media:content[^>]*url=["']([^"']+)["'][^>]*\/?>/i;
+		const mediaContentMatch = rawFeed.match(mediaContentRegex);
+	  
+		if (mediaContentMatch) {
+		  article_image = mediaContentMatch[1];
+		}
 	  }
+	 if (!article_image || typeof article_image !== 'string') {
+	   const metadata: any = await urlMetadata(proxied_article_url, {
+		 requestHeaders: {
+		   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+		   'Origin': 'http://localhost:8181',
+		   'X-Requested-With': 'XMLHttpRequest'
+		 }
+	   });
+	   article_image = metadata['og:image'];
+	 }
 	  
 	  const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
 		if (appleTouchIconUrl) {

@@ -13,7 +13,7 @@
   }>()
   
   var articleArray: any = {}
-  chocolateSauce('https://techcrunch.com/feed/')
+  chocolateSauce('https://www.axios.com/feeds/feed.rss')
   .then((result) => {
     articleArray = result
     console.log(articleArray)
@@ -50,6 +50,7 @@
     
     .article-title {
       margin-top: 0.4rem;
+      margin-right: 1rem;
     }
     
     .article-logo {
@@ -76,6 +77,10 @@
       background-position: center;
       background-repeat: no-repeat;
       margin: 1rem 1rem 5rem 1rem;
+    }
+    
+    .article-body {
+      margin-right: 1rem;
     }
   
     .item-source {

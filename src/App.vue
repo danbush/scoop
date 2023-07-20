@@ -11,7 +11,6 @@
 
   <TopStory_new headline="" body="" />
   <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
-  <TopStory headline="" body="" />
   
 
   </section>
