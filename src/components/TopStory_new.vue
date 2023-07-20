@@ -30,7 +30,7 @@
     </header>
     <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
     <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-    <h3 class="article-title">{{articleArray.article_title}}</h3>
+    <h3 class="article-title">{{ articleArray.article_title }}</h3>
     <div class="article-body">{{ articleArray.article_body }}</div>
     <CardFooter :article_url="articleArray.article_url"/>
    </article>
@@ -62,6 +62,7 @@
       display: block;
       float: left;
       background-size: cover; // this is probably temporary
+      background-position: center;
       background-repeat: no-repeat;
       margin: 1rem 1rem 5rem 1rem;
     }
