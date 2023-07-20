@@ -4,18 +4,18 @@
   todo: fill out this section
   ***************************/
 
-  defineProps<{
-    swichState: boolean,
-  }>()
-  
+  function toggleDevMode() {
+    document.body.classList.toggle('devmode-on')
+  }
+
 </script>
 
 <template>
 
-  <div class="toggle toggle_DevTips">
-    <p class="toggle-label">DevTips</p>
+  <div class="toggle toggle_DevMode">
+    <p class="toggle-label">DevMode</p>
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" v-on:click="toggleDevMode" />
       <span class="slider"></span>
     </label>
   </div>
