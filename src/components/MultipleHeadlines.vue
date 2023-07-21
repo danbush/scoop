@@ -4,15 +4,10 @@
   todo: fill out this section
   ***************************/
   import { ref } from 'vue'
-  import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
 
-  defineProps<{
-    //headline: string,
-    //body: string
-  }>()
-  const articleSet: number[] = [1, 2, 3, 4, 5]
+  const articleSet: number[] = [1, 2, 3, 4, 5] //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
@@ -41,7 +36,6 @@
         <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
         <h4 class="article-title">{{ articleArray[number]?.article_title }}</h4>
       </span>
-      <!-- Other content for each article -->
     </article>
 </template>
 
