@@ -6,21 +6,36 @@
 
   import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
-
-  defineProps<{
-    headline: string,
-    body: string
-  }>()
+  import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
+  import { ref, onMounted } from 'vue';
   
-  var articleArray: any = {}
-  chocolateSauce('https://www.axios.com/feeds/feed.rss')
-  .then((result) => {
-    articleArray = result
-    console.log(articleArray)
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  function getRandomNumbersInRange(count:number, min:number, max:number) {
+    const numbers = new Set();
+    while (numbers.size < count) {
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      numbers.add(randomNumber);
+    }
+    return Array.from(numbers);
+  }
+  
+  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 20)]; //eventually get this thing to pick
+  
+  // Define a reactive object to store the article data
+  var articleArray = ref<any>({})
+  // Use async/await to handle asynchronous behavior
+  async function fetchArticleData() {
+    try {
+      const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
+      articleArray.value = result;
+      console.log(articleArray.value);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  // Fetch the article data when the component is mounted
+  onMounted(() => {
+    fetchArticleData();
+  }); 
 </script>
 
 <template>

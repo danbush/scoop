@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import Header from './components/Header.vue'
   import TopStory_new from './components/TopStory_new.vue'
-  import TopStory from './components/TopStory.vue'
+  import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
 </script>
 
@@ -10,6 +10,7 @@
   <section class="module-row">
 
   <TopStory_new headline="" body="" />
+  <MultipleHeadlines />
   <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
   
 
