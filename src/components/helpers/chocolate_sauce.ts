@@ -8,7 +8,7 @@ async function fetchUrl(url: string) {
   try {
 	const response = await fetch(url, { headers: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}});
 	const body = await response.text();
-	console.log("body is " + body)
+	
 	return body;
   } catch (error) {
 	console.error('Error fetching URL:', error);
@@ -25,8 +25,25 @@ async function fetchAppleTouchIcon(url: string) {
 	const match = html.match(appleTouchIconRegex);
 
 	if (match) {
-	  const appleTouchIconUrl = match[2];
-	  return appleTouchIconUrl;
+		let appleTouchIconUrl = match[2];
+	
+		// Check if the URL is absolute
+		if (!appleTouchIconUrl.startsWith('http://') && !appleTouchIconUrl.startsWith('https://')) {
+			// Modify the URL to be an absolute URL using the base URL of the original page
+			const corsProxy = 'http://localhost:8181/';
+			const modifiedUrl = url.replace(corsProxy, ''); // Remove the corsProxy part from the URL
+			const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
+			if (baseDomainMatch && baseDomainMatch[0]) {
+				const baseDomain = baseDomainMatch[0].replace('https://','').replace('www.','');
+				const baseURL = "https://" + baseDomain;
+				appleTouchIconUrl = baseURL + appleTouchIconUrl;
+			} else {
+			console.log('Invalid URL format.');
+			return null;
+			}
+		}
+	
+		return appleTouchIconUrl;
 	} else {
 	  // Regular expression to extract the regular favicon URL
 	  const faviconRegex = /<link[^>]*rel=["']icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
@@ -44,7 +61,6 @@ async function fetchAppleTouchIcon(url: string) {
 		  const shortcutIconUrl = shortcutIconMatch[1];
 		  return shortcutIconUrl;
 		} else {
-			console.log("made it to final else")
 		  // Fallback to using the base domain to fetch the icon from icon.horse
 		  const corsProxy = 'http://localhost:8181/';
 		  const modifiedUrl = url.replace(corsProxy, ''); // Remove the corsProxy part from the URL
@@ -79,6 +95,15 @@ function removeHTMLTags(html: any) {
 	.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
+function removeThumborFromUrl(url: string): string {
+	// Regular expression to match Thumbor part of the URL
+	const thumborRegex = /\/thumbor\/(filters:[^/]*\/)?(?:.*?\/cdn\.vox-cdn\.com)/;
+	
+	// Replace the Thumbor part with an empty string to remove it
+	return url.replace(thumborRegex, '');
+}
+
+
 
 
 export async function chocolateSauce(url: string) {
@@ -102,16 +127,17 @@ export async function chocolateSauce(url: string) {
 		recognizeSelfClosing: true,
 	  });
 	  article = feed;
+		console.log("okeedokee" + rawFeed)
 	  // Check if the id is a link (starts with "http://" or "https://")
 		if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
 			article_url = feed.items[0].id;
 		} else {
 			// Fallback to finding <link> tag for URL
-			const linkUrlRegex = /(?<=<item>.*<link>)(.*?)(?=<\/link>.*<\/item>)/i;
-			const linkMatch = await rawFeed.match(linkUrlRegex);
-		
+			console.log("made it over here")
+			const linkUrlRegex = /<item>.*?<link>(.*?)<\/link>.*?<\/item>/is;
+			const linkMatch = rawFeed.match(linkUrlRegex);
 			if (linkMatch) {
-			article_url = linkMatch[1];
+			article_url = linkMatch[1].replace('<link>','').replace('</link>', '');
 			} else {
 			// If no link tag found and the id is not a link, fallback to using the original id
 			article_url = "no article url, what the fuck dude";
@@ -125,7 +151,7 @@ export async function chocolateSauce(url: string) {
 	  article_publisher = feed.title
 	  
 	  const proxied_article_url = "http://localhost:8181/" + article_url;
-	  
+
 	 if (typeof article_image === 'object') {
 		const mediaContentRegex = /<media:content[^>]*url=["']([^"']+)["'][^>]*\/?>/i;
 		const mediaContentMatch = rawFeed.match(mediaContentRegex);
@@ -142,7 +168,7 @@ export async function chocolateSauce(url: string) {
 		   'X-Requested-With': 'XMLHttpRequest'
 		 }
 	   });
-	   article_image = metadata['og:image'];
+	   article_image = removeThumborFromUrl(metadata['og:image']);
 	 }
 	  
 	  const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
@@ -180,7 +206,7 @@ export async function chocolateSauce(url: string) {
 		requestHeaders: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'},
 	  });
 	  article = metadata;
-	  console.log(article)
+	  
 	  article_url = article.canonical;
 	  article_image = article['og:image'];
 	  article_title = article['og:title'];
