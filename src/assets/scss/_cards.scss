@@ -7,16 +7,6 @@
   border-radius: $card_border-radius;
   overflow: hidden;
 
-  // cards that include only one item
-  &.card-single {
-
-  }
-
-  // cards that include grouped content (lists or otherwise)
-  &.card-group {
-
-  }
-
   .card-header {
     padding: .7rem 1.4rem;
     position: relative;
@@ -27,6 +17,10 @@
   .article-header {
     position: relative;
     margin-bottom: 1.6rem;
+  }
+
+  .card-body {
+    padding: $card_padding-internal;
   }
 
   .article-meta {
@@ -52,8 +46,6 @@
     }
 
   }
-
-  // unique cards - tmp
 
 }
 
