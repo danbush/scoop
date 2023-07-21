@@ -1,5 +1,6 @@
 /* Global */
 
+$phi: 1.6180339887498948482;
 
 
 /* Transition Defaults / Mixin */
@@ -8,11 +9,9 @@ $transitionType:    all;
 $transitionSpeed:   0.25s;
 $transitionEffect:  ease-in-out;
 
-
 @mixin transition( $type: $transitionType, $speed: $transitionSpeed, $effect: $transitionEffect ) {
     transition: $type $speed $effect;
 }
-
 
 
 /* Cards */
