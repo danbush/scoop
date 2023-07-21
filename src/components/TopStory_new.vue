@@ -14,7 +14,7 @@
   }>()
   
   var articleArray: any = {}
-  chocolateSauce(hashtagBuildTheList(15))
+  chocolateSauce(hashtagBuildTheList(1))
   .then((result) => {
     articleArray = result
     console.log(articleArray)
@@ -31,9 +31,9 @@
     </header>
     <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
     <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-    <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+    <span class="article-publisher">{{articleArray.article_publisher }}</span>
     <h3 class="article-title">{{ articleArray.article_title }}</h3>
-    <div class="article-body">{{articleArray.article_body}}</div>
+    <div class="article-body">{{articleArray.article_body }}</div>
     <CardFooter :article_url="articleArray.article_url"/>
    </article>
 </template>
