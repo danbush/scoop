@@ -20,7 +20,8 @@ export function hashtagBuildTheList(item) {
 		'https://mediagazer.com/feed.xml',
 		'https://www.metacritic.com/rss/features',
 		'https://sgfcitizen.org/feed/',
-		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
+		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+		'https://www.inverse.com/rss'
 	]
 	return theList[item]
 }
