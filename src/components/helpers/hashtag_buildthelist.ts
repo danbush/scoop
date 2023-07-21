@@ -17,7 +17,10 @@ export function hashtagBuildTheList(item) {
 		'https://www.axios.com/feeds/feed.rss',
 		'https://www.economist.com/united-states/rss.xml',
 		'https://stratechery.com/feed/',
-		'https://mediagazer.com/feed.xml'
+		'https://mediagazer.com/feed.xml',
+		'https://www.metacritic.com/rss/features',
+		'https://sgfcitizen.org/feed/',
+		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
 	]
 	return theList[item]
 }

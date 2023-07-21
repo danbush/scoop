@@ -127,17 +127,15 @@ export async function chocolateSauce(url: string) {
 		recognizeSelfClosing: true,
 	  });
 	  article = feed;
-		console.log("okeedokee" + rawFeed)
 	  // Check if the id is a link (starts with "http://" or "https://")
 		if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
 			article_url = feed.items[0].id;
 		} else {
 			// Fallback to finding <link> tag for URL
-			console.log("made it over here")
 			const linkUrlRegex = /<item>.*?<link>(.*?)<\/link>.*?<\/item>/is;
 			const linkMatch = rawFeed.match(linkUrlRegex);
 			if (linkMatch) {
-			article_url = linkMatch[1].replace('<link>','').replace('</link>', '');
+				article_url = removeHTMLTags(linkMatch[1].replace('<link>','').replace('</link>', '')).trim();
 			} else {
 			// If no link tag found and the id is not a link, fallback to using the original id
 			article_url = "no article url, what the fuck dude";
@@ -160,7 +158,7 @@ export async function chocolateSauce(url: string) {
 		  article_image = mediaContentMatch[1];
 		}
 	  }
-	 if (!article_image || typeof article_image !== 'string') {
+	 if ((!article_image || typeof article_image !== 'string') &&	 !article_publisher.includes('NYT')) {
 	   const metadata: any = await urlMetadata(proxied_article_url, {
 		 requestHeaders: {
 		   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
@@ -169,13 +167,21 @@ export async function chocolateSauce(url: string) {
 		 }
 	   });
 	   article_image = removeThumborFromUrl(metadata['og:image']);
+	 } else if (article_publisher.includes('NYT')) {
+		 console.log("made it approperiately")
+		 const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/i;
+		 const badNYTMatch = rawFeed.match(badNYTRegex);
+		 console.log(rawFeed)
+		 if (badNYTMatch) {
+			 console.log("ham")
+			 article_image = badNYTMatch[1].replace('-moth', '-facebookJumbo');
+		 }
 	 }
-	  
-	  const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
+		const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
 		if (appleTouchIconUrl) {
-		  article_logo = appleTouchIconUrl;
+  		article_logo = appleTouchIconUrl;
 		} else {
-		  console.log('Apple Touch Icon not found for the given URL.');
+  		console.log('Apple Touch Icon not found for the given URL.');
 		}
 
 	  return {
