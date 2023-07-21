@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <article class="card card-single card_top-story">
+  <article v-if="articleArray" class="card card-single card_top-story">
     <header class="card-header">
       <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
     </header>
