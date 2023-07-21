@@ -39,17 +39,28 @@
 </script>
 
 <template>
-  <article  v-if="articleArray.article_title" class="card card-single card_top-story" >
+  <article class="card card-single card_top-story">
+    
+    <!-- todo: make module -->
     <header class="card-header">
       <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
     </header>
-    <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
-    <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-    <span class="article-publisher">{{ articleArray.article_publisher }}</span>
-    <h3 class="article-title">{{ articleArray.article_title }}</h3>
-    <div class="article-body">{{ articleArray.article_body }}</div>
+
+    <!-- todo: make module -->
+    <section class="card-body">
+      <a class="scoop-source-url" href="#" target="_blank">
+        <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
+        <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+        <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+      </a>
+      <h3 class="article-title">{{ articleArray.article_title }}</h3>
+      <div class="article-body">{{ articleArray.article_body }}</div>
+    </section>
+
+    <!-- todo: update module as needed -->
     <CardFooter :article_url="articleArray.article_url"/>
-   </article>
+
+  </article>
 </template>
 
 <style scoped lang="scss">
@@ -70,12 +81,11 @@
     
     .article-logo {
       max-width: 30px;
-      margin-top: 1rem;
       vertical-align: middle;
     }
     
     .article-publisher {
-      margin: 0.9rem 0 0 0.5rem;
+      margin-left: 0.5rem;
       vertical-align: middle;
       display: inline-block;
       
@@ -91,11 +101,11 @@
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: 1rem 1rem 5rem 1rem;
+      margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
     }
     
     .article-body {
-      margin: 0 1rem;
+      margin-right: 1rem;
     }
   
     .item-source {
