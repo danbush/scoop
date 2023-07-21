@@ -6,6 +6,7 @@
 
   import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
+  import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
 
   defineProps<{
     headline: string,
@@ -13,7 +14,7 @@
   }>()
   
   var articleArray: any = {}
-  chocolateSauce('https://www.axios.com/feeds/feed.rss')
+  chocolateSauce(hashtagBuildTheList(15))
   .then((result) => {
     articleArray = result
     console.log(articleArray)
@@ -32,7 +33,7 @@
     <img class="article-logo" :src="articleArray.article_logo" alt="cows">
     <span class="article-publisher">{{ articleArray.article_publisher }}</span>
     <h3 class="article-title">{{ articleArray.article_title }}</h3>
-    <div class="article-body">{{ articleArray.article_body }}</div>
+    <div class="article-body">{{articleArray.article_body}}</div>
     <CardFooter :article_url="articleArray.article_url"/>
    </article>
 </template>
@@ -80,7 +81,7 @@
     }
     
     .article-body {
-      margin-right: 1rem;
+      margin: 0 1rem;
     }
   
     .item-source {
