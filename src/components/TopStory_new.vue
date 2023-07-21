@@ -7,33 +7,36 @@
   import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
-
-  defineProps<{
-    headline: string,
-    body: string
-  }>()
+  import { ref, onMounted } from 'vue';
   
-  var articleArray: any = {}
-  chocolateSauce(hashtagBuildTheList(1))
-  .then((result) => {
-    articleArray = result
-    console.log(articleArray)
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  // Define a reactive object to store the article data
+  var articleArray = ref<any>({})
+  // Use async/await to handle asynchronous behavior
+  async function fetchArticleData() {
+    try {
+      const result = await chocolateSauce(hashtagBuildTheList(19));
+      articleArray.value = result;
+      console.log(articleArray.value);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  // Fetch the article data when the component is mounted
+  onMounted(() => {
+    fetchArticleData();
+  }); 
 </script>
 
 <template>
-  <article v-if="articleArray" class="card card-single card_top-story">
+  <article  v-if="articleArray.article_title" class="card card-single card_top-story" >
     <header class="card-header">
       <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
     </header>
     <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
     <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-    <span class="article-publisher">{{articleArray.article_publisher }}</span>
+    <span class="article-publisher">{{ articleArray.article_publisher }}</span>
     <h3 class="article-title">{{ articleArray.article_title }}</h3>
-    <div class="article-body">{{articleArray.article_body }}</div>
+    <div class="article-body">{{ articleArray.article_body }}</div>
     <CardFooter :article_url="articleArray.article_url"/>
    </article>
 </template>
