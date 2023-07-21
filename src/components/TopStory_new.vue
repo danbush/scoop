@@ -9,12 +9,23 @@
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
   
+  function getRandomNumbersInRange(count:number, min:number, max:number) {
+    const numbers = new Set();
+    while (numbers.size < count) {
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      numbers.add(randomNumber);
+    }
+    return Array.from(numbers);
+  }
+  
+  const articleNumber: any[] = getRandomNumbersInRange(1, 0, 19); //eventually get this thing to pick
+  
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      const result = await chocolateSauce(hashtagBuildTheList(19));
+      const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
       articleArray.value = result;
       console.log(articleArray.value);
     } catch (err) {

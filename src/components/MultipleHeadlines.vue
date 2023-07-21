@@ -7,7 +7,16 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
 
-  const articleSet: number[] = [1, 2, 3, 4, 5] //eventually get this thing to pick
+  function getRandomNumbersInRange(count:number, min:number, max:number) {
+    const numbers = new Set();
+    while (numbers.size < count) {
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      numbers.add(randomNumber);
+    }
+    return Array.from(numbers);
+  }
+  
+  const articleSet: any[] = getRandomNumbersInRange(5, 0, 19); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
@@ -32,9 +41,13 @@
       <header class="card-header">
         <h2 class="card-title">Just the Headlines</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
       </header>
-      <span v-for="number in articleSet" :key="number" class="article-image-wraper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
-        <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
-        <h4 class="article-title">{{ articleArray[number]?.article_title }}</h4>
+      <span v-for="number in articleSet" :key="number">
+        <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
+            <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
+            <h4 class="article-title">{{ articleArray[number]?.article_title }}</h4>
+          </span>
+        </a>
       </span>
     </article>
 </template>
@@ -46,6 +59,8 @@
     width: 100%;
     min-height: 27rem;
     max-height: 100rem;
+    
+    padding-bottom: $card-padding-internal;
   
     background-color: $background-lighter;
     border-radius: 8px;
@@ -56,6 +71,7 @@
       color: $background-lighter;
       text-shadow: 0 0 12px #000000, 0 0 2px $background;
       text-align: center;
+      text-decoration: none;
     }
     
     .article-logo {
@@ -73,7 +89,7 @@
       font-weight: 600;
     }
     
-    .article-image-wraper {
+    .article-image-wrapper {
       width: calc(100% - 2rem);
       height: 100%;
       display: block;
@@ -82,12 +98,11 @@
       background-position: center;
       background-repeat: no-repeat;
       margin: $card-padding-internal $card-padding-internal 0 $card-padding-internal;
-      border-radius: $card_border-radius;
-      //background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%);  
-      
-      &:last-of-type {
-        margin-bottom: $card-padding-internal;
-      }
+      border-radius: $card_border-radius;  
+    }
+    
+    span:last-of-type .article-image-wraper {
+      margin-bottom: $card-padding-internal;
     }
     
     .article-body {
