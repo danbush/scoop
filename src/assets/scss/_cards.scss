@@ -54,42 +54,6 @@
   }
 
   // unique cards - tmp
-  &.card_top-story {
-
-    flex: 1 0 60%;
-    width: 100%;
-
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
-
-    article.top-story {
-      position: relative;
-    }
-
-    .item-source {
-
-      display: block;
-
-      img {
-        // sloppy, I know
-        height: 1.6rem;
-        width: auto;
-      }
-
-    }
-
-  }
-
-  &.card_video {
-
-    flex: 1 0 35%;
-
-    iframe {
-      width: 100%;  // temporary
-    }
-
-  }
 
 }
 
@@ -100,14 +64,6 @@
   font-weight: bold;
   font-size: 1.2rem;
   text-transform: uppercase;
-
-}
-
-.card-footer {
-
-  margin-top: 2.4rem;
-  padding: $card_padding-internal;
-  background-color: #e2e2e2;
 
 }
 
@@ -126,18 +82,6 @@
       margin-top: 0;
     }
 
-  }
-
-}
-
-
-.card-actions {
-
-  display: flex;
-  justify-content: flex-end;
-
-  .button {
-    margin-left: .8rem;
   }
 
 }

@@ -13,7 +13,7 @@
   }>()
   
   var articleArray: any = {}
-  chocolateSauce('https://techcrunch.com/feed/')
+  chocolateSauce('https://www.axios.com/feeds/feed.rss')
   .then((result) => {
     articleArray = result
     console.log(articleArray)
@@ -28,27 +28,72 @@
     <header class="card-header">
       <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
     </header>
-    <div class="card-content">
-      <article class="top-story">
-        <header class="article-header">
-          <img :src="articleArray.article_image" alt="ham">
-          <div class="article-meta">
-            <span class="item-source">
-              <!-- todo: allow for image or text fallback -->
-              <img class="article-logo" :src="articleArray.article_logo" alt="llamas">
-            </span>
-          </div>
-        </header>
-        <h3 class="item-title">{{ articleArray.article_title }}</h3>
-        <div class="item-body">{{ articleArray.article_body }}</div>
-       </article>
-    </div>
-
+    <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
+    <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+    <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+    <h3 class="article-title">{{ articleArray.article_title }}</h3>
+    <div class="article-body">{{ articleArray.article_body }}</div>
     <CardFooter :article_url="articleArray.article_url"/>
-
-  </article>
+   </article>
 </template>
 
 <style scoped lang="scss">
-
+  .card_top-story {
+  
+    flex: 1 0 750px;
+    width: 100%;
+    min-height: 27rem;
+  
+    background-color: $background-lighter;
+    border-radius: 8px;
+    position: relative;
+    
+    .article-title {
+      margin-top: 0.4rem;
+      margin-right: 1rem;
+    }
+    
+    .article-logo {
+      max-width: 30px;
+      margin-top: 1rem;
+      vertical-align: middle;
+    }
+    
+    .article-publisher {
+      margin: 0.9rem 0 0 0.5rem;
+      vertical-align: middle;
+      display: inline-block;
+      
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .article-image-wraper {
+      width: 25vi;
+      height: 25vi;
+      display: block;
+      float: left;
+      background-size: cover; // this is probably temporary
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 1rem 1rem 5rem 1rem;
+    }
+    
+    .article-body {
+      margin-right: 1rem;
+    }
+  
+    .item-source {
+  
+      display: block;
+  
+      img {
+        // sloppy, I know
+        height: 1.6rem;
+        width: auto;
+      }
+  
+    }
+  
+  }
 </style>
