@@ -48,7 +48,7 @@
 
     <!-- todo: make module -->
     <section class="card-body">
-      <a class="scoop-source-url" href="#" target="_blank">
+      <a class="scoop-source-url" :href="articleArray.article_publisher_url" target="_blank">
         <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
         <img class="article-logo" :src="articleArray.article_logo" alt="cows">
         <span class="article-publisher">{{ articleArray.article_publisher }}</span>

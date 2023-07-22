@@ -104,7 +104,10 @@ function removeThumborFromUrl(url: string): string {
 	return url.replace(thumborRegex, '');
 }
 
-
+function getBaseUrl(url) {
+	const parsedUrl = new URL(url);
+	return `${parsedUrl.protocol}//${parsedUrl.hostname}`;
+}
 
 
 export async function chocolateSauce(url: string) {
@@ -117,6 +120,7 @@ export async function chocolateSauce(url: string) {
 	var article_logo: string = '';
 	var article_url: string = '';
 	var article_publisher: string = '';
+	var article_publisher_url: string = '';
 
 	// Check if it is rss/atom, or other
 	if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
@@ -128,6 +132,7 @@ export async function chocolateSauce(url: string) {
 				recognizeSelfClosing: true,
 			});
 			article = feed;
+			console.log(rawFeed)
 			// Check if the id is a link (starts with "http://" or "https://")
 			if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
 				article_url = feed.items[0].id;
@@ -148,6 +153,7 @@ export async function chocolateSauce(url: string) {
 			article_image = feed.items[0].media[0];
 			article_logo = null
 			article_publisher = removeHTMLTags(feed.title)
+			article_publisher_url = getBaseUrl(article_url);
 
 			const proxied_article_url = "http://localhost:8181/" + article_url;
 
@@ -192,7 +198,8 @@ export async function chocolateSauce(url: string) {
 				article_image,
 				article_logo,
 				article_url,
-				article_publisher
+				article_publisher,
+				article_publisher_url
 			};
 		} catch (err) {
 			console.log(err);
@@ -204,7 +211,8 @@ export async function chocolateSauce(url: string) {
 				article_image,
 				article_logo,
 				article_url,
-				article_publisher
+				article_publisher,
+				article_publisher_url
 			};
 		}
 	} else {
@@ -239,7 +247,8 @@ export async function chocolateSauce(url: string) {
 				article_image,
 				article_logo,
 				article_url,
-				article_publisher
+				article_publisher,
+				article_publisher_url
 			};
 		} catch (err) {
 			console.log(err);
@@ -251,7 +260,8 @@ export async function chocolateSauce(url: string) {
 				article_image,
 				article_logo,
 				article_url,
-				article_publisher
+				article_publisher,
+				article_publisher_url
 			};
 		}
 	}

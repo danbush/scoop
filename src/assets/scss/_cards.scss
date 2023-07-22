@@ -18,6 +18,10 @@
     position: relative;
     margin-bottom: 1.6rem;
   }
+  
+  a.scoop-source-url:visited {
+    color: initial;
+  }
 
   .card-body {
     padding: $card_padding-internal;
