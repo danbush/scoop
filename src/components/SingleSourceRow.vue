@@ -27,7 +27,7 @@
       </header>
       <span class="balls" v-for="number in Object.keys(rowObject)" :key="number">
         <a class="article-anchor-wrapper" :href="rowObject[number]?.article_url">
-          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + rowObject[number]?.article_image + ')' }">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + rowObject[number]?.article_image + ')' }">
             <img class="article-logo" :src="rowObject[number]?.article_logo" alt="cows">
             <h5 class="article-title">{{ rowObject[number]?.article_title }}</h5>
           </span>
@@ -97,6 +97,7 @@
       padding-bottom: $card-padding-internal;
       border-radius: $card_border-radius;
       transition: all .5s ease-in-out;
+      overflow: hidden;
       
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
