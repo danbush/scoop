@@ -47,7 +47,7 @@
     </header>
 
     <!-- todo: make module -->
-    <section class="card-body">
+    <section class="card-body" v-if="articleArray.article_title">
       <a class="scoop-source-url" :href="articleArray.article_publisher_url" target="_blank">
         <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
         <img class="article-logo" :src="articleArray.article_logo" alt="cows">
