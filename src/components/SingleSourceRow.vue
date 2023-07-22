@@ -6,17 +6,24 @@
   import { singleSourceGrabber } from './helpers/singleSourceGrabber'
   import { ref, onMounted } from 'vue';
   
+  // Define props for the component
+  const { source = 1, count = 5 } = defineProps<{
+    source: number,
+    count: number
+  }>();
+  
+  
   const rowObject = ref<any>(null);
   
   onMounted(async () => {
-    rowObject.value = await singleSourceGrabber(1, 5);
+    rowObject.value = await singleSourceGrabber(source, count);
   });
 </script>
 
 <template>
     <article class="card card-single card_single-source-row"  v-if="rowObject">
       <header class="card-header">
-        <h2 class="card-title">Dig In</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
+        <h2 class="card-title">Dig In</h2><span class="devtip"> // .card-single .card_single-source-row</span>
       </header>
       <span class="balls" v-for="number in Object.keys(rowObject)" :key="number">
         <a class="article-anchor-wrapper" :href="rowObject[number]?.article_url">

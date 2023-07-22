@@ -12,7 +12,8 @@
 
   <TopStory_new headline="" body="" />
   <MultipleHeadlines />
-  <SingleSourceRow />
+  <SingleSourceRow :source=2 :count=5 />
+  <SingleSourceRow :source=3 :count=5 />
   <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
   
 
