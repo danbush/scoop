@@ -3,6 +3,7 @@
   import TopStory_new from './components/TopStory_new.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
+  import SingleSourceRow from './components/SingleSourceRow.vue'
 </script>
 
 <template>
@@ -10,8 +11,11 @@
   <section class="module-row">
 
   <TopStory_new headline="" body="" />
+  <SingleVideo />
   <MultipleHeadlines />
-  <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
+  <SingleVideo />
+  <SingleSourceRow :source=2 :count=5 />
+  <SingleSourceRow :source=3 :count=5 />
   
 
   </section>

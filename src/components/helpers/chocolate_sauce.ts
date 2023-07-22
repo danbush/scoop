@@ -51,7 +51,6 @@ async function fetchAppleTouchIcon(url: string) {
 
 			if (faviconMatch) {
 				const faviconUrl = faviconMatch[1];
-				console.log("favicon is " + faviconUrl)
 				return faviconUrl;
 			} else {
 				// Regular expression to extract the shortcut favicon URL
@@ -110,7 +109,7 @@ function getBaseUrl(url: string) {
 }
 
 
-export async function chocolateSauce(url: string) {
+export async function chocolateSauce(url: string, item: number = 0, starter: number = 0) {
 	// Set some defaults
 	url = 'http://localhost:8181/' + url;
 	var article: any = {};
@@ -121,6 +120,7 @@ export async function chocolateSauce(url: string) {
 	var article_url: string = '';
 	var article_publisher: string = '';
 	var article_publisher_url: string = '';
+	var article_published_date: any = '';
 
 	// Check if it is rss/atom, or other
 	if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
@@ -132,10 +132,9 @@ export async function chocolateSauce(url: string) {
 				recognizeSelfClosing: true,
 			});
 			article = feed;
-			console.log(rawFeed)
 			// Check if the id is a link (starts with "http://" or "https://")
-			if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
-				article_url = feed.items[0].id;
+			if (feed.items[item].id.startsWith("http://") || feed.items[item].id.startsWith("https://")) {
+				article_url = feed.items[item].id;
 			} else {
 				// Fallback to finding <link> tag for URL
 				const linkUrlRegex = /<item>.*?<link>(.*?)<\/link>.*?<\/item>/is;
@@ -148,12 +147,13 @@ export async function chocolateSauce(url: string) {
 				}
 			}
 
-			article_title = removeHTMLTags(feed.items[0].title);
-			article_body = removeHTMLTags(decode(feed.items[0].description));
-			article_image = feed.items[0].media[0];
+			article_title = removeHTMLTags(feed.items[item].title);
+			article_body = removeHTMLTags(decode(feed.items[item].description));
+			article_image = feed.items[item].media[item];
 			article_logo = null
 			article_publisher = removeHTMLTags(feed.title)
 			article_publisher_url = getBaseUrl(article_url);
+			article_published_date = feed.items[item].pubDate;
 
 			const proxied_article_url = "http://localhost:8181/" + article_url;
 
@@ -175,12 +175,10 @@ export async function chocolateSauce(url: string) {
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
 			} else if (article_publisher.includes('NYT')) {
-				console.log("made it approperiately")
 				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/i;
 				const badNYTMatch = rawFeed.match(badNYTRegex);
 				console.log(rawFeed)
 				if (badNYTMatch) {
-					console.log("ham")
 					article_image = badNYTMatch[1].replace('-moth', '-facebookJumbo');
 				}
 			}
@@ -199,7 +197,8 @@ export async function chocolateSauce(url: string) {
 				article_logo,
 				article_url,
 				article_publisher,
-				article_publisher_url
+				article_publisher_url,
+				article_published_date
 			};
 		} catch (err) {
 			console.log(err);
@@ -212,7 +211,8 @@ export async function chocolateSauce(url: string) {
 				article_logo,
 				article_url,
 				article_publisher,
-				article_publisher_url
+				article_publisher_url,
+				article_published_date
 			};
 		}
 	} else {
@@ -248,7 +248,8 @@ export async function chocolateSauce(url: string) {
 				article_logo,
 				article_url,
 				article_publisher,
-				article_publisher_url
+				article_publisher_url,
+				article_published_date
 			};
 		} catch (err) {
 			console.log(err);
@@ -261,7 +262,8 @@ export async function chocolateSauce(url: string) {
 				article_logo,
 				article_url,
 				article_publisher,
-				article_publisher_url
+				article_publisher_url,
+				article_published_date
 			};
 		}
 	}

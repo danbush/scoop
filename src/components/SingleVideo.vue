@@ -5,10 +5,46 @@
   ***************************/
 
   import CardFooter from './CardFooter.vue'
-
-  defineProps<{
-    url: string
-  }>()
+  import { chocolateSauce } from './helpers/chocolate_sauce'
+  import { listVideos } from './helpers/list_videos'
+  import { getPipedEmbed } from './helpers/getPipedEmbed'
+  import { timeAgo } from './helpers/sprinkle_timeAgo'
+  import { ref, onMounted } from 'vue';
+  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
+  
+  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 2)]; //eventually get this thing to pick
+  
+  // Define a reactive object to store the article data
+  var articleArray = ref<any>({})
+  // Use async/await to handle asynchronous behavior
+  async function fetchArticleData() {
+    try {
+      const result = await chocolateSauce(listVideos(articleNumber));
+      
+      articleArray.value = result;
+      // Loop through the articles and set it up for video component.
+      for (const key in articleArray.value) {
+        if (key === 'article_url') {
+          articleArray.value[key] = await getPipedEmbed(articleArray.value[key])
+          console.log(articleArray.value[key])
+        }
+        if (key === 'article_publisher') {
+          articleArray.value[key] = articleArray.value[key].replace('Piped - ', '')
+        }
+        if (key === 'article_published_date') {
+          articleArray.value[key] = timeAgo(articleArray.value[key])
+        }
+      }
+      
+      console.log(articleArray.value);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  // Fetch the article data when the component is mounted
+  onMounted(() => {
+    fetchArticleData();
+  });
 </script>
 
 <template>
@@ -22,12 +58,12 @@
     <!-- todo: make module -->
     <section class="card-body">
       <div class="videoWrapper">
-        <iframe class="video-embed" width="560" height="315" src="https://www.youtube.com/embed/5LWDl5qaQbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="video-embed" width="560" height="315" :src="articleArray.article_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-      <h3 class="video-meta title">Ice cream is really delicious... here's why</h3>
-      <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah">
-      <span class="video-meta text video-author">MKBHD</span>
-      <span class="video-meta text video-timestamp">2 million years ago</span>
+      <h3 class="video-meta title">{{ articleArray.article_title }}</h3>
+      <!-- hiding this for now <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah"> -->
+      <span class="video-meta text video-author">{{ articleArray.article_publisher }}</span>
+      <span class="video-meta text video-timestamp">{{articleArray.article_published_date}}</span>
     </section>
   
     <!-- todo: update module as needed -->
@@ -40,14 +76,14 @@
 <style scoped lang="scss">
   .card_video {
   
-    flex: 1 0 35%;
+    flex: 2 0 35%;
   
     iframe {
       width: 100%;  // temporary
     }
   }
   h3 {
-    margin: 1rem;
+    margin: 1rem 0 0 0;
   }
   .videoWrapper {
     position: relative;
@@ -75,6 +111,5 @@
   }
   .video-author {
     font-weight: bold;
-    margin-top: 0.3rem;
   }
 </style>

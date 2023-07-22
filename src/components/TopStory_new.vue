@@ -8,15 +8,7 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
-  
-  function getRandomNumbersInRange(count:number, min:number, max:number) {
-    const numbers = new Set();
-    while (numbers.size < count) {
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      numbers.add(randomNumber);
-    }
-    return Array.from(numbers);
-  }
+  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
   const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 20)]; //eventually get this thing to pick
   
