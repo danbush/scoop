@@ -104,7 +104,7 @@ function removeThumborFromUrl(url: string): string {
 	return url.replace(thumborRegex, '');
 }
 
-function getBaseUrl(url) {
+function getBaseUrl(url: string) {
 	const parsedUrl = new URL(url);
 	return `${parsedUrl.protocol}//${parsedUrl.hostname}`;
 }
