@@ -76,7 +76,7 @@
 <style scoped lang="scss">
   .card_video {
   
-    flex: 1 0 35%;
+    flex: 2 0 35%;
   
     iframe {
       width: 100%;  // temporary
