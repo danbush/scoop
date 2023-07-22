@@ -110,7 +110,7 @@ function getBaseUrl(url: string) {
 }
 
 
-export async function chocolateSauce(url: string) {
+export async function chocolateSauce(url: string, item: number = 1, starter: number = 0) {
 	// Set some defaults
 	url = 'http://localhost:8181/' + url;
 	var article: any = {};
@@ -132,10 +132,9 @@ export async function chocolateSauce(url: string) {
 				recognizeSelfClosing: true,
 			});
 			article = feed;
-			console.log(rawFeed)
 			// Check if the id is a link (starts with "http://" or "https://")
-			if (feed.items[0].id.startsWith("http://") || feed.items[0].id.startsWith("https://")) {
-				article_url = feed.items[0].id;
+			if (feed.items[item].id.startsWith("http://") || feed.items[item].id.startsWith("https://")) {
+				article_url = feed.items[item].id;
 			} else {
 				// Fallback to finding <link> tag for URL
 				const linkUrlRegex = /<item>.*?<link>(.*?)<\/link>.*?<\/item>/is;
@@ -148,9 +147,9 @@ export async function chocolateSauce(url: string) {
 				}
 			}
 
-			article_title = removeHTMLTags(feed.items[0].title);
-			article_body = removeHTMLTags(decode(feed.items[0].description));
-			article_image = feed.items[0].media[0];
+			article_title = removeHTMLTags(feed.items[item].title);
+			article_body = removeHTMLTags(decode(feed.items[item].description));
+			article_image = feed.items[item].media[item];
 			article_logo = null
 			article_publisher = removeHTMLTags(feed.title)
 			article_publisher_url = getBaseUrl(article_url);

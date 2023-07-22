@@ -3,6 +3,7 @@
   import TopStory_new from './components/TopStory_new.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
+  import SingleSourceRow from './components/SingleSourceRow.vue'
 </script>
 
 <template>
@@ -11,6 +12,7 @@
 
   <TopStory_new headline="" body="" />
   <MultipleHeadlines />
+  <SingleSourceRow />
   <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
   
 
