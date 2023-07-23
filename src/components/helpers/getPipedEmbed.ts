@@ -5,7 +5,7 @@ export async function getPipedEmbed(originalUrl) {
 	
 	if (matches && matches[1]) {
 		const videoId = matches[1];
-		const embeddedUrl = `https://piped.video/embed/${videoId}`;
+		const embeddedUrl = `https://piped.scoopy.zone/embed/${videoId}`;
 		return embeddedUrl;
 	} else {
 		// If the original URL format doesn't match the expected pattern
