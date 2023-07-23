@@ -40,9 +40,9 @@
 
     <!-- todo: make module -->
     <section class="card-body" v-if="articleArray.article_title">
-      <a class="scoop-source-url" :href="articleArray.article_publisher_url" target="_blank">
+      <a class="scoop-source-url" :href="articleArray.article_url" target="_blank">
         <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
-        <img v-if="articleArray.article_logo" class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
         <span class="article-publisher">{{ articleArray.article_publisher }}</span>
       </a>
       <h3 class="article-title">{{ articleArray.article_title }}</h3>
@@ -65,6 +65,11 @@
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
+    
+    a.scoop-source-url {
+      color: initial;
+      text-decoration: none;
+    }
     
     .article-title {
       margin-top: 0.4rem;
@@ -94,6 +99,20 @@
       background-position: center;
       background-repeat: no-repeat;
       margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
+      
+      border-radius: $card_border-radius;
+      transition: all .5s ease-in-out;
+      
+      &:hover {
+        transform: scale(1.03) rotate(0.5deg);
+        filter: brightness(1.08);
+        box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+      }
+      &:active {
+        filter: brightness(1.25);
+        transform: scale(0.98) rotate(0.5deg);
+        transition: all .2s ease-in-out;
+      }
     }
     
     .article-body {

@@ -82,6 +82,12 @@
       width: 100%;  // temporary
     }
   }
+  
+  .card-header {
+    background-color: darken($video-accent, 15%);
+    color: lighten($video-accent, 45%);
+  }
+  
   h3 {
     margin: 1rem 0 0 0;
   }
@@ -89,6 +95,7 @@
     position: relative;
     padding-bottom: 56.25%; //16:9
     height: 0;
+    cursor: pointer;
   }
   .videoWrapper iframe {
     position: absolute;
@@ -96,6 +103,20 @@
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: $card_border-radius;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.03) rotate(0.5deg);
+      filter: brightness(1.08);
+      box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+    }
+    &:active {
+      filter: brightness(1.25);
+      transform: scale(0.98) rotate(0.5deg);
+      transition: all .2s ease-in-out;
+    }
   }
   .video-profile {
     width: 50px;
