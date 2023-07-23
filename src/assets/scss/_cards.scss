@@ -6,6 +6,7 @@
   background-color: $card_background-color;
   border-radius: $card_border-radius;
   overflow: hidden;
+  position: relative;
 
   .card-header {
     padding: .7rem 1.4rem;

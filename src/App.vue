@@ -31,7 +31,7 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch;
     margin: 1rem;
 }
 </style>

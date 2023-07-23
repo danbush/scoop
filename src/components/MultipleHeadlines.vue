@@ -46,7 +46,7 @@
       <header class="card-header">
         <h2 class="card-title">Just the Headlines</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
       </header>
-      <span v-for="number in articleSet" :key="number">
+      <span class="article-wrapper" v-for="number in articleSet" :key="number">
         <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
           <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
             <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
@@ -70,6 +70,12 @@
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
+    
+    .article-wrapper {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+    }
     
     .card-header {
       background-color: darken($headlines-accent, 20%);
