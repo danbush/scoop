@@ -73,6 +73,8 @@
       max-width: 30px;
       margin: $card-padding-internal auto 0 auto;
       display: block;
+      filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
+      background-color: $background-lighter;
     }
     
     .article-publisher {
