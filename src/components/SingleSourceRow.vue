@@ -56,7 +56,7 @@
       }
       .article-image-wrapper {
         width: 18vw;
-        height: 22vw;
+        height: 23.5vw;
         
       }
     }
