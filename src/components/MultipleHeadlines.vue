@@ -6,6 +6,11 @@
   import { ref } from 'vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
+  
+  // Define props for the component
+  const { count = 4 } = defineProps<{
+    count: number
+  }>();
 
   function getRandomNumbersInRange(count:number, min:number, max:number) {
     const numbers = new Set();
@@ -16,7 +21,7 @@
     return Array.from(numbers);
   }
   
-  const articleSet: any[] = getRandomNumbersInRange(5, 0, 19); //eventually get this thing to pick
+  const articleSet: any[] = getRandomNumbersInRange(count, 0, 19); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
@@ -65,6 +70,11 @@
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
+    
+    .card-header {
+      background-color: darken($headlines-accent, 20%);
+      color: lighten($headlines-accent, 45%)
+    }
     
     .article-title {
       margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
