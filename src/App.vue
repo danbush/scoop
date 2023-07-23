@@ -4,6 +4,7 @@
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
   import SingleSourceRow from './components/SingleSourceRow.vue'
+  import MayHaveMissed from './components/MayHaveMissed.vue'
 </script>
 
 <template>
@@ -11,12 +12,15 @@
   <section class="module-row">
 
     <TopStory_new headline="" body="" />
-    <MultipleHeadlines />
+    <MultipleHeadlines :count=4 />
+    <MultipleHeadlines :count=3 />
+    <MayHaveMissed />
+    <SingleVideo />
     <SingleSourceRow :source=0 :count=5 />
     <SingleVideo />
     <SingleVideo />
     <SingleSourceRow :source=4 :count=5 />
-    <SingleSourceRow :source=6 :count=5 />
+    <SingleSourceRow :source=8 :count=5 />
   
 
   </section>
