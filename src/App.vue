@@ -10,12 +10,13 @@
   <Header msg="scoopy" />
   <section class="module-row">
 
-  <TopStory_new headline="" body="" />
-  <SingleVideo />
-  <MultipleHeadlines />
-  <SingleVideo />
-  <SingleSourceRow :source=2 :count=5 />
-  <SingleSourceRow :source=3 :count=5 />
+    <TopStory_new headline="" body="" />
+    <MultipleHeadlines />
+    <SingleSourceRow :source=0 :count=5 />
+    <SingleVideo />
+    <SingleVideo />
+    <SingleSourceRow :source=4 :count=5 />
+    <SingleSourceRow :source=6 :count=5 />
   
 
   </section>
