@@ -87,7 +87,6 @@ function removeHTMLTags(html: any) {
 		.replace(/<!\[CDATA\[(.*?)]]>/gs, (_: string, content: string) => {
 			return content ? content : ''; // Keep the content inside CDATA and remove the CDATA tags
 		})
-		.replace('/n', '<br>')
 		.replace(/<figcaption>.*?<\/figcaption>/gs, '') // Remove figcaption tags
 		.replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
 			return content ? `[${content}]` : ''; // Wrap content inside <a> tags with []
@@ -176,11 +175,19 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
 			} else if (article_publisher.includes('NYT')) {
-				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/i;
-				const badNYTMatch = rawFeed.match(badNYTRegex);
-				if (badNYTMatch) {
-					article_image = badNYTMatch[1].replace('-moth', '-facebookJumbo');
+				const html = await fetchUrl(url);
+				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/gi;
+				const badNYTMatches = Array.from(html.matchAll(badNYTRegex));
+				
+				// Create an array to store the matched images
+				const nytImages = [];
+				// Process each match and extract the correct article images
+				for (const match of badNYTMatches) {
+					const imageUrl = match[1];
+					const articleImage = imageUrl.replace('-moth', '-jumbo').replace(/&quot;/g, "").replace('-v2', '');
+					nytImages.push(articleImage);
 				}
+				article_image = nytImages[item]
 			}
 			const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
 			if (appleTouchIconUrl) {
