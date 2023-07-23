@@ -56,7 +56,6 @@ async function fetchAppleTouchIcon(url: string) {
 				// Regular expression to extract the shortcut favicon URL
 				const shortcutIconRegex = /<link[^>]*rel=["']shortcut icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
 				const shortcutIconMatch = html.match(shortcutIconRegex);
-
 				if (shortcutIconMatch) {
 					const shortcutIconUrl = shortcutIconMatch[1];
 					return shortcutIconUrl;
@@ -67,7 +66,7 @@ async function fetchAppleTouchIcon(url: string) {
 					const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
 					if (baseDomainMatch && baseDomainMatch[0]) {
 						const baseDomain = baseDomainMatch[0].replace('https://', '').replace('www.', '');
-						const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain
+						const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain;
 						return shortcutIconUrl;
 					} else {
 						console.log('Invalid URL format.');
@@ -177,7 +176,6 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			} else if (article_publisher.includes('NYT')) {
 				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/i;
 				const badNYTMatch = rawFeed.match(badNYTRegex);
-				console.log(rawFeed)
 				if (badNYTMatch) {
 					article_image = badNYTMatch[1].replace('-moth', '-facebookJumbo');
 				}
