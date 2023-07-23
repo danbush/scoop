@@ -1,4 +1,4 @@
-export function hashtagBuildTheList(item) {
+export function hashtagBuildTheList(item: number) {
 	var theList: Array<string> = [
 		'https://feeds.arstechnica.com/arstechnica/index',
 		'https://techcrunch.com/feed/',
@@ -14,7 +14,7 @@ export function hashtagBuildTheList(item) {
 		'https://consequence.net/feed/',
 		'https://www.rollingstone.com/feed/',
 		'https://feeds.washingtonpost.com/rss/national?itid=lk_inline_manual_32',
-		//'https://www.axios.com/feeds/feed.rss',
+		'https://www.axios.com/feeds/feed.rss',
 		'https://www.economist.com/united-states/rss.xml',
 		'https://stratechery.com/feed/',
 		'https://mediagazer.com/feed.xml',

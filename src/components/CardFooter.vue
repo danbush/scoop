@@ -43,6 +43,8 @@
     padding: $card_padding-internal;
     background-color: #e2e2e2;
     width: 100%;
+    position:absolute;
+    bottom:0;
   }
   .card-actions {
   

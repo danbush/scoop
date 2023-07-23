@@ -56,7 +56,6 @@ async function fetchAppleTouchIcon(url: string) {
 				// Regular expression to extract the shortcut favicon URL
 				const shortcutIconRegex = /<link[^>]*rel=["']shortcut icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
 				const shortcutIconMatch = html.match(shortcutIconRegex);
-
 				if (shortcutIconMatch) {
 					const shortcutIconUrl = shortcutIconMatch[1];
 					return shortcutIconUrl;
@@ -67,7 +66,7 @@ async function fetchAppleTouchIcon(url: string) {
 					const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
 					if (baseDomainMatch && baseDomainMatch[0]) {
 						const baseDomain = baseDomainMatch[0].replace('https://', '').replace('www.', '');
-						const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain
+						const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain;
 						return shortcutIconUrl;
 					} else {
 						console.log('Invalid URL format.');
@@ -92,6 +91,7 @@ function removeHTMLTags(html: any) {
 		.replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
 			return content ? `[${content}]` : ''; // Wrap content inside <a> tags with []
 		})
+		.replace('&iacute;', 'í')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
@@ -175,12 +175,19 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
 			} else if (article_publisher.includes('NYT')) {
-				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/i;
-				const badNYTMatch = rawFeed.match(badNYTRegex);
-				console.log(rawFeed)
-				if (badNYTMatch) {
-					article_image = badNYTMatch[1].replace('-moth', '-facebookJumbo');
+				const html = await fetchUrl(url);
+				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/gi;
+				const badNYTMatches = Array.from(html.matchAll(badNYTRegex));
+				
+				// Create an array to store the matched images
+				const nytImages = [];
+				// Process each match and extract the correct article images
+				for (const match of badNYTMatches) {
+					const imageUrl = match[1];
+					const articleImage = imageUrl.replace('-moth', '-jumbo').replace(/&quot;/g, "").replace('-v2', '');
+					nytImages.push(articleImage);
 				}
+				article_image = nytImages[item]
 			}
 			const appleTouchIconUrl = await fetchAppleTouchIcon(proxied_article_url);
 			if (appleTouchIconUrl) {

@@ -4,6 +4,13 @@
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
   import SingleSourceRow from './components/SingleSourceRow.vue'
+  import MayHaveMissed from './components/MayHaveMissed.vue'
+  import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
+  
+  var row1: number = getRandomNumbersInRange(1,0,21)
+  var row2: number = getRandomNumbersInRange(1,0,21)
+  var row3: number = getRandomNumbersInRange(1,0,21)
+  var row4: number = getRandomNumbersInRange(1,0,21)
 </script>
 
 <template>
@@ -11,12 +18,20 @@
   <section class="module-row">
 
     <TopStory_new headline="" body="" />
-    <MultipleHeadlines />
+    <MultipleHeadlines :count=4 />
+    <MultipleHeadlines :count=3 />
+    <MayHaveMissed />
+    <SingleVideo />
     <SingleSourceRow :source=0 :count=5 />
     <SingleVideo />
     <SingleVideo />
-    <SingleSourceRow :source=4 :count=5 />
-    <SingleSourceRow :source=6 :count=5 />
+    <SingleSourceRow :source=row1 :count=5 />
+    <SingleSourceRow :source=row2 :count=5 />
+    <MultipleHeadlines :count=4 />
+    <MayHaveMissed />
+    <MultipleHeadlines :count=4 />
+    <SingleSourceRow :source=row3 :count=5 />
+    <SingleSourceRow :source=row4 :count=5 />
   
 
   </section>
@@ -27,7 +42,7 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch;
     margin: 1rem;
 }
 </style>

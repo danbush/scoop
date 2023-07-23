@@ -31,21 +31,17 @@
 </script>
 
 <template>
-  <article class="card card-single card_top-story">
-    
-    <!-- todo: make module -->
+  <article class="card card-single card_may-have-missed">
     <header class="card-header">
-      <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
+      <h2 class="card-title">You May Have Missed</h2><span class="devtip"> // .card-single .card_may-have-missed</span>
     </header>
-
-    <!-- todo: make module -->
     <section class="card-body" v-if="articleArray.article_title">
-      <a class="scoop-source-url" :href="articleArray.article_url" target="_blank">
-        <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
-        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
-        <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+      <a class="article-anchor-wrapper" :href="articleArray.article_url">
+        <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
+          <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+          <h3 class="article-title">{{ articleArray.article_title }}</h3>
+        </span>
       </a>
-      <h3 class="article-title">{{ articleArray.article_title }}</h3>
       <div class="article-body">{{ articleArray.article_body }}</div>
     </section>
 
@@ -56,33 +52,33 @@
 </template>
 
 <style scoped lang="scss">
-  .card_top-story {
+  .card_may-have-missed {
   
-    flex: 1 0 750px;
+    flex: 2 0 600px;
     width: 100%;
     min-height: 27rem;
+    max-width: 40rem;
   
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
     
-    a.scoop-source-url {
-      color: initial;
-      text-decoration: none;
-    }
-    
     .article-title {
-      margin-top: 0.4rem;
-      margin-right: 1rem;
+      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
+      color: $background-lighter;
+      text-shadow: 0 0 12px #000000, 0 0 2px $background;
+      text-align: center;
+      text-decoration: none;
     }
     
     .article-logo {
       max-width: 30px;
-      vertical-align: middle;
+      margin: $card-padding-internal auto 0 auto;
+      display: block;
     }
     
     .article-publisher {
-      margin-left: 0.5rem;
+      margin: 0.9rem 0 0 0.5rem;
       vertical-align: middle;
       display: inline-block;
       
@@ -90,16 +86,17 @@
       font-weight: 600;
     }
     
-    .article-image-wraper {
-      width: 25vi;
-      height: 25vi;
+    .article-image-wrapper {
+      width: 100%;
+      height: 100%;
+      min-height: 15rem;
       display: block;
       float: left;
+      background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
-      
+      margin: 0 0 $card-padding-internal 0;
       border-radius: $card_border-radius;
       transition: all .5s ease-in-out;
       
