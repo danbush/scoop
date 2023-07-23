@@ -87,10 +87,12 @@ function removeHTMLTags(html: any) {
 		.replace(/<!\[CDATA\[(.*?)]]>/gs, (_: string, content: string) => {
 			return content ? content : ''; // Keep the content inside CDATA and remove the CDATA tags
 		})
+		.replace('/n', '<br>')
 		.replace(/<figcaption>.*?<\/figcaption>/gs, '') // Remove figcaption tags
 		.replace(/<a[^>]*>(.*?)<\/a>/g, (_: string, content: string) => {
 			return content ? `[${content}]` : ''; // Wrap content inside <a> tags with []
 		})
+		.replace('&iacute;', 'í')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
