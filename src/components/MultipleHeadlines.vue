@@ -21,7 +21,7 @@
     return Array.from(numbers);
   }
   
-  const articleSet: any[] = getRandomNumbersInRange(count, 0, 23); //eventually get this thing to pick
+  const articleSet: any[] = getRandomNumbersInRange(count, 0, 24); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
