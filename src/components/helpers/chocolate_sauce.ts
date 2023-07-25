@@ -92,6 +92,8 @@ function removeHTMLTags(html: any) {
 			return content ? `[${content}]` : ''; // Wrap content inside <a> tags with []
 		})
 		.replace('&iacute;', 'í')
+		.replace('&lt;/p&gt;', '')
+		.replace('&lt;p&gt;', '')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
@@ -108,6 +110,44 @@ function getBaseUrl(url: string) {
 	return `${parsedUrl.protocol}//${parsedUrl.hostname}`;
 }
 
+function isMastodonRSS(xmlString: string): boolean {
+	// Check for the presence of the "generator" element starting with "Mastodon"
+	const generatorRegex = /<generator>[^<]*Mastodon[^<]*<\/generator>/i;
+	return generatorRegex.test(xmlString);
+}
+
+function parseMastodonRssItem(rawItem: string) {
+	try {
+		const descriptionRegex = /<item>[\s\S]*?<description>(.*?)<\/description>[\s\S]*?<\/item>/i;
+		const pubDateRegex = /<pubDate>(.*?)<\/pubDate>/s;
+		const avatarUrlRegex = /<image>\s*<url>(.*?)<\/url>[\s\S]*?<\/image>/;
+		const titleRegex = /<title>(.*?)<\/title>/i;
+		const publisherLinkRegex = /<link>(.*?)<\/link>/i;
+		const itemLinkRegex = /<item>[\s\S]*?<link>(.*?)<\/link>[\s\S]*?<\/item>/i;
+
+		const descriptionMatch = rawItem.match(descriptionRegex);
+		const pubDateMatch = rawItem.match(pubDateRegex);
+		const imageMatch = rawItem.match(avatarUrlRegex);
+		const titleMatch = rawItem.match(titleRegex);
+		const publisherLinkMatch = rawItem.match(publisherLinkRegex);
+		const itemLinkMatch = rawItem.match(itemLinkRegex);
+
+		const article_body = descriptionMatch ? removeHTMLTags(descriptionMatch[1].trim()) : '';
+		const article_published_date = pubDateMatch ? Date.parse(pubDateMatch[1]) : '';
+		const article_logo = imageMatch ? imageMatch[1] : '';
+		const article_publisher = titleMatch ? titleMatch[1] : '';
+		const article_publisher_url = publisherLinkMatch ? publisherLinkMatch[1] : '';
+		const article_url = itemLinkMatch ? itemLinkMatch[1] : '';
+		
+		console.log(article_url)
+
+		return { article_body, article_published_date, article_logo, article_publisher, article_publisher_url, article_url };
+	} catch (error) {
+		console.error('Error parsing Mastodon RSS item:', error);
+		return null;
+	}
+}
+
 
 export async function chocolateSauce(url: string, item: number = 0, starter: number = 0) {
 	// Set some defaults
@@ -121,30 +161,59 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 	var article_publisher: string = '';
 	var article_publisher_url: string = '';
 	var article_published_date: any = '';
+	
+	const rawFeed = await fetchUrl(url);
+	
+	if (isMastodonRSS(rawFeed)) {
+		try {
+			const masto_data = parseMastodonRssItem(rawFeed)
+			console.log(parseMastodonRssItem(rawFeed))
+			article_body = masto_data?.article_body
+			article_published_date = masto_data?.article_published_date
+			article_publisher = masto_data?.article_publisher
+			article_logo = masto_data?.article_logo
+			article_publisher_url = masto_data?.article_publisher_url
+			article_url = masto_data?.article_url
+			
+			return {
+				article,
+				article_title,
+				article_body,
+				article_image,
+				article_logo,
+				article_url,
+				article_publisher,
+				article_publisher_url,
+				article_published_date
+			};
+		} catch (err) {
+			console.log(err)
+			// Return a default value or an empty object in case of an error
+			return {
+				article,
+				article_title,
+				article_body,
+				article_image,
+				article_logo,
+				article_url,
+				article_publisher,
+				article_publisher_url,
+				article_published_date
+			};
+		}
 
 	// Check if it is rss/atom, or other
-	if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
+	} else if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
 		try {
-			const rawFeed = await fetchUrl(url);
 			const feed = htmlparser2.parseFeed(rawFeed, {
-				recognizeCDATA: true,
-				decodeEntities: true,
-				recognizeSelfClosing: true,
+				xmlMode: true
 			});
 			article = feed;
 			// Check if the id is a link (starts with "http://" or "https://")
-			if (feed.items[item].id.startsWith("http://") || feed.items[item].id.startsWith("https://")) {
-				article_url = feed.items[item].id;
+			if (feed && feed.items && feed.items[item]) {
+					article_url = feed.items[item].link || "no article url, what the fuck dude";
 			} else {
-				// Fallback to finding <link> tag for URL
-				const linkUrlRegex = /<item>.*?<link>(.*?)<\/link>.*?<\/item>/is;
-				const linkMatch = rawFeed.match(linkUrlRegex);
-				if (linkMatch) {
-					article_url = removeHTMLTags(linkMatch[1].replace('<link>', '').replace('</link>', '')).trim();
-				} else {
-					// If no link tag found and the id is not a link, fallback to using the original id
 					article_url = "no article url, what the fuck dude";
-				}
 			}
 
 			article_title = removeHTMLTags(feed.items[item].title);
@@ -154,6 +223,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			article_publisher = removeHTMLTags(feed.title)
 			article_publisher_url = getBaseUrl(article_url);
 			article_published_date = feed.items[item].pubDate;
+			
 
 			const proxied_article_url = "http://localhost:8181/" + article_url;
 
@@ -166,7 +236,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 				}
 			}
 			if ((!article_image || typeof article_image !== 'string') && !article_publisher.includes('NYT')) {
-				const metadata: any = await urlMetadata(proxied_article_url, {
+				var metadata: any = await urlMetadata(proxied_article_url, {
 					requestHeaders: {
 						'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
 						'Origin': 'http://localhost:8181',
@@ -174,6 +244,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 					}
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
+				
 			} else if (article_publisher.includes('NYT')) {
 				const html = await fetchUrl(url);
 				const badNYTRegex = /<item>(?:.|\n)*?<media:content[^>]*url="([^"]+)"/gi;
