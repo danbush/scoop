@@ -17,7 +17,7 @@
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      const result = await chocolateSauce(hashtagBuildTheList(14  ));
+      const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
       articleArray.value = result;
       console.log(articleArray.value);
     } catch (err) {
