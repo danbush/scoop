@@ -1,6 +1,7 @@
-export function timeAgo(date: Date): string {
+export function timeAgo(date: Date | number): string {
 	const currentDate = new Date();
-	const timeDifference = currentDate.getTime() - date.getTime();
+	const targetDate = date instanceof Date ? date : new Date(date);
+	const timeDifference = currentDate.getTime() - targetDate.getTime();
 	const seconds = Math.floor(timeDifference / 1000);
 	const minutes = Math.floor(seconds / 60);
 	const hours = Math.floor(minutes / 60);
