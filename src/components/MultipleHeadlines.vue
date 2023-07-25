@@ -21,7 +21,7 @@
     return Array.from(numbers);
   }
   
-  const articleSet: any[] = getRandomNumbersInRange(count, 0, 19); //eventually get this thing to pick
+  const articleSet: any[] = getRandomNumbersInRange(count, 0, 23); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
@@ -32,6 +32,7 @@
       results.forEach((result, index) => {
         const articleNumber = articleSet[index]
         articleArray.value[articleNumber] = result
+        
       })
       console.log(articleArray.value) // The complete object with all articles
     })

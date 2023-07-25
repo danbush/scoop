@@ -10,7 +10,7 @@
   import { ref, onMounted } from 'vue';
   import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
-  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 20)]; //eventually get this thing to pick
+  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 23)]; //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
