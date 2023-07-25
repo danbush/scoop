@@ -2,6 +2,7 @@ import urlMetadata from 'url-metadata';
 import * as htmlparser2 from 'htmlparser2';
 import fetch from 'node-fetch';
 import { decode } from 'html-entities';
+import { timeAgo } from './sprinkle_timeAgo'
 
 
 async function fetchUrl(url: string) {
@@ -94,6 +95,15 @@ function removeHTMLTags(html: any) {
 		.replace('&iacute;', 'í')
 		.replace('&lt;/p&gt;', '')
 		.replace('&lt;p&gt;', '')
+		.replace('</p>', '\n\n')
+		.replace('</ul>', '\n\n')
+		.replace('</li>', '\n\n')
+		.replace('</li><li>', '\n\n')
+		.replace('</p><ul><li>', '\n\n')
+		.replace('</li></ul><p>', '\n\n')
+		.replace('</a><p>', '\n\n')
+		.replace('</a></p><ul><li>', '\n\n')
+		.replace('</li><li>', '\n\n')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
@@ -110,13 +120,21 @@ function getBaseUrl(url: string) {
 	return `${parsedUrl.protocol}//${parsedUrl.hostname}`;
 }
 
+// Function to remove URLs from the text
+function removeUrls(text: string): string {
+	// Regular expression to match URLs
+	const urlRegex = /(https?:\/\/[^\s]+)/g;
+	// Replace URLs with an empty string to remove them
+	return text.replace(urlRegex, '');
+}
+
 function isMastodonRSS(xmlString: string): boolean {
 	// Check for the presence of the "generator" element starting with "Mastodon"
 	const generatorRegex = /<generator>[^<]*Mastodon[^<]*<\/generator>/i;
 	return generatorRegex.test(xmlString);
 }
 
-function parseMastodonRssItem(rawItem: string) {
+async function parseMastodonRssItem(rawItem: string) {
 	try {
 		const descriptionRegex = /<item>[\s\S]*?<description>(.*?)<\/description>[\s\S]*?<\/item>/i;
 		const pubDateRegex = /<pubDate>(.*?)<\/pubDate>/s;
@@ -124,6 +142,9 @@ function parseMastodonRssItem(rawItem: string) {
 		const titleRegex = /<title>(.*?)<\/title>/i;
 		const publisherLinkRegex = /<link>(.*?)<\/link>/i;
 		const itemLinkRegex = /<item>[\s\S]*?<link>(.*?)<\/link>[\s\S]*?<\/item>/i;
+		const imageUrlRegex =  /<media:content[^>]*\burl="([^"]+)"/i;
+		
+		
 
 		const descriptionMatch = rawItem.match(descriptionRegex);
 		const pubDateMatch = rawItem.match(pubDateRegex);
@@ -131,17 +152,33 @@ function parseMastodonRssItem(rawItem: string) {
 		const titleMatch = rawItem.match(titleRegex);
 		const publisherLinkMatch = rawItem.match(publisherLinkRegex);
 		const itemLinkMatch = rawItem.match(itemLinkRegex);
+		const imageUrlMatch = rawItem.match(imageUrlRegex);
 
-		const article_body = descriptionMatch ? removeHTMLTags(descriptionMatch[1].trim()) : '';
-		const article_published_date = pubDateMatch ? Date.parse(pubDateMatch[1]) : '';
+		var article_body = descriptionMatch ? removeHTMLTags(decode(descriptionMatch[1].trim())) : '';
+		const article_published_date = pubDateMatch ? timeAgo(Date.parse(pubDateMatch[1])) : '';
 		const article_logo = imageMatch ? imageMatch[1] : '';
 		const article_publisher = titleMatch ? titleMatch[1] : '';
 		const article_publisher_url = publisherLinkMatch ? publisherLinkMatch[1] : '';
 		const article_url = itemLinkMatch ? itemLinkMatch[1] : '';
+		var article_image = '';
 		
-		console.log(article_url)
-
-		return { article_body, article_published_date, article_logo, article_publisher, article_publisher_url, article_url };
+		
+		var metadata: any = await urlMetadata('http://localhost:8181/' + article_url, {
+			requestHeaders: {
+				'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+				'Origin': 'http://localhost:8181',
+				'X-Requested-With': 'XMLHttpRequest'
+			}
+		});
+		
+		article_body =  removeUrls(metadata.description)
+		console.log("YO DAWG " + article_body)
+		if (article_body.includes('Attached: 1 image')) {
+			article_body = article_body.replace('Attached: 1 image\n\n', '');
+			article_image = imageUrlMatch ? imageUrlMatch[1].replace(/<media:content[^>]*\burl="/, '') : '';
+		}
+		
+		return { article_body, article_image, article_published_date, article_logo, article_publisher, article_publisher_url, article_url };
 	} catch (error) {
 		console.error('Error parsing Mastodon RSS item:', error);
 		return null;
@@ -166,7 +203,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 	
 	if (isMastodonRSS(rawFeed)) {
 		try {
-			const masto_data = parseMastodonRssItem(rawFeed)
+			const masto_data = await parseMastodonRssItem(rawFeed)
 			console.log(parseMastodonRssItem(rawFeed))
 			article_body = masto_data?.article_body
 			article_published_date = masto_data?.article_published_date
@@ -174,6 +211,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			article_logo = masto_data?.article_logo
 			article_publisher_url = masto_data?.article_publisher_url
 			article_url = masto_data?.article_url
+			article_image = masto_data?.article_image
 			
 			return {
 				article,
