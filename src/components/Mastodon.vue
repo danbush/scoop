@@ -46,7 +46,7 @@
 </script>
 
 <template>
-    <article class="card card-single card_multiple-headlines">
+    <article class="card card-single card_mastodon-feed">
       <header class="card-header">
         <h2 class="card-title">Masto Test</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
       </header>
@@ -69,12 +69,13 @@
 </template>
 
 <style scoped lang="scss">
-  .card_multiple-headlines {
+  .card_mastodon-feed {
   
     flex: 1 0 300px;
     width: 100%;
     min-height: 27rem;
     max-height: 100rem;
+    overflow: scroll;
     
     padding-bottom: $card-padding-internal;
   
@@ -110,6 +111,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
       margin-top: $card-padding-internal;
+    }
+    
+    .article-anchor-wrapper {
+      max-width: 100%;
+      min-width: 100%;
+      width: 100%;
     }
     
     .card-header {
