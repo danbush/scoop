@@ -5,12 +5,13 @@
   import SingleVideo from './components/SingleVideo.vue'
   import SingleSourceRow from './components/SingleSourceRow.vue'
   import MayHaveMissed from './components/MayHaveMissed.vue'
+  import Mastodon from './components/Mastodon.vue'
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   
-  var row1: number = getRandomNumbersInRange(1,0,21)
-  var row2: number = getRandomNumbersInRange(1,0,21)
-  var row3: number = getRandomNumbersInRange(1,0,21)
-  var row4: number = getRandomNumbersInRange(1,0,21)
+  var row1: number = getRandomNumbersInRange(1,0,24)
+  var row2: number = getRandomNumbersInRange(1,0,24)
+  var row3: number = getRandomNumbersInRange(1,0,24)
+  var row4: number = getRandomNumbersInRange(1,0,24)
 </script>
 
 <template>
@@ -19,9 +20,9 @@
 
     <TopStory_new headline="" body="" />
     <MultipleHeadlines :count=4 />
-    <MultipleHeadlines :count=3 />
+    <MultipleHeadlines :count=4 />
     <MayHaveMissed />
-    <SingleVideo />
+    <Mastodon :count=3 />
     <SingleSourceRow :source=0 :count=5 />
     <SingleVideo />
     <SingleVideo />

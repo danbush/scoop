@@ -1,6 +1,6 @@
 <script setup lang="ts">
   /************************** 
-  Multiple Headlines component
+  Single Source Row component
   todo: fill out this section
   ***************************/
   import { singleSourceGrabber } from './helpers/singleSourceGrabber'
@@ -25,11 +25,11 @@
       <header class="card-header">
         <h2 class="card-title">Dig In</h2><span class="devtip"> // .card-single .card_single-source-row</span>
       </header>
-      <span class="balls" v-for="number in Object.keys(rowObject)" :key="number">
-        <a class="article-anchor-wrapper" :href="rowObject[number]?.article_url">
-          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + rowObject[number]?.article_image + ')' }">
-            <img class="article-logo" :src="rowObject[number]?.article_logo" alt="cows">
-            <h5 class="article-title">{{ rowObject[number]?.article_title }}</h5>
+      <span class="balls" v-for="(value, key) in rowObject" :key="key">
+        <a class="article-anchor-wrapper" :href="value?.article_url">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }">
+            <img class="article-logo" :src="value?.article_logo" alt="cows">
+            <h5 class="article-title">{{ value?.article_title }}</h5>
           </span>
         </a>
       </span>

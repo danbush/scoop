@@ -10,7 +10,7 @@
   import { ref, onMounted } from 'vue';
   import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
-  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 20)]; //eventually get this thing to pick
+  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 24)]; //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
@@ -42,7 +42,7 @@
           <h3 class="article-title">{{ articleArray.article_title }}</h3>
         </span>
       </a>
-      <div class="article-body">{{ articleArray.article_body }}</div>
+      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
     </section>
 
     <!-- todo: update module as needed -->
@@ -62,6 +62,10 @@
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
+    
+    pre {
+      white-space: pre-wrap;
+    }
     
     .article-title {
       margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
@@ -114,6 +118,7 @@
     
     .article-body {
       margin-right: 1rem;
+      margin-bottom: 5rem;
     }
   
     .item-source {

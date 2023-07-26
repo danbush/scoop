@@ -6,7 +6,7 @@ export function hashtagBuildTheList(item: number) {
 		'https://www.theverge.com/rss/index.xml',
 		'https://www.polygon.com/rss/index.xml',
 		'http://feeds.feedburner.com/ign/news',
-		'https://toucharcade.com/community/forums/-/index.rss',
+		'http://toucharcade.com/feed',
 		'https://deadline.com/feed/',
 		'https://tvline.com/feed/',
 		'https://www.slashfilm.com/feed/',
@@ -18,10 +18,13 @@ export function hashtagBuildTheList(item: number) {
 		'https://www.economist.com/united-states/rss.xml',
 		'https://stratechery.com/feed/',
 		'https://mediagazer.com/feed.xml',
-		'https://www.metacritic.com/rss/features',
+		'https://www.metacritic.com/rss/games',
+		'https://www.metacritic.com/rss/movies',
 		'https://sgfcitizen.org/feed/',
 		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
-		'https://www.inverse.com/rss'
+		'https://www.inverse.com/rss',
+		'https://www.space.com/feeds/all',
+		'https://feeds.npr.org/1001/rss.xml'
 	]
 	return theList[item]
 }
