@@ -270,11 +270,12 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 				}
 			}
 			if ((!article_image || typeof article_image !== 'string') && !article_publisher.includes('NYT')) {
+				console.log("babe ", proxied_article_url)
 				var metadata: any = await urlMetadata(proxied_article_url, {
 					requestHeaders: {
-						'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-						'Origin': 'http://localhost:8181',
-						'X-Requested-With': 'XMLHttpRequest'
+						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+						'Origin': 'http://duckduckgo.com',
+						'Referer': proxied_article_url
 					}
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
