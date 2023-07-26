@@ -79,6 +79,12 @@
       justify-content: space-between;
     }
     
+    .article-anchor-wrapper {
+      max-width: 100%;
+      min-width: 100%;
+      width: 100%;
+    }
+    
     .card-header {
       background-color: darken($headlines-accent, 20%);
       color: lighten($headlines-accent, 45%)
@@ -90,6 +96,8 @@
       text-shadow: 0 0 12px #000000, 0 0 2px $background;
       text-align: center;
       text-decoration: none;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     
     .article-logo {
