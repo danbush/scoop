@@ -58,9 +58,9 @@
 <style scoped lang="scss">
   .card_top-story {
   
-    flex: 1 0 750px;
+//    flex: 1 0 750px;
     width: 100%;
-    min-height: 27rem;
+//    min-height: 27rem;
   
     background-color: $background-lighter;
     border-radius: 8px;

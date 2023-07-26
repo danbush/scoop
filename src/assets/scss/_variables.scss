@@ -3,6 +3,32 @@
 $phi: 1.6180339887498948482;
 
 
+/* Media Queries */
+
+$content-width: 1200px; // 77.8rem
+
+$breakpoints: (
+  'small': 480px,
+  'medium': 800px,
+  'large': 1080px,
+  'xlarge': 1200px,
+);
+
+@mixin mq($width: 'large', $type: max) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+
+
+
 /* Transition Defaults / Mixin */
 
 $transitionType:    all;

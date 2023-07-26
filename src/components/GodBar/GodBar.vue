@@ -36,6 +36,12 @@
 
 }
 
+@mixin mq('small') {
+  .toolbar {
+    display: none;
+  }
+}
+
 .toggle {
   
     padding: 0 1.2rem;

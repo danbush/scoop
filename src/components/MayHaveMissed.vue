@@ -54,10 +54,10 @@
 <style scoped lang="scss">
   .card_may-have-missed {
   
-    flex: 2 0 600px;
-    width: 100%;
-    min-height: 27rem;
-    max-width: 40rem;
+//    flex: 2 0 600px;
+//    width: 100%;
+//    min-height: 27rem;
+//    max-width: 40rem;
   
     background-color: $background-lighter;
     border-radius: 8px;
