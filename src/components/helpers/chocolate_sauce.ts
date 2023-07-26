@@ -95,15 +95,11 @@ function removeHTMLTags(html: any) {
 		.replace('&iacute;', 'í')
 		.replace('&lt;/p&gt;', '')
 		.replace('&lt;p&gt;', '')
-		.replace('</p>', '\n\n')
-		.replace('</ul>', '\n\n')
-		.replace('</li>', '\n\n')
-		.replace('</li><li>', '\n\n')
-		.replace('</p><ul><li>', '\n\n')
-		.replace('</li></ul><p>', '\n\n')
-		.replace('</a><p>', '\n\n')
-		.replace('</a></p><ul><li>', '\n\n')
-		.replace('</li><li>', '\n\n')
+		.replace(/<\/ul>/g, '\n\n')
+		.replace(/<\/p>/g, '\n\n')
+		.replace(/<\/li>/g, '\n\n')
+		.replace(/&pound;/g, '£')
+		.replace(/&euro;/g, '€')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 
