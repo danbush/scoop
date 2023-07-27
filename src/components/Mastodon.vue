@@ -114,9 +114,11 @@
     }
     
     .article-anchor-wrapper {
+      display: block;
       max-width: 100%;
       min-width: 100%;
       width: 100%;
+      height: 100px;
     }
     
     .card-header {
@@ -151,33 +153,36 @@
     }
     
     .article-image-wrapper {
+
+      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
+
+      display: block;
       width: calc(100% - 2rem);
       height: 100%;
-      display: block;
+      margin: 0 $card-padding-internal 0 $card-padding-internal;
+
       float: left;
+
       background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0 $card-padding-internal 0 $card-padding-internal;
       border-radius: $card_border-radius;
-      transition: all .5s ease-in-out;
-      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
+
+      @include transition;
       
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
         filter: brightness(1.08);
         box-shadow: 0px 0px 15px 0px lighten($background, 40%);
       }
+
       &:active {
         filter: brightness(1.25);
         transform: scale(0.98) rotate(0.5deg);
         transition: all .2s ease-in-out;
       }
-    }
-    
-    .article-body {
-      margin: 0 $card-padding-internal;
+
     }
   
     .item-source {

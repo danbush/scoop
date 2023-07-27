@@ -43,30 +43,33 @@
 </script>
 
 <template>
-    <article class="card card-single card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
+    <article class="card card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
       <header class="card-header">
         <h2 class="card-title">Just the Headlines</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
       </header>
-      <span class="article-wrapper" v-for="number in articleSet" :key="number">
-        <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
-          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
-            <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
-            <h4 class="article-title">{{ articleArray[number]?.article_title }}</h4>
-          </span>
-        </a>
-      </span>
+      <section class="card-body">
+        <article class="card-tile" v-for="number in articleSet" :key="number">
+          <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
+            <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
+              <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
+              <h4 class="article-title">{{ articleArray[number]?.article_title }}</h4>
+            </span>
+          </a>
+        </article>
+
+      </section>
     </article>
 </template>
 
 <style scoped lang="scss">
   .card_multiple-headlines {
   
-    flex: 1 0 300px;
-    width: 100%;
-    min-height: 27rem;
-    max-height: 100rem;
+//    flex: 1 0 300px;
+//    width: 100%;
+//    min-height: 27rem;
+//    max-height: 100rem;
     
-    padding-bottom: $card-padding-internal;
+//    padding-bottom: $card-padding-internal;
   
     background-color: $background-lighter;
     border-radius: 8px;
@@ -80,9 +83,15 @@
     }
     
     .article-anchor-wrapper {
-      max-width: 100%;
-      min-width: 100%;
+
+      display: block;
       width: 100%;
+      height: 100%;
+
+//      max-width: 100%;
+//      min-width: 100%;
+//      width: 100%;
+
     }
     
     .card-header {
@@ -118,15 +127,16 @@
     }
     
     .article-image-wrapper {
-      width: calc(100% - 2rem);
-      height: 100%;
+//      width: calc(100% - 2rem);
+//      height: 100%;
       display: block;
-      float: left;
+      padding: $card_padding-internal;
+      //      float: left;
       background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: $card-padding-internal $card-padding-internal 0 $card-padding-internal;
+//      margin: $card-padding-internal $card-padding-internal 0 $card-padding-internal;
       border-radius: $card_border-radius;
       transition: all .5s ease-in-out;
       flex: 1 0 calc(33% - #{$card-padding-internal * 2});
@@ -141,10 +151,6 @@
         transform: scale(0.98) rotate(0.5deg);
         transition: all .2s ease-in-out;
       }
-    }
-    
-    .article-body {
-      margin: 0 $card-padding-internal;
     }
   
     .item-source {

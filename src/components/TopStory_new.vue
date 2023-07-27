@@ -95,18 +95,30 @@
     }
     
     .article-image-wraper {
+
+      display: block;
+
       width: 25vi;
       height: 25vi;
-      display: block;
+      margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
+      float: left;
+
       float: left;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
       
       border-radius: $card_border-radius;
-      transition: all .5s ease-in-out;
-      
+
+      @include transition;
+
+      @include mq('small') {
+        width: 100%;
+        max-height: 10rem;
+        height: 100%;
+        margin-bottom: $card_padding-internal;
+      }
+
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
         filter: brightness(1.08);
@@ -119,11 +131,6 @@
       }
     }
     
-    .article-body {
-      margin-right: 1rem;
-      margin-bottom: 5rem;
-    }
-  
     .item-source {
   
       display: block;

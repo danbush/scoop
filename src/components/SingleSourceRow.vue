@@ -117,10 +117,6 @@
       margin-bottom: $card-padding-internal;
     }
     
-    .article-body {
-      margin: 0 $card-padding-internal;
-    }
-  
     .item-source {
   
       display: block;

@@ -1,31 +1,40 @@
 .card {
 
 //  flex: 1 0 25%;
-  min-height: $card_min-height;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+//  min-height: $card_min-height;
 
   background-color: $card_background-color;
   border-radius: $card_border-radius;
   overflow: hidden;
-  position: relative;
+//  position: relative;
 
   .card-header {
     padding: .7rem 1.4rem;
-    position: relative;
+//    position: relative;
     background-color: $accent-priority-one;
     text-align: center;
   }
 
   .article-header {
-    position: relative;
+//    position: relative;
     margin-bottom: 1.6rem;
   }
   
+  a {
+    text-decoration: none;
+  }
+
   a.scoop-source-url:visited {
     color: initial;
   }
 
   .card-body {
     padding: $card_padding-internal;
+
   }
 
   .article-meta {
@@ -48,19 +57,36 @@
 
     * {
       max-width: 100%;  //tmp
+      width: 100%;
     }
 
   }
 
 }
 
+/*  TODO
+    name these differently. this is confusing as hell.
+    */
 .card-title {
+
+  // note: tiTle, as in a heading
   
   display: inline-block;
 
   font-weight: bold;
   font-size: 1.2rem;
   text-transform: uppercase;
+
+}
+
+.card-tile {
+
+  // note: TILE, as in a re-usable component within the card
+  margin-bottom: $card_padding-internal;
+
+  &:last-of-type {
+    margin: 0;
+  }
 
 }
 

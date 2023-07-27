@@ -93,9 +93,9 @@
     .article-image-wrapper {
       width: 100%;
       height: 100%;
-      min-height: 15rem;
+//      min-height: 15rem;
       display: block;
-      float: left;
+//      float: left;
       background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
@@ -115,12 +115,7 @@
         transition: all .2s ease-in-out;
       }
     }
-    
-    .article-body {
-      margin-right: 1rem;
-      margin-bottom: 5rem;
-    }
-  
+      
     .item-source {
   
       display: block;
