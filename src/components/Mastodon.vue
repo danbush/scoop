@@ -48,7 +48,7 @@
 <template>
     <article class="card card-single card_mastodon-feed">
       <header class="card-header">
-        <h2 class="card-title">Masto Test</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
+        <h2 class="card-title">Masto Test</h2>
       </header>
       <span class="article-wrapper" v-for="number in articleSet" :key="number">
         <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">

@@ -23,16 +23,19 @@
 <template>
     <article class="card card-single card_single-source-row"  v-if="rowObject">
       <header class="card-header">
-        <h2 class="card-title">Dig In</h2><span class="devtip"> // .card-single .card_single-source-row</span>
+        <h2 class="card-title">Dig In</h2>
       </header>
-      <span class="balls" v-for="(value, key) in rowObject" :key="key">
+      <section class="card-content">
+        <article class="balls card-tile" v-for="(value, key) in rowObject" :key="key">
         <a class="article-anchor-wrapper" :href="value?.article_url">
           <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }">
             <img class="article-logo" :src="value?.article_logo" alt="cows">
             <h5 class="article-title">{{ value?.article_title }}</h5>
           </span>
         </a>
-      </span>
+      </article>
+      </section>
+
     </article>
 </template>
 
@@ -49,84 +52,31 @@
     position: relative;
     
     .balls {
-      display: inline-flex;
-      vertical-align: top;
+//      display: inline-flex;
+//      vertical-align: top;
       .article-anchor-wrapper {
-        flex: 1;
+//        flex: 1;
+
       }
       .article-image-wrapper {
-        width: 18vw;
-        height: 23.5vw;
+ //       width: 18vw;
+ //       height: 23.5vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
       }
     }
     
-    .article-title {
-      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
-      color: $background-lighter;
-      text-shadow: 0 0 12px #000000, 0 0 2px $background;
-      text-align: center;
-      text-decoration: none;
-    }
-    
-    .article-logo {
-      max-width: 30px;
-      margin: $card-padding-internal auto 0 auto;
-      display: block;
-      filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
-      background-color: $background-lighter;
-    }
-    
-    .article-publisher {
-      margin: 0.9rem 0 0 0.5rem;
-      vertical-align: middle;
-      display: inline-block;
-      
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    
-    .article-image-wrapper {
-      width: calc(100% - 2rem);
-      height: 100%;
-      display: block;
-      float: left;
-      background-color: $background;
-      background-size: cover; // this is probably temporary
-      background-position: center;
-      background-repeat: no-repeat;
-      margin: $card-padding-internal 0 $card-padding-internal 1.3vw;
-      padding-bottom: $card-padding-internal;
-      border-radius: $card_border-radius;
-      transition: all .5s ease-in-out;
-      overflow: hidden;
-      
-      &:hover {
-        transform: scale(1.03) rotate(0.5deg);
-        filter: brightness(1.08);
-        box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-      }
-      &:active {
-        filter: brightness(1.25);
-        transform: scale(0.98) rotate(0.5deg);
-        transition: all .2s ease-in-out;
-      }
-    }
-    
-    span:last-of-type .article-image-wraper {
-      margin-bottom: $card-padding-internal;
-    }
-    
-    .item-source {
-  
-      display: block;
-  
-      img {
-        // sloppy, I know
-        height: 1.6rem;
-        width: auto;
-      }
-  
+    .card-tile {
+
+      /*  todo:
+          change this to a swipe on mobile.
+          setting it as boring standard 1 item per row for now.
+          */
+      width: 100%;
+
     }
   
   }

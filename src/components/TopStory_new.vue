@@ -35,7 +35,7 @@
     
     <!-- todo: make module -->
     <header class="card-header">
-      <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
+      <h2 class="card-title">Top Story</h2>
     </header>
 
     <!-- todo: make module -->
@@ -59,7 +59,7 @@
   .card_top-story {
   
 //    flex: 1 0 750px;
-    width: 100%;
+//    width: 100%;
 //    min-height: 27rem;
   
     background-color: $background-lighter;
@@ -97,26 +97,28 @@
     .article-image-wraper {
 
       display: block;
-
-      width: 25vi;
-      height: 25vi;
+      width: 100%;
+      height: 12rem;
       margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
-      float: left;
 
-      float: left;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
       
       border-radius: $card_border-radius;
 
-      @include transition;
+      @include transition;  // move this, maybe make a class that auto-applies it to most clickable things?
 
       @include mq('small') {
         width: 100%;
-        max-height: 10rem;
-        height: 100%;
+        max-height: 14rem;
         margin-bottom: $card_padding-internal;
+      }
+
+      @include mq('medium') {
+        width: 25vi;
+        height: 25vi;
+        float: left;
       }
 
       &:hover {

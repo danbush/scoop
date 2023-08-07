@@ -52,7 +52,7 @@
 
     <!-- todo: make module -->
     <header class="card-header">
-      <h2 class="card-title">New Video</h2><span class="devtip">.card-single .card_video</span>
+      <h2 class="card-title">New Video</h2>
     </header>
 
     <!-- todo: make module -->

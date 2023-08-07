@@ -45,7 +45,7 @@
 <template>
     <article class="card card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
       <header class="card-header">
-        <h2 class="card-title">Just the Headlines</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
+        <h2 class="card-title">Just the Headlines</h2>
       </header>
       <section class="card-body">
         <article class="card-tile" v-for="number in articleSet" :key="number">

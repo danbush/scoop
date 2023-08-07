@@ -33,7 +33,7 @@
 <template>
   <article class="card card-single card_may-have-missed">
     <header class="card-header">
-      <h2 class="card-title">You May Have Missed</h2><span class="devtip"> // .card-single .card_may-have-missed</span>
+      <h2 class="card-title">You May Have Missed</h2>
     </header>
     <section class="card-body" v-if="articleArray.article_title">
       <a class="article-anchor-wrapper" :href="articleArray.article_url">
