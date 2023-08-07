@@ -23,16 +23,16 @@
     <MultipleHeadlines :count=4 />
     <MayHaveMissed />
     <Mastodon :count=3 />
-    <SingleSourceRow :source=0 :count=5 />
+    <SingleSourceRow :source=0 :count=50 />
     <SingleVideo />
     <SingleVideo />
-    <SingleSourceRow :source=row1 :count=5 />
-    <SingleSourceRow :source=row2 :count=5 />
+    <SingleSourceRow :source=row1 :count=50 />
+    <SingleSourceRow :source=row2 :count=50 />
     <MultipleHeadlines :count=4 />
     <MayHaveMissed />
     <MultipleHeadlines :count=4 />
-    <SingleSourceRow :source=row3 :count=5 />
-    <SingleSourceRow :source=row4 :count=5 />
+    <SingleSourceRow :source=row3 :count=50 />
+    <SingleSourceRow :source=row4 :count=50 />
   
 
   </section>

@@ -40,13 +40,17 @@
 
     <!-- todo: make module -->
     <section class="card-body" v-if="articleArray.article_title">
-      <a class="scoop-source-url" :href="articleArray.article_url" target="_blank">
-        <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
-        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
-        <span class="article-publisher">{{ articleArray.article_publisher }}</span>
-      </a>
-      <h3 class="article-title">{{ articleArray.article_title }}</h3>
-      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      <article>
+        <a class="scoop-source-url article-image-main" :href="articleArray.article_url" target="_blank">
+          <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
+        </a>
+        <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
+          <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+          <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+        </a>
+        <h3 class="article-title">{{ articleArray.article_title }}</h3>
+        <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      </article>
     </section>
 
     <!-- todo: update module as needed -->
@@ -62,36 +66,22 @@
 //    width: 100%;
 //    min-height: 27rem;
   
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
-    
     pre {
       white-space: pre-wrap;
     }
     
+    .article-source {
+      display: flex;
+    }
+
     a.scoop-source-url {
       color: initial;
       text-decoration: none;
     }
-    
-    .article-title {
-      margin-top: 0.4rem;
-      margin-right: 1rem;
-    }
-    
+        
     .article-logo {
       max-width: 30px;
       vertical-align: middle;
-    }
-    
-    .article-publisher {
-      margin-left: 0.5rem;
-      vertical-align: middle;
-      display: inline-block;
-      
-      font-size: 0.9rem;
-      font-weight: 600;
     }
     
     .article-image-wraper {
@@ -129,7 +119,6 @@
       &:active {
         filter: brightness(1.25);
         transform: scale(0.98) rotate(0.5deg);
-        transition: all .2s ease-in-out;
       }
     }
     

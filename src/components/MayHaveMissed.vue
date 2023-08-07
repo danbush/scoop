@@ -36,13 +36,15 @@
       <h2 class="card-title">You May Have Missed</h2>
     </header>
     <section class="card-body" v-if="articleArray.article_title">
-      <a class="article-anchor-wrapper" :href="articleArray.article_url">
-        <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
-          <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-          <h3 class="article-title">{{ articleArray.article_title }}</h3>
-        </span>
-      </a>
-      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      <article class="card-tile">
+        <a class="article-anchor-wrapper" :href="articleArray.article_url">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
+            <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+            <h3 class="article-title">{{ articleArray.article_title }}</h3>
+          </span>
+        </a>
+        <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      </article>
     </section>
 
     <!-- todo: update module as needed -->
