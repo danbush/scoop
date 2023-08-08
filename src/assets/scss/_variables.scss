@@ -10,7 +10,7 @@ $breakpoints: (
   'medium': 800px,
   'large': 1080px,
   'xlarge': 1194px,
-  'uwsmr': 3440px,
+  'uwsmr': 3400px,
 );
 
 @mixin mq($width: 'medium', $type: min) {
