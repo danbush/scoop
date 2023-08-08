@@ -100,6 +100,7 @@ function removeHTMLTags(html: any) {
 		.replace(/<\/li>/g, '\n\n')
 		.replace(/&pound;/g, '£')
 		.replace(/&euro;/g, '€')
+		.replace(/&quot;/g, '"')
 		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
 }
 

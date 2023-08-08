@@ -97,7 +97,6 @@
       text-align: center;
       text-decoration: none;
       text-overflow: ellipsis;
-      overflow: hidden;
     }
     
     .article-logo {
