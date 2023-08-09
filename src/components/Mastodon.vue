@@ -48,40 +48,31 @@
 <template>
     <article class="card card-single card_mastodon-feed">
       <header class="card-header">
-        <h2 class="card-title">Masto Test</h2><span class="devtip"> // .card-single .card_multiple-headlines</span>
+        <h2 class="card-title">Masto Test</h2>
       </header>
-      <span class="article-wrapper" v-for="number in articleSet" :key="number">
-        <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
-          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
-            <span class="blurred-lines">
+      <section class="card-body">
+        <article class="card-tile" v-for="number in articleSet" :key="number">
+          <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
+            <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
               <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
               <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
               <img class="article-image" :src="articleArray[number]?.article_image" alt="">
               <p class="p3 article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
             </span>
-          </span>
-        </a>
-      </span>
-      
-      
-      
+          </a>
+        </article>
+      </section>
     </article>
 </template>
 
 <style scoped lang="scss">
   .card_mastodon-feed {
   
-    flex: 1 0 300px;
-    width: 100%;
-    min-height: 27rem;
-    max-height: 100rem;
-    overflow: scroll;
-    
-    padding-bottom: $card-padding-internal;
-  
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
+//    flex: 1 0 300px;
+//    width: 100%;
+//    min-height: 27rem;
+//    max-height: 100rem;
+//    overflow: scroll;
     
     p {
       color: $background-lighter;
@@ -97,12 +88,13 @@
     }
     
     .blurred-lines {
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px);
-      border-radius: $card_border-radius;
       display: block;
-      padding-top: $card-padding-internal;
+//      width: 100%;
+//      height: 100%;
+      backdrop-filter: blur(10px);
+//      padding-top: $card-padding-internal;
+
+
     }
     
     .article-wrapper {
@@ -114,10 +106,26 @@
     }
     
     .article-anchor-wrapper {
-      max-width: 100%;
-      min-width: 100%;
-      width: 100%;
-    }
+      display: block;
+      position: relative;
+//      max-width: 100%;
+//      min-width: 100%;
+//      width: 100%;
+//      height: 100px;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+
+}
     
     .card-header {
       background-color: #2F0C7A;
@@ -133,11 +141,19 @@
     }
     
     .article-logo {
-      max-width: 60px;
-      margin: 0 auto calc($card-padding-internal * 3) auto;
+
       display: block;
+//      max-width: 60px;
+      height: 60px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+
+
+      margin: 0 auto calc($card-padding-internal * 3) auto;
       filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
+
       background-color: $background-lighter;
+
     }
     
     .article-image {
@@ -151,33 +167,33 @@
     }
     
     .article-image-wrapper {
-      width: calc(100% - 2rem);
-      height: 100%;
+
+//      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
+
       display: block;
-      float: left;
-      background-color: $background;
-      background-size: cover; // this is probably temporary
-      background-position: center;
-      background-repeat: no-repeat;
-      margin: 0 $card-padding-internal 0 $card-padding-internal;
-      border-radius: $card_border-radius;
-      transition: all .5s ease-in-out;
-      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
+      padding: $card-padding-internal;
+
+      position: relative;
+      z-index: 10;
+
+      backdrop-filter: blur(10px);
+
+
+  //    width: calc(100% - 2rem);
+
+      @include transition;
       
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
         filter: brightness(1.08);
         box-shadow: 0px 0px 15px 0px lighten($background, 40%);
       }
+
       &:active {
         filter: brightness(1.25);
         transform: scale(0.98) rotate(0.5deg);
-        transition: all .2s ease-in-out;
       }
-    }
-    
-    .article-body {
-      margin: 0 $card-padding-internal;
+
     }
   
     .item-source {

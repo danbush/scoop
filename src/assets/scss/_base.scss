@@ -1,6 +1,7 @@
 body {
   background-color: $background;
   color: $foreground-primary;
+  position: relative;
 }
 
 ::selection {

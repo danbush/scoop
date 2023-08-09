@@ -33,16 +33,18 @@
 <template>
   <article class="card card-single card_may-have-missed">
     <header class="card-header">
-      <h2 class="card-title">You May Have Missed</h2><span class="devtip"> // .card-single .card_may-have-missed</span>
+      <h2 class="card-title">You May Have Missed</h2>
     </header>
     <section class="card-body" v-if="articleArray.article_title">
-      <a class="article-anchor-wrapper" :href="articleArray.article_url">
-        <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
-          <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-          <h3 class="article-title">{{ articleArray.article_title }}</h3>
-        </span>
-      </a>
-      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      <article class="card-tile">
+        <a class="article-anchor-wrapper" :href="articleArray.article_url">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
+            <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+            <h3 class="article-title">{{ articleArray.article_title }}</h3>
+          </span>
+        </a>
+        <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+      </article>
     </section>
 
     <!-- todo: update module as needed -->
@@ -54,10 +56,10 @@
 <style scoped lang="scss">
   .card_may-have-missed {
   
-    flex: 2 0 600px;
-    width: 100%;
-    min-height: 27rem;
-    max-width: 40rem;
+//    flex: 2 0 600px;
+//    width: 100%;
+//    min-height: 27rem;
+//    max-width: 40rem;
   
     background-color: $background-lighter;
     border-radius: 8px;
@@ -93,9 +95,9 @@
     .article-image-wrapper {
       width: 100%;
       height: 100%;
-      min-height: 15rem;
+//      min-height: 15rem;
       display: block;
-      float: left;
+//      float: left;
       background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
@@ -115,12 +117,7 @@
         transition: all .2s ease-in-out;
       }
     }
-    
-    .article-body {
-      margin-right: 1rem;
-      margin-bottom: 5rem;
-    }
-  
+      
     .item-source {
   
       display: block;

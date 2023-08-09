@@ -23,11 +23,14 @@ defineProps<{
 <style scoped lang="scss">
 header.main-header {
 
+  height: auto;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 
+  max-width: 100%;
   width: 100%;
   height: auto;
   padding: 0 1rem;

@@ -1,30 +1,42 @@
 .card {
 
-  flex: 1 0 25%;
-  min-height: $card_min-height;
+//  flex: 1 0 25%;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+//  min-height: $card_min-height;
 
   background-color: $card_background-color;
   border-radius: $card_border-radius;
   overflow: hidden;
-  position: relative;
+//  position: relative;
 
   .card-header {
     padding: .7rem 1.4rem;
-    position: relative;
+//    position: relative;
     background-color: $accent-priority-one;
     text-align: center;
   }
 
   .article-header {
-    position: relative;
+//    position: relative;
     margin-bottom: 1.6rem;
   }
   
+  a {
+    text-decoration: none;
+  }
+
   a.scoop-source-url:visited {
     color: initial;
   }
 
   .card-body {
+    display: block;
+    min-height: initial;
+    height: auto;
     padding: $card_padding-internal;
   }
 
@@ -46,15 +58,21 @@
 
     padding: $card_padding-internal;
 
-    * {
+    & > * {
       max-width: 100%;  //tmp
+      width: auto;
     }
 
   }
 
 }
 
+/*  TODO
+    name these differently. this is confusing as hell.
+    */
 .card-title {
+
+  // note: tiTle, as in a heading
   
   display: inline-block;
 
@@ -64,21 +82,108 @@
 
 }
 
+.card-tile {
 
-.card-list {
+  /*
+    NOTE: TILE, as in a re-usable component within the card
+    I'm open to renaming this, since it's confusing vs "tiTle".
+    */
+  margin-bottom: $card_padding-internal;
 
-  li {
+  &:last-of-type {
+    margin: 0;
+  }
 
-    margin-top: .8rem;
-    padding: $card_padding-internal;
+  .article-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    color: $background-lighter;
+    text-align: center;
+    text-shadow: 0 0 12px #000000, 0 0 2px $background;
+  }
 
-    border-radius: $card_border-radius;
-    background: #e2e2e2;
+  .article-logo {
+    margin-bottom: .6rem;
+    filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
+    background-color: $background-lighter;
+  }
 
-    &:first-of-type {
-      margin-top: 0;
-    }
+}
 
+.article-title {
+
+//      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
+  display: flex;
+  width: auto;
+  margin-top: 0.4rem;
+  margin-right: 1rem;
+
+//      text-align: center;
+  text-decoration: none;
+
+}
+
+.article-logo {
+//      margin: $card-padding-internal auto 0 auto;
+//  display: block;
+
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+  max-height: 30px;
+  height: 30px;
+  width: 30px;
+
+  //  height: auto;
+
+}
+
+.article-publisher {
+//  margin: 0.9rem 0 0 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 1rem;
+  
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 2.1;
+}
+
+.article-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+//      width: calc(100% - 2rem);
+//  height: 100%;
+//  display: block;
+  padding: 3rem $card-padding-internal;
+
+//      float: left;
+  background-color: $background;
+  background-size: cover; // this is probably temporary
+  background-position: center;
+  background-repeat: no-repeat;
+//      margin: $card-padding-internal 0 $card-padding-internal 1.3vw;
+//    padding-bottom: $card-padding-internal;
+  border-radius: $card_border-radius;
+//      transition: all .5s ease-in-out;
+//      overflow: hidden;
+
+  @include transition;
+
+  &:hover {
+    transform: scale(1.03) rotate(0.5deg);
+    filter: brightness(1.08);
+    box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+  }
+
+  &:active {
+    filter: brightness(1.25);
+    transform: scale(0.98) rotate(0.5deg);
+    transition: all .2s ease-in-out;
   }
 
 }
