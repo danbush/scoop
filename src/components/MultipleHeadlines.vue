@@ -72,7 +72,6 @@
 //    padding-bottom: $card-padding-internal;
   
     background-color: $background-lighter;
-    
     .card-header {
       background-color: darken($headlines-accent, 20%);
       color: lighten($headlines-accent, 45%)

@@ -39,7 +39,7 @@
 
 <style scoped lang="scss">
   .card-footer {
-    margin-top: 1.8rem;
+    margin-top: auto;
     padding: $card_padding-internal;
     background-color: #e2e2e2;
     width: 100%;

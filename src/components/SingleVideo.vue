@@ -133,7 +133,4 @@
   .video-author {
     font-weight: bold;
   }
-  .video-timestamp {
-    padding-bottom: 5rem;
-  } 
 </style>

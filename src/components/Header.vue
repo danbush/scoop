@@ -23,8 +23,6 @@ defineProps<{
 <style scoped lang="scss">
 header.main-header {
 
-  background: pink;
-
   height: auto;
 
   display: flex;

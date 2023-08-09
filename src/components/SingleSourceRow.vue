@@ -40,20 +40,62 @@
 
 <style scoped lang="scss">
 
-.card-content {
+  .card {
 
-  display: grid;
-  height: 100%;
-  gap: 1rem;
-  grid-auto-columns: minmax(22rem, auto);
-  grid-auto-flow: column;
-  overflow-x: scroll;
+    position: relative;
 
-  > article {
-    height: auto;
+    .card-header,
+    .card-footer {
+      position: relative;
+      z-index: 20;
+    }
+
+    &::before,
+    &::after {
+
+      content: '';
+
+      display: block;
+      width: $card-padding-internal;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      z-index: 10;
+
+      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+      transform: rotate(180deg);
+    }
+
   }
 
-}
+  .card-content {
+
+    display: grid;
+    height: 100%;
+
+    gap: 1rem;
+    grid-auto-columns: minmax(22rem, auto);
+    grid-auto-flow: column;
+
+    overflow-x: scroll;
+
+    > article {
+      height: auto;
+    }
+
+  }
   .card_single-source-row {
   
 //    flex: 4 0 100%;
@@ -68,6 +110,19 @@
           setting it as boring standard 1 item per row for now.
           */
       width: 100%;
+      margin-bottom: 0;
+
+      @include mq('medium') {
+        min-height: 30rem;
+      }
+
+      > a {
+        height: 100%;
+      }
+
+      .article-image-wrapper {
+        height: 100%;
+      }
 
     }
   

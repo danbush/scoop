@@ -141,11 +141,19 @@
     }
     
     .article-logo {
-      max-width: 60px;
-      margin: 0 auto calc($card-padding-internal * 3) auto;
+
       display: block;
+//      max-width: 60px;
+      height: 60px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+
+
+      margin: 0 auto calc($card-padding-internal * 3) auto;
       filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
+
       background-color: $background-lighter;
+
     }
     
     .article-image {
@@ -163,7 +171,7 @@
 //      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
 
       display: block;
-      padding: 0;
+      padding: $card-padding-internal;
 
       position: relative;
       z-index: 10;
