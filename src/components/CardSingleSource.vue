@@ -30,4 +30,45 @@
 
 <style scoped lang="scss">
 
+  .card-single-source {
+
+    position: relative;
+  
+    .card-header,
+    .card-footer {
+      position: relative;
+      z-index: 20;
+    }
+
+    &::before,
+    &::after {
+
+      content: '';
+
+      display: block;
+      width: $card-padding-internal;
+      height: 100%;
+
+      position: absolute;
+      z-index: 10;
+
+      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+
+    }
+
+    &::before {
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &::after {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+
+  }
+
 </style>
