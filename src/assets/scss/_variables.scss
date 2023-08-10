@@ -1,5 +1,29 @@
 /* Global */
 
+$phi: 1.6180339887498948482;
+
+
+/* Media Queries */
+
+$breakpoints: (
+  'small': 480px,
+  'medium': 800px,
+  'large': 1080px,
+  'xlarge': 1194px,
+  'uwsmr': 3400px,
+);
+
+@mixin mq($width: 'medium', $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == min {
+      $width: $width + 1px;
+    }
+    @media (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
 
 
 /* Transition Defaults / Mixin */
@@ -8,16 +32,14 @@ $transitionType:    all;
 $transitionSpeed:   0.25s;
 $transitionEffect:  ease-in-out;
 
-
 @mixin transition( $type: $transitionType, $speed: $transitionSpeed, $effect: $transitionEffect ) {
     transition: $type $speed $effect;
 }
 
 
-
 /* Cards */
 
-$card_min-height: 30rem;
+$card_min-height: 25rem;
 
 $card_background-color: #ffffff;
 $card_border-color: #666666;

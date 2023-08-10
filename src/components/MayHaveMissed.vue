@@ -31,24 +31,18 @@
 </script>
 
 <template>
-  <article class="card card-single card_top-story">
-    
-    <!-- todo: make module -->
+  <article class="card card-single card_may-have-missed">
     <header class="card-header">
-      <h2 class="card-title">Top Story</h2>
+      <h2 class="card-title">You May Have Missed</h2>
     </header>
-
-    <!-- todo: make module -->
     <section class="card-body" v-if="articleArray.article_title">
-      <article>
-        <a class="scoop-source-url article-image-main" :href="articleArray.article_url" target="_blank">
-          <span class="article-image-wraper" :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"></span>
+      <article class="card-tile">
+        <a class="article-anchor-wrapper" :href="articleArray.article_url">
+          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
+            <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+            <h3 class="article-title">{{ articleArray.article_title }}</h3>
+          </span>
         </a>
-        <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
-          <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
-          <span class="article-publisher">{{ articleArray.article_publisher }}</span>
-        </a>
-        <h3 class="article-title">{{ articleArray.article_title }}</h3>
         <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
       </article>
     </section>
@@ -60,57 +54,58 @@
 </template>
 
 <style scoped lang="scss">
-  .card_top-story {
+  .card_may-have-missed {
   
-//    flex: 1 0 750px;
+//    flex: 2 0 600px;
 //    width: 100%;
 //    min-height: 27rem;
+//    max-width: 40rem;
   
+    background-color: $background-lighter;
+    border-radius: 8px;
+    position: relative;
+    
     pre {
       white-space: pre-wrap;
     }
     
-    .article-source {
-      display: flex;
-    }
-
-    a.scoop-source-url {
-      color: initial;
+    .article-title {
+      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
+      color: $background-lighter;
+      text-shadow: 0 0 12px #000000, 0 0 2px $background;
+      text-align: center;
       text-decoration: none;
     }
-        
+    
     .article-logo {
       max-width: 30px;
-      vertical-align: middle;
+      margin: $card-padding-internal auto 0 auto;
+      display: block;
     }
     
-    .article-image-wraper {
-
-      display: block;
+    .article-publisher {
+      margin: 0.9rem 0 0 0.5rem;
+      vertical-align: middle;
+      display: inline-block;
+      
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .article-image-wrapper {
       width: 100%;
-      height: 12rem;
-      margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
-
+      height: 100%;
+//      min-height: 15rem;
+      display: block;
+//      float: left;
+      background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      
+      margin: 0 0 $card-padding-internal 0;
       border-radius: $card_border-radius;
-
-      @include transition;  // move this, maybe make a class that auto-applies it to most clickable things?
-
-      @include mq('small') {
-        width: 100%;
-        max-height: 14rem;
-        margin-bottom: $card_padding-internal;
-      }
-
-      @include mq('medium') {
-        width: 25vi;
-        height: 25vi;
-        float: left;
-      }
-
+      transition: all .5s ease-in-out;
+      
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
         filter: brightness(1.08);
@@ -119,9 +114,10 @@
       &:active {
         filter: brightness(1.25);
         transform: scale(0.98) rotate(0.5deg);
+        transition: all .2s ease-in-out;
       }
     }
-    
+      
     .item-source {
   
       display: block;

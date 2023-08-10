@@ -1,26 +1,105 @@
 <script setup lang="ts">
   import Header from './components/Header.vue'
-  import TopStory_new from './components/TopStory_new.vue'
+  import TopStory from './components/TopStory.vue'
+  import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
+  import SingleSourceRow from './components/SingleSourceRow.vue'
+  import MayHaveMissed from './components/MayHaveMissed.vue'
+  import Mastodon from './components/Mastodon.vue'
+  import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
+  
+  var row1: number = getRandomNumbersInRange(1,0,24)
+  var row2: number = getRandomNumbersInRange(1,0,24)
+  var row3: number = getRandomNumbersInRange(1,0,24)
+  var row4: number = getRandomNumbersInRange(1,0,24)
 </script>
 
 <template>
   <Header msg="scoopy" />
   <section class="module-row">
 
-    <TopStory_new headline="" body="" />
-
-    <SingleVideo url="https://www.youtube.com/embed/5LWDl5qaQbA" />
+    <TopStory headline="" body="" />
+    <MultipleHeadlines :count=4 />
+    <MultipleHeadlines :count=4 />
+    <MayHaveMissed />
+    <Mastodon :count=3 />
+    <SingleSourceRow :source=0 :count=50 />
+    <SingleVideo />
+    <SingleVideo />
+    <SingleSourceRow :source=row1 :count=50 />
+    <SingleSourceRow :source=row2 :count=50 />
+    <MultipleHeadlines :count=4 />
+    <MayHaveMissed />
+    <MultipleHeadlines :count=4 />
+    <SingleSourceRow :source=row3 :count=50 />
+    <SingleSourceRow :source=row4 :count=50 />
 
   </section>
 </template>
 
 <style lang="scss">
   section.module-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: flex-start;
+
+    display: grid;
+    /*
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    */
+
+    grid-column-gap: $card-padding-internal;
+    grid-row-gap: 20px;
+
     margin: 1rem;
-}
+
+    @include mq('uwsmr') {
+
+      max-width: 2600px;
+      margin: 1rem auto;
+
+      &::after {
+
+        content: '';
+
+        display: block;
+        width: 400px;
+        height: 200px;
+
+        position: absolute;
+        top: 22px;
+        left: -8px;
+        z-index: -1;
+
+        background-image: url('src/assets/348FnZZ.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+      }
+
+    }
+
+    /*  Note
+        Yes, I know how silly this is.
+        No, I'm not fixing it now.
+        */
+    @include mq('large') {
+
+      > article:nth-child(1) { grid-area: 1 / 1 / 2 / 17; }
+      > article:nth-child(2) { grid-area: 1 / 17 / 2 / 25; }
+      > article:nth-child(3) { grid-area: 2 / 1 / 3 / 8; }
+      > article:nth-child(4) { grid-area: 2 / 8 / 3 / 18; }
+      > article:nth-child(5) { grid-area: 2 / 18 / 3 / 25; }
+      > article:nth-child(6) { grid-area: 3 / 1 / 4 / 25; }
+      > article:nth-child(7) { grid-area: 4 / 1 / 5 / 13; }
+      > article:nth-child(8) { grid-area: 4 / 13 / 5 / 25; }
+      > article:nth-child(9) { grid-area: 5 / 1 / 6 / 25; }
+      > article:nth-child(10) { grid-area: 5 / 1 / 6 / 25; }
+      > article:nth-child(11) { grid-area: 6 / 1 / 7 / 8; }
+      > article:nth-child(12) { grid-area: 6 / 8 / 7 / 18; }
+      > article:nth-child(13) { grid-area: 6 / 18 / 7 / 25; }
+      > article:nth-child(14) { grid-area: 7 / 1 / 8 / 25; }
+      > article:nth-child(15) { grid-area: 8 / 1 / 9 / 25; }
+
+    }
+  }
 </style>

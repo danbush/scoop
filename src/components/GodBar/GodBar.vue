@@ -28,13 +28,18 @@
 
 .toolbar {
 
-  display: flex;
+  display: none;
 
   width: auto;
   height: auto;
   margin: 0.6rem 0;
 
+  @include mq('medium') {
+    display: flex;
+  }
+
 }
+
 
 .toggle {
   
