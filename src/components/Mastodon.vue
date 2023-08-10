@@ -83,10 +83,6 @@
       font-size: 0.8rem;
     }
     
-    pre {
-      white-space: pre-wrap;
-    }
-    
     .blurred-lines {
       display: block;
 //      width: 100%;

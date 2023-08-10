@@ -50,10 +50,6 @@
 </template>
 
 <style scoped lang="scss">
-
-pre {
-    white-space: pre-wrap;
-  }
   
   .article-source {
     display: flex;
@@ -117,6 +113,10 @@ pre {
       width: auto;
     }
 
+  }
+
+  .article-body {
+    margin-top: 0;
   }
 
 </style>

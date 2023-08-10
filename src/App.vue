@@ -60,7 +60,7 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=50 />
+        <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardSingle
@@ -81,14 +81,14 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=50 />
+        <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=50 />
+        <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardGroup
@@ -116,14 +116,14 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=50 />
+        <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
     
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=50 />
+        <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
   </section>

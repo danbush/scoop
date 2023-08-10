@@ -43,7 +43,7 @@
 </script>
 
 <template>
-    <article class="card card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
+    <article v-if="Object.keys(articleArray).length > 0">
 
         <article class="card-tile" v-for="number in articleSet" :key="number">
           <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">

@@ -32,7 +32,7 @@
 
 <template>
 
-    <section class="card-body" v-if="articleArray.article_title">
+    <section v-if="articleArray.article_title">
       <article class="card-tile">
         <a class="article-anchor-wrapper" :href="articleArray.article_url">
           <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
@@ -40,8 +40,8 @@
             <h3 class="article-title">{{ articleArray.article_title }}</h3>
           </span>
         </a>
-        <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
       </article>
+      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
     </section>
 
     <!-- todo: update module as needed -->
@@ -60,10 +60,6 @@
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
-    
-    pre {
-      white-space: pre-wrap;
-    }
     
     .article-title {
       margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
@@ -125,6 +121,11 @@
       }
   
     }
-  
+
   }
+
+  .article-body {
+      margin-top: 1.4rem;
+  }
+
 </style>

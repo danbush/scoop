@@ -7,7 +7,7 @@
   import { ref, onMounted } from 'vue';
   
   // Define props for the component
-  const { source = 1, count = 50 } = defineProps<{
+  const { source = 1, count = 10 } = defineProps<{
     source: number,
     count: number
   }>();
