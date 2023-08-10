@@ -1,6 +1,6 @@
 <script setup lang="ts">
   /************************** 
-  Multiple Headlines component
+  Mastodon component
   todo: fill out this section
   ***************************/
   import { ref, onMounted } from 'vue'
@@ -46,163 +46,48 @@
 </script>
 
 <template>
-    <article class="card card-single card_mastodon-feed">
-      <header class="card-header">
-        <h2 class="card-title">Masto Test</h2>
-      </header>
-      <section class="card-body">
-        <article class="card-tile" v-for="number in articleSet" :key="number">
-          <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
-            <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
-              <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
-              <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
-              <img class="article-image" :src="articleArray[number]?.article_image" alt="">
-              <p class="p3 article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
-            </span>
-          </a>
-        </article>
-      </section>
-    </article>
+
+  <article class="card-tile" v-for="number in articleSet" :key="number">
+    <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
+      <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
+        <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
+        <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
+        <img class="article-image" :src="articleArray[number]?.article_image" alt="">
+        <p class="p3 article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
+      </span>
+    </a>
+  </article>
+
 </template>
 
 <style scoped lang="scss">
-  .card_mastodon-feed {
-  
-//    flex: 1 0 300px;
-//    width: 100%;
-//    min-height: 27rem;
-//    max-height: 100rem;
-//    overflow: scroll;
-    
-    p {
-      color: $background-lighter;
-      text-align: center;
-    }
-    
-    .p3 {
-      font-size: 0.8rem;
-    }
-    
-    .blurred-lines {
-      display: block;
-//      width: 100%;
-//      height: 100%;
-      backdrop-filter: blur(10px);
-//      padding-top: $card-padding-internal;
 
+  .card-tile {
+    overflow: hidden;
+  }
 
-    }
-    
-    .article-wrapper {
-      align-items: flex-start;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: $card-padding-internal;
-    }
-    
-    .article-anchor-wrapper {
-      display: block;
-      position: relative;
-//      max-width: 100%;
-//      min-width: 100%;
-//      width: 100%;
-//      height: 100px;
+  .article-image-wrapper {
+    position: relative;
 
-      &::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-
-
-}
-    
-    .card-header {
-      background-color: #2F0C7A;
-      color: #858AFA;
-    }
-    
-    .article-title {
-      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
-      color: $background-lighter;
-      text-shadow: 0 0 12px #000000, 0 0 2px $background;
-      text-align: center;
-      text-decoration: none;
-    }
-    
-    .article-logo {
-
-      display: block;
-//      max-width: 60px;
-      height: 60px;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-
-
-      margin: 0 auto calc($card-padding-internal * 3) auto;
-      filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
-
-      background-color: $background-lighter;
-
-    }
-    
-    .article-image {
-      padding: $card-padding-internal;
-      max-width: 100%;
-      border-radius: 2rem;
-    }
-    
-    .article-publisher {
-      margin: 0 $card-padding-internal $card-padding-internal $card-padding-internal;
-    }
-    
-    .article-image-wrapper {
-
-//      flex: 1 0 calc(33% - #{$card-padding-internal * 2});
-
-      display: block;
-      padding: $card-padding-internal;
-
+    > * {
       position: relative;
       z-index: 10;
-
-      backdrop-filter: blur(10px);
-
-
-  //    width: calc(100% - 2rem);
-
-      @include transition;
-      
-      &:hover {
-        transform: scale(1.03) rotate(0.5deg);
-        filter: brightness(1.08);
-        box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-      }
-
-      &:active {
-        filter: brightness(1.25);
-        transform: scale(0.98) rotate(0.5deg);
-      }
-
     }
-  
-    .item-source {
-  
+
+    &::after {
+      content: '';
       display: block;
-  
-      img {
-        // sloppy, I know
-        height: 1.6rem;
-        width: auto;
-      }
-  
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 0;
+//      background-color: rgba(pink, .5);
     }
-  
+
+  }
+  .article-image {
+    padding: $card-padding-internal;
+    max-width: 100%;
+    border-radius: 2rem;
   }
 </style>

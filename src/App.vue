@@ -54,7 +54,12 @@
       <MayHaveMissed />
     </CardSingle>
 
-    <Mastodon :count=3 />
+    <CardSingleSocial
+    card_title="From Mastodon"
+      card_description="Still a test, I guess?"
+      >
+      <Mastodon :count=3 />
+    </CardSingleSocial>
 
     <CardSingleSource
       card_title="Dig In"
