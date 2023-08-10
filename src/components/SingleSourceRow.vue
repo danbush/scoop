@@ -22,9 +22,6 @@
 
 <template>
     <article class="card card-single card_single-source-row"  v-if="rowObject">
-      <header class="card-header">
-        <h2 class="card-title">Dig In</h2>
-      </header>
       <section class="card-content">
         <article class="card-tile" v-for="(value, key) in rowObject" :key="key">
           <a class="article-anchor-wrapper" :href="value?.article_url">
@@ -40,7 +37,7 @@
 
 <style scoped lang="scss">
 
-  .card {
+  .card_single-source-row {
 
     position: relative;
 
@@ -90,6 +87,9 @@
     grid-auto-flow: column;
 
     overflow-x: scroll;
+    overflow-y: visible;
+
+    padding: 0;
 
     > article {
       height: auto;

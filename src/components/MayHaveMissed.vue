@@ -31,10 +31,7 @@
 </script>
 
 <template>
-  <article class="card card-single card_may-have-missed">
-    <header class="card-header">
-      <h2 class="card-title">You May Have Missed</h2>
-    </header>
+
     <section class="card-body" v-if="articleArray.article_title">
       <article class="card-tile">
         <a class="article-anchor-wrapper" :href="articleArray.article_url">
@@ -48,9 +45,8 @@
     </section>
 
     <!-- todo: update module as needed -->
-    <CardFooter :article_url="articleArray.article_url"/>
+    <!-- <CardFooter :article_url="articleArray.article_url"/> -->
 
-  </article>
 </template>
 
 <style scoped lang="scss">

@@ -50,13 +50,6 @@
 <template>
   <article class="card card-single card_top-story">
 
-    <!-- todo: make module -->
-    <header class="card-header">
-      <h2 class="card-title">New Video</h2>
-    </header>
-
-    <!-- todo: make module -->
-    <section class="card-body">
       <div class="videoWrapper">
         <iframe class="video-embed" width="560" height="315" :src="articleArray.article_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
@@ -64,13 +57,11 @@
       <!-- hiding this for now <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah"> -->
       <span class="video-meta text video-author">{{ articleArray.article_publisher }}</span>
       <span class="video-meta text video-timestamp">{{articleArray.article_published_date}}</span>
-    </section>
-  
-    <!-- todo: update module as needed -->
-    <CardFooter article_url="articleArray.article_url"/>
+
+      <!-- todo: update module as needed -->
+      <!-- <CardFooter article_url="articleArray.article_url"/> -->
   
   </article>
-
 </template>
 
 <style scoped lang="scss">

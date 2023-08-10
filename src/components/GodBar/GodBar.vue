@@ -40,7 +40,6 @@
 
 }
 
-
 .toggle {
   
     padding: 0 1.2rem;
@@ -113,50 +112,6 @@
 
   .slider.round:before {
     border-radius: 50%;
-  }
-
-  /*
-    on/off styles
-    todo:
-      - make a mixin of sorts
-      - figure out a better place for this shiz
-    */
-
-  .devtip {
-
-    padding: .73rem 1.2rem;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: rgba(#ffffff, 0.4);
-
-    opacity: 0;
-    
-    pointer-events: none;
-    
-    @include transition;
-
-  }
-
-  .toggle_theme,
-  .toggle_storage {
-    @include transition;
-    opacity: 0;
-  }
-
-  body.devmode-on {
-
-    .devtip {
-      opacity: 1;
-      pointer-events: initial;
-    }
-
-    .toggle_theme,
-    .toggle_storage {
-      opacity: 1;
-    }
-
   }
 
 </style>

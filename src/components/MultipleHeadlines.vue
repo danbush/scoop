@@ -44,10 +44,7 @@
 
 <template>
     <article class="card card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
-      <header class="card-header">
-        <h2 class="card-title">Just the Headlines</h2>
-      </header>
-      <section class="card-body">
+
         <article class="card-tile" v-for="number in articleSet" :key="number">
           <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">
             <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
@@ -56,7 +53,7 @@
             </span>
           </a>
         </article>
-      </section>
+
     </article>
 </template>
 

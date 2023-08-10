@@ -18,6 +18,15 @@
 //    position: relative;
     background-color: $accent-priority-one;
     text-align: center;
+
+    .card-title {
+      display: block;
+    }
+
+    .card-description {
+      display: none;
+    }
+
   }
 
   .article-header {
