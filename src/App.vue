@@ -5,6 +5,7 @@
   import CardSingle from './components/CardSingle.vue'
   import CardGroup from './components/CardGroup.vue'
   import CardSingleSource from './components/CardSingleSource.vue'
+  import CardSingleSocial from './components/CardSingleSocial.vue'
 
   import TopStory from './components/TopStory.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
@@ -55,7 +56,7 @@
     </CardSingle>
 
     <CardSingleSocial
-    card_title="From Mastodon"
+      card_title="From Mastodon"
       card_description="Still a test, I guess?"
       >
       <Mastodon :count=3 />
@@ -65,7 +66,7 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardSingle

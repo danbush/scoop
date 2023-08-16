@@ -48,37 +48,17 @@
 </script>
 
 <template>
-  <article class="card card-single card_top-story">
-
-      <div class="videoWrapper">
-        <iframe class="video-embed" width="560" height="315" :src="articleArray.article_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <h3 class="video-meta title">{{ articleArray.article_title }}</h3>
-      <!-- hiding this for now <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah"> -->
-      <span class="video-meta text video-author">{{ articleArray.article_publisher }}</span>
-      <span class="video-meta text video-timestamp">{{articleArray.article_published_date}}</span>
-
-      <!-- todo: update module as needed -->
-      <!-- <CardFooter article_url="articleArray.article_url"/> -->
-  
-  </article>
+  <div class="videoWrapper">
+    <iframe class="video-embed" width="560" height="315" :src="articleArray.article_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <h3 class="video-meta title">{{ articleArray.article_title }}</h3>
+  <!-- hiding this for now <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah"> -->
+  <span class="video-meta text video-author">{{ articleArray.article_publisher }}</span>
+  <span class="video-meta text video-timestamp">{{articleArray.article_published_date}}</span>
 </template>
 
 <style scoped lang="scss">
-  .card_video {
-  
-    flex: 2 0 35%;
-  
-    iframe {
-      width: 100%;  // temporary
-    }
-  }
-  
-  .card-header {
-    background-color: darken($video-accent, 15%);
-    color: lighten($video-accent, 45%);
-  }
-  
+
   h3 {
     margin: 1rem 0 0 0;
   }
@@ -109,15 +89,7 @@
       transition: all .2s ease-in-out;
     }
   }
-  .video-profile {
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
-    margin: 0 1rem;
-    max-width: 50px;
-    float: left;
-    margin-top: -0.5rem;
-  }
+
   .video-meta.text {
       display: block;
   }

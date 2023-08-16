@@ -48,7 +48,7 @@
 <template>
 
   <article class="card-tile" v-for="number in articleSet" :key="number">
-    <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url">
+    <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">
       <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
         <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
         <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
@@ -62,16 +62,14 @@
 
 <style scoped lang="scss">
 
-  .card-tile {
-    overflow: hidden;
-  }
-
   .article-image-wrapper {
+
     position: relative;
 
     > * {
       position: relative;
       z-index: 10;
+      color: #ffffff;
     }
 
     &::after {
@@ -81,7 +79,7 @@
       height: 100%;
       position: absolute;
       z-index: 0;
-//      background-color: rgba(pink, .5);
+      backdrop-filter: blur(10px);
     }
 
   }

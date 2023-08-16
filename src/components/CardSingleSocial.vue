@@ -30,17 +30,32 @@
 
 <style scoped lang="scss">
 
+  .article-anchor-wrapper {
 
+    color: #ffffff;
+
+  }
+
+  .article-publisher {
+//    margin: 0 $card-padding-internal $card-padding-internal $card-padding-internal;
+    color: #ffffff;
+
+    a, p {
+      color: #ffffff;
+    }
+
+  }
+
+  .p3 {
+    font-size: 0.8rem;
+    color: #ffffff!important;
+  }
 
   .TMP-card-social {
         
       p {
         color: $background-lighter;
         text-align: center;
-      }
-      
-      .p3 {
-        font-size: 0.8rem;
       }
       
       .blurred-lines {
@@ -111,12 +126,8 @@
         background-color: $background-lighter;
   
       }
-      
 
-      
-      .article-publisher {
-        margin: 0 $card-padding-internal $card-padding-internal $card-padding-internal;
-      }
+
       
       .article-image-wrapper {
   

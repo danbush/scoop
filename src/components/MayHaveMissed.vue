@@ -74,16 +74,7 @@
       margin: $card-padding-internal auto 0 auto;
       display: block;
     }
-    
-    .article-publisher {
-      margin: 0.9rem 0 0 0.5rem;
-      vertical-align: middle;
-      display: inline-block;
-      
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    
+        
     .article-image-wrapper {
       width: 100%;
       height: 100%;
