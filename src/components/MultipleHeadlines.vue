@@ -59,6 +59,60 @@
 
 <style scoped lang="scss">
 
+  .card-body {
+
+    .article-anchor-wrapper,
+    .article-image-wrapper {
+      height: 100%;
+    }
+    
+    > article {
+      
+      display: flex;
+      flex-direction: column;
+
+      @include mq('medium') {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+      }
+
+      @include mq('large') {
+
+        flex-direction: column;
+        flex-wrap: nowrap;
+        column-gap: 0;
+
+      }
+
+      .card-tile {
+
+        @include mq('medium') {
+
+          width: calc( 50% - ( $card-padding-internal / 2 ) );
+
+          &:nth-last-child(-n+2) {
+            margin-bottom: 0;
+          }
+
+        }
+
+        @include mq('large') {
+
+          width: 100%;
+
+          &:nth-last-child(2) {
+            margin-bottom: $card-padding-internal;
+          }
+
+        }
+
+      }
+
+    }
+  
+  }
+
   .card_multiple-headlines {
   
     background-color: $background-lighter;
