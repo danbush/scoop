@@ -10,11 +10,14 @@ a, button,
   border-radius: 16px;
   border: 0;
 
+  color: #000000;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   line-height: 2.5;
   
+  -webkit-appearance: none;
+
   opacity: 75%;
 
   @include transition;
