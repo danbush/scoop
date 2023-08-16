@@ -43,10 +43,17 @@
   }
 
   .card-body {
+
     display: block;
+    flex-grow: 1;
     min-height: initial;
     height: auto;
     padding: $card_padding-internal;
+
+    > article {
+      height: 100%;
+    }
+
   }
 
   .article-meta {
