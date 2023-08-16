@@ -34,6 +34,10 @@
 
     position: relative;
   
+    .card-body {
+      padding: 0;
+    }
+
     .card-header,
     .card-footer {
       position: relative;

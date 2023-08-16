@@ -39,19 +39,25 @@
 
   .swipe-wrapper {
 
-    display: grid;
-    height: 100%;
-    padding: 0;
+    padding: $card-padding-internal;
 
-    gap: 1rem;
-    grid-auto-columns: minmax(22rem, auto);
-    grid-auto-flow: column;
+    // todo:unsure if this'll stay. probably do a smarter implementation later.
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-    overflow-x: scroll;
-    overflow-y: visible;
+    @include mq('large') {
 
-    > article {
-      height: auto;
+      display: grid;
+      height: 100%;
+
+      gap: 1rem;
+      grid-auto-columns: minmax(22rem, auto);
+      grid-auto-flow: column;
+
+      overflow-x: scroll;
+      overflow-y: hidden;
+
     }
 
   }
@@ -62,11 +68,19 @@
         change this to a swipe on mobile.
         setting it as boring standard 1 item per row for now.
         */
-    width: 100%;
-    margin-bottom: 0;
+    max-width: 100%;
+    width: 400rem;
 
-    @include mq('medium') {
+    @include mq('large') {
+
       min-height: 30rem;
+      margin-right: $card-padding-internal;
+      margin-bottom: 0;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
     }
 
     > a {

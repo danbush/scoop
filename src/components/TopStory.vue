@@ -63,6 +63,7 @@
   .article-logo {
     max-width: 30px;
     vertical-align: middle;
+    filter: initial;
   }
   
   .article-image-wraper {
