@@ -52,11 +52,6 @@
 <style scoped lang="scss">
   .card_may-have-missed {
   
-//    flex: 2 0 600px;
-//    width: 100%;
-//    min-height: 27rem;
-//    max-width: 40rem;
-  
     background-color: $background-lighter;
     border-radius: 8px;
     position: relative;
@@ -76,29 +71,33 @@
     }
         
     .article-image-wrapper {
+
+      display: block;
       width: 100%;
       height: 100%;
-//      min-height: 15rem;
-      display: block;
-//      float: left;
+
+      margin: 0 0 $card-padding-internal 0;
+
       background-color: $background;
       background-size: cover; // this is probably temporary
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0 0 $card-padding-internal 0;
       border-radius: $card_border-radius;
-      transition: all .5s ease-in-out;
+
+      @include transition;
       
       &:hover {
         transform: scale(1.03) rotate(0.5deg);
         filter: brightness(1.08);
         box-shadow: 0px 0px 15px 0px lighten($background, 40%);
       }
+
       &:active {
         filter: brightness(1.25);
         transform: scale(0.98) rotate(0.5deg);
         transition: all .2s ease-in-out;
       }
+    
     }
       
     .item-source {
@@ -116,7 +115,7 @@
   }
 
   .article-body {
-      margin-top: 1.4rem;
+    margin-top: 1.4rem;
   }
 
 </style>

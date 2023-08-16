@@ -61,13 +61,6 @@
 
   .card_multiple-headlines {
   
-//    flex: 1 0 300px;
-//    width: 100%;
-//    min-height: 27rem;
-//    max-height: 100rem;
-    
-//    padding-bottom: $card-padding-internal;
-  
     background-color: $background-lighter;
     .card-header {
       background-color: darken($headlines-accent, 20%);

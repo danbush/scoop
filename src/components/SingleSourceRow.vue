@@ -41,7 +41,7 @@
 
     padding: $card-padding-internal;
 
-    // todo:unsure if this'll stay. probably do a smarter implementation later.
+    // todo: unsure if this'll stay. probably do a smarter implementation later.
     &::-webkit-scrollbar {
       display: none;
     }

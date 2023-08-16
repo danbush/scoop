@@ -1,21 +1,17 @@
 .card {
 
-//  flex: 1 0 25%;
   display: flex;
   flex-direction: column;
 
   width: 100%;
   height: 100%;
-//  min-height: $card_min-height;
 
   background-color: $card_background-color;
   border-radius: $card_border-radius;
   overflow: hidden;
-//  position: relative;
 
   .card-header {
     padding: .7rem 1.4rem;
-//    position: relative;
     background-color: $accent-priority-one;
     text-align: center;
 
@@ -30,7 +26,6 @@
   }
 
   .article-header {
-//    position: relative;
     margin-bottom: 1.6rem;
   }
   
@@ -125,13 +120,11 @@
 
 .article-title {
 
-//      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
   display: flex;
   width: auto;
   margin-top: 0.4rem;
   margin-right: 1rem;
 
-//      text-align: center;
   text-decoration: none;
 
 }
@@ -164,25 +157,20 @@
 }
 
 .article-image-wrapper {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-//      width: calc(100% - 2rem);
-//  height: 100%;
-//  display: block;
   padding: 3rem $card-padding-internal;
 
-//      float: left;
   background-color: $background;
   background-size: cover; // this is probably temporary
   background-position: center;
   background-repeat: no-repeat;
-//      margin: $card-padding-internal 0 $card-padding-internal 1.3vw;
-//    padding-bottom: $card-padding-internal;
   border-radius: $card_border-radius;
-//      transition: all .5s ease-in-out;
-      overflow: hidden;
+
+  overflow: hidden;
 
   @include transition;
 
