@@ -35,9 +35,6 @@ header.main-header {
   height: auto;
   padding: 0 1rem;
   
-  color: $background-light;
-
-  background-color: $background;
 
   .app-title {
     font-family: "BitterPro", 'Courier New', Courier, monospace;

@@ -89,39 +89,6 @@
     vertical-align: middle;
     filter: initial;
   }
-  
-  .article-image-wraper {
-
-    display: block;
-    width: 100%;
-
-
-
-    
-    @include transition;  // move this, maybe make a class that auto-applies it to most clickable things?
-
-    &:hover {
-      transform: scale(1.03) rotate(0.5deg);
-      filter: brightness(1.08);
-      box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-    }
-    &:active {
-      filter: brightness(1.25);
-      transform: scale(0.98) rotate(0.5deg);
-    }
-  }
-  
-  .item-source {
-
-    display: block;
-
-    img {
-      // sloppy, I know
-      height: 1.6rem;
-      width: auto;
-    }
-
-  }
 
   .article-body {
     margin-top: 0;

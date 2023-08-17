@@ -12,7 +12,7 @@
 
   .card-header {
     padding: .7rem 1.4rem;
-    background-color: $accent-priority-one;
+    background-color: $card-header-background;
     text-align: center;
 
     .card-description {
@@ -51,8 +51,7 @@
     left: 0;
     bottom: 0;
 
-    // todo: use vars/mixin
-    background: rgba($color: #ffffff, $alpha: 0.8);
+    background: rgba($color: $white, $alpha: 0.8);
     border-top-right-radius: $card_border-radius;
 
   }
@@ -108,7 +107,7 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  color: #ffffff;
+  color: $white;
 
   overflow: hidden;
 
@@ -121,7 +120,7 @@
   &:hover {
     transform: scale(1.03) rotate(0.5deg);
     filter: brightness(1.08);
-    box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+    box-shadow: 0px 0px 15px 0px lighten($shadow-color-primary, 40%);
   }
 
   &:active {
@@ -199,9 +198,8 @@
 
     margin: 0;
 
-    color: $background-lighter;
     text-align: center;
-    text-shadow: 0 0 12px #000000, 0 0 2px $background;
+    text-shadow: 0 0 12px $black, 0 0 2px $shadow-color-primary;
 
   }
 
@@ -228,8 +226,8 @@
   width: 30px;
   margin-bottom: 0.8rem;
 
-  filter: drop-shadow(0 0 12px #000000) drop-shadow(0 0 2px $background);
-  background-color: $background-lighter;
+  filter: drop-shadow(0 0 12px $black) drop-shadow(0 0 2px $shadow-color-primary);
+  background-color: $shadow-color-secondary;
 
 }
 
@@ -253,7 +251,6 @@
   justify-content: center;
   padding: 3rem $card-padding-internal;
 
-  background-color: $background;
   background-size: cover; // this is probably temporary
   background-position: center;
   background-repeat: no-repeat;

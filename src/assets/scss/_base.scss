@@ -1,11 +1,11 @@
 body {
-  background-color: $background;
-  color: $foreground-primary;
+  background-color: $app-background-color;
+  color: $app-text-color;
   position: relative;
 }
 
 ::selection {
-  background-color: lighten($accent-priority-one, 20%);
+//  background-color: lighten($accent-priority-one, 20%);
 }
 
 // TODO: move to where appropriate later

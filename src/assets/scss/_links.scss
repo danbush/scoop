@@ -10,7 +10,7 @@ a, button,
   border-radius: 16px;
   border: 0;
 
-  color: #000000;
+  color: $button-color-primary;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -24,11 +24,11 @@ a, button,
 
   &:hover {
     opacity: 100%;
-    filter: drop-shadow(0 0 .2rem rgba(#000000, 0.25));
+    filter: drop-shadow(0 0 .2rem rgba($black, 0.25));
   }
 
   &.action_intent-primary {
-    background-color: $background-light;
+    background-color: $button-background-primary;
   }
 
 }
