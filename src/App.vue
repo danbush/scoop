@@ -1,38 +1,136 @@
 <script setup lang="ts">
+
   import Header from './components/Header.vue'
+
+  import CardSingle from './components/CardSingle.vue'
+  import CardGroup from './components/CardGroup.vue'
+  import CardSingleSource from './components/CardSingleSource.vue'
+  import CardSingleSocial from './components/CardSingleSocial.vue'
+
   import TopStory from './components/TopStory.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
   import SingleSourceRow from './components/SingleSourceRow.vue'
   import MayHaveMissed from './components/MayHaveMissed.vue'
   import Mastodon from './components/Mastodon.vue'
+
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   
   var row1: number = getRandomNumbersInRange(1,0,24)
   var row2: number = getRandomNumbersInRange(1,0,24)
   var row3: number = getRandomNumbersInRange(1,0,24)
   var row4: number = getRandomNumbersInRange(1,0,24)
+
 </script>
 
 <template>
   <Header msg="scoopy" />
   <section class="module-row">
 
-    <TopStory headline="" body="" />
-    <MultipleHeadlines :count=4 />
-    <MultipleHeadlines :count=4 />
-    <MayHaveMissed />
-    <Mastodon :count=3 />
-    <SingleSourceRow :source=0 :count=50 />
-    <SingleVideo />
-    <SingleVideo />
-    <SingleSourceRow :source=row1 :count=50 />
-    <SingleSourceRow :source=row2 :count=50 />
-    <MultipleHeadlines :count=4 />
-    <MayHaveMissed />
-    <MultipleHeadlines :count=4 />
-    <SingleSourceRow :source=row3 :count=50 />
-    <SingleSourceRow :source=row4 :count=50 />
+    <CardSingle
+      card_title="Top Story"
+      card_description="A single card. Only has one bit of content (article) inside, and adds a card footer."
+      >
+      <TopStory />
+    </CardSingle>
+
+    <CardGroup
+      card_title="Just the Headlines"
+      card_description="A card group. Contains multiple bits of content (articles) inside, NO footer."
+      >
+      <MultipleHeadlines :count=4 />
+    </CardGroup>
+
+    <CardGroup
+      card_title="Just the Headlines"
+      card_description=""
+      >
+      <MultipleHeadlines :count=4 />
+    </CardGroup>
+
+    <CardSingle
+      card_title="You May Have Missed"
+      card_description="I'm not entirely sure what this feed... is."
+      >
+      <MayHaveMissed />
+    </CardSingle>
+
+    <CardSingleSocial
+      card_title="From Mastodon"
+      card_description="Still a test, I guess?"
+      >
+      <Mastodon :count=3 />
+    </CardSingleSocial>
+
+    <CardSingleSource
+      card_title="Dig In"
+      card_description=""
+      >
+      <SingleSourceRow :source=0 :count=10 />
+    </CardSingleSource>
+
+    <CardSingle
+    card_title="New Video"
+      card_description=""
+      >
+      <SingleVideo />
+    </CardSingle>
+
+    <CardSingle
+      card_title="New Video"
+      card_description=""
+      >
+      <SingleVideo />
+    </CardSingle>
+
+    <CardSingleSource
+      card_title="Dig In"
+      card_description=""
+      >
+        <SingleSourceRow :source=0 :count=10 />
+    </CardSingleSource>
+
+    <CardSingleSource
+      card_title="Dig In"
+      card_description=""
+      >
+        <SingleSourceRow :source=0 :count=10 />
+    </CardSingleSource>
+
+    <CardGroup
+      card_title="Just the Headlines"
+      card_description=""
+      >
+      <MultipleHeadlines :count=4 />
+    </CardGroup>
+
+    <CardSingle
+      card_title="You May Have Missed"
+      card_description="I'm not entirely sure what this feed... is."
+      >
+      <MayHaveMissed />
+    </CardSingle>
+    
+    <CardGroup
+      card_title="Just the Headlines"
+      card_description=""
+      >
+      <MultipleHeadlines :count=4 />
+    </CardGroup>
+
+    <CardSingleSource
+      card_title="Dig In"
+      card_description=""
+      >
+        <SingleSourceRow :source=0 :count=10 />
+    </CardSingleSource>
+    
+    <CardSingleSource
+      card_title="Dig In"
+      card_description=""
+      >
+        <SingleSourceRow :source=0 :count=10 />
+    </CardSingleSource>
 
   </section>
 </template>

@@ -7,7 +7,7 @@
   import { ref, onMounted } from 'vue';
   
   // Define props for the component
-  const { source = 1, count = 50 } = defineProps<{
+  const { source = 1, count = 10 } = defineProps<{
     source: number,
     count: number
   }>();
@@ -21,110 +21,76 @@
 </script>
 
 <template>
-    <article class="card card-single card_single-source-row"  v-if="rowObject">
-      <header class="card-header">
-        <h2 class="card-title">Dig In</h2>
-      </header>
-      <section class="card-content">
-        <article class="card-tile" v-for="(value, key) in rowObject" :key="key">
-          <a class="article-anchor-wrapper" :href="value?.article_url">
-            <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }">
-              <img class="article-logo" :src="value?.article_logo" alt="cows">
-              <h5 class="article-title">{{ value?.article_title }}</h5>
-            </span>
-          </a>
-        </article>
-      </section>
+
+  <div class="swipe-wrapper" v-if="rowObject">
+    <article class="card-tile" v-for="(value, key) in rowObject" :key="key">
+      <a class="article-anchor-wrapper" :href="value?.article_url">
+        <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }">
+          <img class="article-logo" :src="value?.article_logo" alt="cows">
+          <h5 class="article-title">{{ value?.article_title }}</h5>
+        </span>
+      </a>
     </article>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
 
-  .card {
+  .swipe-wrapper {
 
-    position: relative;
+    padding: $card-padding-internal;
 
-    .card-header,
-    .card-footer {
-      position: relative;
-      z-index: 20;
+    // todo: unsure if this'll stay. probably do a smarter implementation later.
+    &::-webkit-scrollbar {
+      display: none;
     }
 
-    &::before,
-    &::after {
+    @include mq('large') {
 
-      content: '';
-
-      display: block;
-      width: $card-padding-internal;
+      display: grid;
       height: 100%;
 
-      position: absolute;
-      top: 0;
-      bottom: 0;
+      gap: 1rem;
+      grid-auto-columns: minmax(22rem, auto);
+      grid-auto-flow: column;
 
-      z-index: 10;
+      overflow-x: scroll;
+      overflow-y: hidden;
 
-      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-
-    }
-
-    &::before {
-      left: 0;
-    }
-
-    &::after {
-      right: 0;
-      transform: rotate(180deg);
     }
 
   }
 
-  .card-content {
+  .card-tile {
 
-    display: grid;
-    height: 100%;
+    /*  todo:
+        change this to a swipe on mobile.
+        setting it as boring standard 1 item per row for now.
+        */
+    max-width: 100%;
+    width: 400rem;
 
-    gap: 1rem;
-    grid-auto-columns: minmax(22rem, auto);
-    grid-auto-flow: column;
+    @include mq('large') {
 
-    overflow-x: scroll;
-
-    > article {
-      height: auto;
-    }
-
-  }
-  .card_single-source-row {
-  
-//    flex: 4 0 100%;
-    width: 100%;
-//    min-height: 23rem;
-//    max-height: 100rem;
-
-    .card-tile {
-
-      /*  todo:
-          change this to a swipe on mobile.
-          setting it as boring standard 1 item per row for now.
-          */
-      width: 100%;
+      min-height: 30rem;
+      margin-right: $card-padding-internal;
       margin-bottom: 0;
 
-      @include mq('medium') {
-        min-height: 30rem;
-      }
-
-      > a {
-        height: 100%;
-      }
-
-      .article-image-wrapper {
-        height: 100%;
+      &:last-of-type {
+        margin-right: 0;
       }
 
     }
-  
+
+    > a {
+      height: 100%;
+    }
+
+    .article-image-wrapper {
+      height: 100%;
+    }
+
   }
+  
 </style>

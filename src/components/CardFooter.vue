@@ -29,7 +29,7 @@
         <a href="#"><button class="button" type="button">
           [hide]
         </button></a> -->
-        <a :href="article_url"><button class="button action_intent-primary" type="button">
+        <a :href="article_url" target="_blank"><button class="button action_intent-primary" type="button">
           Read More
         </button></a>
       </div>

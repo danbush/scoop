@@ -43,11 +43,8 @@
 </script>
 
 <template>
-    <article class="card card_multiple-headlines"  v-if="Object.keys(articleArray).length > 0">
-      <header class="card-header">
-        <h2 class="card-title">Just the Headlines</h2>
-      </header>
-      <section class="card-body">
+    <article v-if="Object.keys(articleArray).length > 0">
+
         <article class="card-tile" v-for="number in articleSet" :key="number">
           <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">
             <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
@@ -56,20 +53,67 @@
             </span>
           </a>
         </article>
-      </section>
+
     </article>
 </template>
 
 <style scoped lang="scss">
 
-  .card_multiple-headlines {
-  
-//    flex: 1 0 300px;
-//    width: 100%;
-//    min-height: 27rem;
-//    max-height: 100rem;
+  .card-body {
+
+    .article-anchor-wrapper,
+    .article-image-wrapper {
+      height: 100%;
+    }
     
-//    padding-bottom: $card-padding-internal;
+    > article {
+      
+      display: flex;
+      flex-direction: column;
+
+      @include mq('medium') {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+      }
+
+      @include mq('large') {
+
+        flex-direction: column;
+        flex-wrap: nowrap;
+        column-gap: 0;
+
+      }
+
+      .card-tile {
+
+        @include mq('medium') {
+
+          width: calc( 50% - ( $card-padding-internal / 2 ) );
+
+          &:nth-last-child(-n+2) {
+            margin-bottom: 0;
+          }
+
+        }
+
+        @include mq('large') {
+
+          width: 100%;
+
+          &:nth-last-child(2) {
+            margin-bottom: $card-padding-internal;
+          }
+
+        }
+
+      }
+
+    }
+  
+  }
+
+  .card_multiple-headlines {
   
     background-color: $background-lighter;
     .card-header {

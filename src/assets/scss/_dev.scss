@@ -1,0 +1,32 @@
+/*
+  DevMode Styles
+  These will be a little flexible at first, notably until we get theming working.
+  */
+
+.toolbar_GodBar {
+
+  .toggle {
+    @include transition;
+    opacity: 0;
+  }
+
+  .toggle_DevMode {
+    opacity: 1;
+  }
+
+}
+
+body.devmode-on {
+
+  .card-header {
+    .card-description {
+      display: block;
+    }
+  }
+
+  .toggle_theme,
+  .toggle_storage {
+    opacity: 1;
+  }
+
+}
