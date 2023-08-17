@@ -48,9 +48,13 @@
 </script>
 
 <template>
-  <div class="videoWrapper">
+  <!--  Note: would like to re-evaluate how this functions on the front-end at some point.
+        I think ideally, we could load in a screenshot or something so YouTube doesn't actually load unless until the user clicks.
+        Also would be handy for the proposed "peek" functionality down the road.
+        -->
+  <article class="module-tile video-wrapper">
     <iframe class="video-embed" width="560" height="315" :src="articleArray.article_url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
+  </article>
   <h3 class="video-meta title">{{ articleArray.article_title }}</h3>
   <!-- hiding this for now <img class="video-meta video-profile" src="https://placedog.net/200/200" alt="blah"> -->
   <span class="video-meta text video-author">{{ articleArray.article_publisher }}</span>
@@ -62,38 +66,36 @@
   h3 {
     margin: 1rem 0 0 0;
   }
-  .videoWrapper {
-    position: relative;
+  .video-wrapper {
+
     padding-bottom: 56.25%; //16:9
     height: 0;
+    position: relative;
+
     cursor: pointer;
-  }
-  .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: $card_border-radius;
-    transition: all .5s ease-in-out;
-    cursor: pointer;
-    
-    &:hover {
-      transform: scale(1.03) rotate(0.5deg);
-      filter: brightness(1.08);
-      box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+
+    iframe {
+
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      border-radius: $card_border-radius;
+
+      cursor: pointer;
     }
-    &:active {
-      filter: brightness(1.25);
-      transform: scale(0.98) rotate(0.5deg);
-      transition: all .2s ease-in-out;
-    }
+
   }
 
   .video-meta.text {
       display: block;
   }
+
   .video-author {
     font-weight: bold;
   }
+
 </style>

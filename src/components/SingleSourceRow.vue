@@ -22,16 +22,18 @@
 
 <template>
 
-  <div class="swipe-wrapper" v-if="rowObject">
-    <article class="card-tile" v-for="(value, key) in rowObject" :key="key">
-      <a class="article-anchor-wrapper" :href="value?.article_url">
-        <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }">
-          <img class="article-logo" :src="value?.article_logo" alt="cows">
-          <h5 class="article-title">{{ value?.article_title }}</h5>
-        </span>
+  <section class="swipe-wrapper" v-if="rowObject">
+    <article
+      class="module-tile has-content"
+      :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }"
+      v-for="(value, key) in rowObject" :key="key"
+      >
+      <a :href="value?.article_url">
+        <img class="article-logo" :src="value?.article_logo" alt="cows">
+        <h5 class="article-title">{{ value?.article_title }}</h5>
       </a>
     </article>
-  </div>
+  </section>
 
 </template>
 
@@ -62,14 +64,14 @@
 
   }
 
-  .card-tile {
+  .module-tile {
 
     /*  todo:
         change this to a swipe on mobile.
         setting it as boring standard 1 item per row for now.
         */
     max-width: 100%;
-    width: 400rem;
+//    width: 400rem;
 
     @include mq('large') {
 
@@ -84,10 +86,6 @@
     }
 
     > a {
-      height: 100%;
-    }
-
-    .article-image-wrapper {
       height: 100%;
     }
 

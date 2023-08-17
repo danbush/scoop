@@ -15,10 +15,6 @@
     background-color: $accent-priority-one;
     text-align: center;
 
-    .card-title {
-      display: block;
-    }
-
     .card-description {
       display: none;
     }
@@ -44,10 +40,6 @@
     min-height: initial;
     height: auto;
     padding: $card_padding-internal;
-
-    > article {
-      height: 100%;
-    }
 
   }
 
@@ -76,15 +68,28 @@
 
   }
 
+  &.card-group {
+
+    .card-body {
+
+      article {
+
+        margin-bottom: calc( $card-padding-internal * $phi );
+      
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      
+      }
+  
+    }
+
+  }
+
 }
 
-/*  TODO
-    name these differently. this is confusing as hell.
-    */
 .card-title {
 
-  // note: tiTle, as in a heading
-  
   display: inline-block;
 
   font-weight: bold;
@@ -93,28 +98,112 @@
 
 }
 
-.card-tile {
+.module-tile {
 
-  /*
-    NOTE: TILE, as in a re-usable component within the card
-    I'm open to renaming this, since it's confusing vs "tiTle".
-    */
-  margin-bottom: $card_padding-internal;
+  width: 100%;
+  margin-bottom: $card_padding-internal;  
+  border-radius: $card-border-radius;
+
+  background-size: cover; // this is probably temporary
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+
+  overflow: hidden;
 
   &:last-of-type {
     margin-bottom: 0;
   }
 
+  @include transition;
+
+  &:hover {
+    transform: scale(1.03) rotate(0.5deg);
+    filter: brightness(1.08);
+    box-shadow: 0px 0px 15px 0px lighten($background, 40%);
+  }
+
+  &:active {
+    filter: brightness(1.25);
+    transform: scale(0.98) rotate(0.5deg);
+    transition: all .2s ease-in-out;
+  }
+
+  // no internal content
+  &.image-only {
+    font-size: 0;
+  }
+
+  // contains text, add background overlay for contrast
+  &.has-content {
+
+    > a {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      padding: calc( $card-padding-internal * $phi ) $card-padding-internal;
+
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+  }
+
+  // has low-res background image, add blur effect
+  &.has-blur {
+
+    position: relative;
+
+    > a {
+      position: relative;
+      z-index: 10;
+    }
+
+    &::after {
+
+      content: '';
+
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+
+      backdrop-filter: blur(10px);
+
+      border-radius: $card-border-radius; // little hacky, but works for now.
+
+    }
+
+  }
+
+}
+
+.module-tile {
+
   .article-title {
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     margin: 0;
+
     color: $background-lighter;
     text-align: center;
     text-shadow: 0 0 12px #000000, 0 0 2px $background;
-  }
 
+  }
 
 }
 
@@ -168,22 +257,7 @@
   background-size: cover; // this is probably temporary
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: $card_border-radius;
 
-  overflow: hidden;
 
-  @include transition;
-
-  &:hover {
-    transform: scale(1.03) rotate(0.5deg);
-    filter: brightness(1.08);
-    box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-  }
-
-  &:active {
-    filter: brightness(1.25);
-    transform: scale(0.98) rotate(0.5deg);
-    transition: all .2s ease-in-out;
-  }
 
 }
