@@ -188,6 +188,8 @@
         */
     @include mq('large') {
 
+      grid-template-columns: repeat(24, 1fr);
+
       > article:nth-child(1) { grid-area: 1 / 1 / 2 / 17; }
       > article:nth-child(2) { grid-area: 1 / 17 / 2 / 25; }
       > article:nth-child(3) { grid-area: 2 / 1 / 3 / 8; }

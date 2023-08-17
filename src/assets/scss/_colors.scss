@@ -13,8 +13,8 @@
     --app-text-color:                      var(--snes-gray-dark);
     --app-background-color:                var(--snes-gray-light);
     
-    --card-header-background:              var(--app-background-color);
-    --card-header-color:                   var(--app-background-color);
+    --card-header-background:              var(--snes-purple);
+    --card-header-color:                   var(--white);
 
     --card-body-background:                var(--white);
     --card-accent-color:                   var(--snes-purple);
@@ -37,15 +37,20 @@
     --app-text-color:                      rgba(180, 180, 180, 1);
     --app-background-color:                rgba(30, 30, 30, 1);
     
+    --card-header-background:              rgb(70, 70, 70);
+    --card-header-color:                   var(--white);
+
     --card-body-background:                rgba(255, 255, 255, 0.1);
-    --card-accent-color:                   var(--app-background-color);
+    --card-accent-color:                   rgba(180, 180, 180, 1);
+
+    --card-footer-background:              rgb(70, 70, 70);
     
     --heading-color-primary:               orange;
     --heading-color-secondary:             teal;
     
-    --button-background-primary:           purple;
+    --button-background-primary:           var(--black);
     --button-background-secondary:         blue;
-    --button-color-primary:                lime;
+    --button-color-primary:                var(--white);
     --button-color-secondary:              rgba(225, 225, 225, 1);
     
     --shadow-color-primary:                #2a302d;
