@@ -2,11 +2,15 @@
 
   import Header from './components/Header.vue'
 
+  /*  Import top-level cards
+      */
   import CardSingle from './components/CardSingle.vue'
   import CardGroup from './components/CardGroup.vue'
   import CardSingleSource from './components/CardSingleSource.vue'
   import CardSingleSocial from './components/CardSingleSocial.vue'
 
+  /*  Import modules, components, cards, or whatever Dan wants to call them
+      */
   import TopStory from './components/TopStory.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'

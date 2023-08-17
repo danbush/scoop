@@ -77,6 +77,12 @@
 
   .article-source {
     display: flex;
+    margin-bottom: $card-padding-internal;
+    align-items: center;
+  }
+
+  .article-publisher {
+    color: var(--app-text-color);
   }
 
   a.scoop-source-url {
@@ -85,9 +91,22 @@
   }
       
   .article-logo {
-    max-width: 30px;
+
+    max-width: initial;
+    max-height: initial;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    padding: .3rem;
+
     vertical-align: middle;
+
+    background-color: var(--app-text-color);
+
+    border-radius: 100%;
+
     filter: initial;
+
   }
 
   .article-body {

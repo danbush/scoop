@@ -39,12 +39,13 @@
 
 <style scoped lang="scss">
   .card-footer {
+
+    width: 100%;
     margin-top: auto;
     padding: $card_padding-internal;
-    background-color: #e2e2e2;
-    width: 100%;
-//    position: absolute;
-//    bottom: 0;
+
+    background-color: rgba(255, 255, 255, .1);
+
   }
   .card-actions {
   

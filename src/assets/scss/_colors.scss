@@ -1,24 +1,56 @@
 $black:     #000000;
 $white:     #ffffff;
 
-$app-background-color:          pink;
-$app-text-color:                green;
+/* Default (light) */
+:root {
 
-$card-body-background:          brown;
-$card-header-background:        orangered;
+    --app-text-color:                      green;
+    --app-background-color:                pink;
+    
+    --card-body-background:                brown;
+    --card-accent-color:                   orangered;
+    
+    --heading-color-primary:               orange;
+    --heading-color-secondary:             teal;
+    
+    --button-background-primary:           purple;
+    --button-background-secondary:         blue;
+    --button-color-primary:                lime;
+    --button-color-secondary:              rgb(225, 225, 225);
+    
+    --shadow-color-primary:                #2a302d;
+    --shadow-color-secondary:              #f6f6f6;
 
-$heading-color-primary:         orange;
-$heading-color-secondary:       teal;
+  &.dark {
 
-$button-background-primary:     purple;
-$button-background-secondary:   blue;
-$button-color-primary:          lime;
-$button-color-secondary:        turquoise;
+    --app-text-color:                      rgb(180, 180, 180);
+    --app-background-color:                rgb(30, 30, 30);
+    
+    --card-body-background:                rgba(255, 255, 255, 0.1);
+    --card-accent-color:                   var(--app-background-color);
+    
+    --heading-color-primary:               orange;
+    --heading-color-secondary:             teal;
+    
+    --button-background-primary:           purple;
+    --button-background-secondary:         blue;
+    --button-color-primary:                lime;
+    --button-color-secondary:              rgb(225, 225, 225);
+    
+    --shadow-color-primary:                #2a302d;
+    --shadow-color-secondary:              #f6f6f6;
+  
+  }
 
-$shadow-color-primary:          #2a302d;
-$shadow-color-secondary:        #f6f6f6;
+}
 
-/*
+:root {
+    background-color: var(--app-background-color);
+    color: var(--app-text-color);
+}
+
+
+/*    
 $background-light: #ffa34f;
 $background-lighter: #f6f6f6;
 $background: #2a302d;

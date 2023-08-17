@@ -10,7 +10,7 @@ a, button,
   border-radius: 16px;
   border: 0;
 
-  color: $button-color-primary;
+//  color: $button-color-primary;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -28,7 +28,7 @@ a, button,
   }
 
   &.action_intent-primary {
-    background-color: $button-background-primary;
+//    background-color: $button-background-primary;
   }
 
 }

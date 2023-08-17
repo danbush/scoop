@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "@vueuse/core": "^10.3.0",
     "html-entities": "^2.4.0",
     "htmlparser2": "^9.0.0",
     "isomorphic-fetch": "^3.0.0",
