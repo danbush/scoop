@@ -1,30 +1,41 @@
-$black:     #000000;
-$white:     #ffffff;
-
 /* Default (light) */
 :root {
 
-    --app-text-color:                      green;
-    --app-background-color:                pink;
+    --black:                               rgba(0, 0, 0, 1);
+    --white:                               rgba(255, 255, 255, 1);
+
+    --snes-lavender:                       rgb(181,182,228);
+    --snes-purple:                         rgb(79,67,174);
+    --snes-gray-light:                     rgb(206,201,204);
+    --snes-gray-mid:                       rgb(144,138,153);
+    --snes-gray-dark:                      rgb(33,26,33);
+
+    --app-text-color:                      var(--snes-gray-dark);
+    --app-background-color:                var(--snes-gray-light);
     
-    --card-body-background:                brown;
-    --card-accent-color:                   orangered;
+    --card-header-background:              var(--app-background-color);
+    --card-header-color:                   var(--app-background-color);
+
+    --card-body-background:                var(--white);
+    --card-accent-color:                   var(--snes-purple);
+
+    --card-footer-background:              var(--snes-lavender);
     
     --heading-color-primary:               orange;
     --heading-color-secondary:             teal;
     
-    --button-background-primary:           purple;
+    --button-background-primary:           var(--snes-purple);
     --button-background-secondary:         blue;
-    --button-color-primary:                lime;
-    --button-color-secondary:              rgb(225, 225, 225);
+    --button-color-primary:                var(--white);
+    --button-color-secondary:              rgba(225, 225, 225, 1);
     
     --shadow-color-primary:                #2a302d;
     --shadow-color-secondary:              #f6f6f6;
 
   &.dark {
 
-    --app-text-color:                      rgb(180, 180, 180);
-    --app-background-color:                rgb(30, 30, 30);
+    --app-text-color:                      rgba(180, 180, 180, 1);
+    --app-background-color:                rgba(30, 30, 30, 1);
     
     --card-body-background:                rgba(255, 255, 255, 0.1);
     --card-accent-color:                   var(--app-background-color);
@@ -35,7 +46,7 @@ $white:     #ffffff;
     --button-background-primary:           purple;
     --button-background-secondary:         blue;
     --button-color-primary:                lime;
-    --button-color-secondary:              rgb(225, 225, 225);
+    --button-color-secondary:              rgba(225, 225, 225, 1);
     
     --shadow-color-primary:                #2a302d;
     --shadow-color-secondary:              #f6f6f6;
@@ -44,22 +55,7 @@ $white:     #ffffff;
 
 }
 
-:root {
+body {
     background-color: var(--app-background-color);
     color: var(--app-text-color);
 }
-
-
-/*    
-$background-light: #ffa34f;
-$background-lighter: #f6f6f6;
-$background: #2a302d;
-$background-dark: #43645A;
-
-$foreground-primary: #20201f;
-
-$accent-priority-one: #ffa34f;
-
-$video-accent: #ff0000;
-$headlines-accent: #0000ff;
-*/

@@ -44,7 +44,7 @@
     margin-top: auto;
     padding: $card_padding-internal;
 
-    background-color: rgba(255, 255, 255, .1);
+    background-color: var(--card-footer-background);
 
   }
   .card-actions {
