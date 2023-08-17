@@ -48,12 +48,13 @@
       <MultipleHeadlines :count=4 />
     </CardGroup>
 
-    <CardSingle
+    <CardGroup
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
       <MayHaveMissed />
-    </CardSingle>
+      <MayHaveMissed />
+    </CardGroup>
 
     <CardSingleSocial
       card_title="From Mastodon"
@@ -87,14 +88,14 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
     <CardGroup
@@ -104,12 +105,13 @@
       <MultipleHeadlines :count=4 />
     </CardGroup>
 
-    <CardSingle
+    <CardGroup
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
       <MayHaveMissed />
-    </CardSingle>
+      <MayHaveMissed />
+    </CardGroup>
     
     <CardGroup
       card_title="Just the Headlines"
@@ -122,14 +124,14 @@
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
     
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-        <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=0 :count=10 />
     </CardSingleSource>
 
   </section>

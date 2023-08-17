@@ -45,12 +45,15 @@
 <template>
     <article v-if="Object.keys(articleArray).length > 0">
 
-        <article class="card-tile" v-for="number in articleSet" :key="number">
-          <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">
-            <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }">
-              <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
-              <h5 class="article-title">{{ articleArray[number]?.article_title }}</h5>
-            </span>
+        <article class="module-tile has-content" v-for="number in articleSet" :key="number">
+          <a
+            :style="{
+              'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_image + ')' }"
+            :href="articleArray[number]?.article_url"
+            target="_blank"
+            >
+            <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
+            <h5 class="article-title">{{ articleArray[number]?.article_title }}</h5>
           </a>
         </article>
 
@@ -59,14 +62,7 @@
 
 <style scoped lang="scss">
 
-  .card-body {
-
-    .article-anchor-wrapper,
-    .article-image-wrapper {
-      height: 100%;
-    }
-    
-    > article {
+    article {
       
       display: flex;
       flex-direction: column;
@@ -85,7 +81,7 @@
 
       }
 
-      .card-tile {
+      .module-tile {
 
         @include mq('medium') {
 
@@ -111,7 +107,6 @@
 
     }
   
-  }
 
   .card_multiple-headlines {
   

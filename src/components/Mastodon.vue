@@ -47,14 +47,19 @@
 
 <template>
 
-  <article class="card-tile" v-for="number in articleSet" :key="number">
-    <a class="article-anchor-wrapper" :href="articleArray[number]?.article_url" target="_blank">
-      <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }">
-        <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
-        <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
-        <img class="article-image" :src="articleArray[number]?.article_image" alt="">
-        <p class="p3 article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
-      </span>
+  <article
+    class="module-tile has-content has-blur"
+    :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5480786064425771) 35%, rgba(0,0,0,1) 100%), url(' + articleArray[number]?.article_logo + ')' }"
+    v-for="number in articleSet" :key="number"
+    >
+    <a 
+      :href="articleArray[number]?.article_url"
+      target="_blank"
+      >
+      <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
+      <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
+      <img class="article-image" :src="articleArray[number]?.article_image" alt="">
+      <p class="article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
     </a>
   </article>
 
@@ -62,30 +67,14 @@
 
 <style scoped lang="scss">
 
-  .article-image-wrapper {
-
-    position: relative;
-
-    > * {
-      position: relative;
-      z-index: 10;
-      color: #ffffff;
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 0;
-      backdrop-filter: blur(10px);
-    }
-
+  .article-publisher {
+    margin: $card-padding-internal 0 0 0;
+    color: #ffffff;
   }
-  .article-image {
-    padding: $card-padding-internal;
-    max-width: 100%;
-    border-radius: 2rem;
+
+  img {
+    margin-top: calc( $card-padding-internal * $phi );
+    border-radius: $card-border-radius;
   }
+
 </style>

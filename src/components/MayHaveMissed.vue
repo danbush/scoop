@@ -32,90 +32,42 @@
 
 <template>
 
-    <section v-if="articleArray.article_title">
-      <article class="card-tile">
-        <a class="article-anchor-wrapper" :href="articleArray.article_url">
-          <span class="article-image-wrapper" :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }">
-            <img class="article-logo" :src="articleArray.article_logo" alt="cows">
-            <h3 class="article-title">{{ articleArray.article_title }}</h3>
-          </span>
-        </a>
-      </article>
-      <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+  <article v-if="articleArray.article_title">
+    <header class="article-header module-tile has-content">
+      <a
+        :href="articleArray.article_url"
+        :style="{ 'background-image': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.5) 35%, rgba(0,0,0,0.75) 100%), url(' + articleArray.article_image + ')' }"
+        >
+        <img class="article-logo" :src="articleArray.article_logo" alt="cows">
+        <h3 class="article-title">{{ articleArray.article_title }}</h3>
+      </a>
+    </header>
+    <section class="article-body">
+      <pre>{{ articleArray.article_body }}</pre>
     </section>
-
-    <!-- todo: update module as needed -->
-    <!-- <CardFooter :article_url="articleArray.article_url"/> -->
+    <footer class="article-footer">
+      <a :href="articleArray.article_url" target="_blank">
+        <button class="button action_intent-primary" type="button">Read More</button>
+      </a>
+    </footer>
+  </article>
 
 </template>
 
 <style scoped lang="scss">
-  .card_may-have-missed {
-  
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
-    
-    .article-title {
-      margin: 0.4rem $card-padding-internal $card-padding-internal $card-padding-internal;
-      color: $background-lighter;
-      text-shadow: 0 0 12px #000000, 0 0 2px $background;
-      text-align: center;
-      text-decoration: none;
-    }
-    
-    .article-logo {
-      max-width: 30px;
-      margin: $card-padding-internal auto 0 auto;
-      display: block;
-    }
-        
-    .article-image-wrapper {
 
-      display: block;
-      width: 100%;
-      height: 100%;
-
-      margin: 0 0 $card-padding-internal 0;
-
-      background-color: $background;
-      background-size: cover; // this is probably temporary
-      background-position: center;
-      background-repeat: no-repeat;
-      border-radius: $card_border-radius;
-
-      @include transition;
-      
-      &:hover {
-        transform: scale(1.03) rotate(0.5deg);
-        filter: brightness(1.08);
-        box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-      }
-
-      &:active {
-        filter: brightness(1.25);
-        transform: scale(0.98) rotate(0.5deg);
-        transition: all .2s ease-in-out;
-      }
-    
-    }
-      
-    .item-source {
-  
-      display: block;
-  
-      img {
-        // sloppy, I know
-        height: 1.6rem;
-        width: auto;
-      }
-  
-    }
-
+  .module-tile {
+    margin-bottom: $card-padding-internal;
   }
 
-  .article-body {
+  .article-footer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
     margin-top: 1.4rem;
+
   }
 
 </style>
