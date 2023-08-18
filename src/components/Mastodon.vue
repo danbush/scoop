@@ -48,7 +48,7 @@
 <template>
 
   <article
-    class="module-tile has-content has-blur"
+    class="mastodon module-tile has-content has-blur"
     :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 30%, transparent) 35%, color-mix(in srgb, var(--card-accent-color) 100%, transparent) 100%), url(' + articleArray[number]?.article_logo + ')' }"
     v-for="number in articleSet" :key="number"
     >
@@ -73,12 +73,18 @@
   }
   
   .article-logo {
-    border-radius: 50%;
+    height: 4rem;
+    max-height: 4rem;
+    width: 4rem;
+    border-radius: 0;
   }
-
-  img {
-    margin-top: calc( $card-padding-internal * $phi );
-    border-radius: $card-border-radius;
+  
+  .mastodon {
+    img.article-image {
+      margin-top: calc( $card-padding-internal * $phi );
+      border-radius: $card-border-radius;
+      max-height: 20rem;
+    }
   }
 
 </style>
