@@ -29,7 +29,7 @@ $breakpoints: (
 /* Transition Defaults / Mixin */
 
 $transitionType:    all;
-$transitionSpeed:   0.45s;
+$transitionSpeed:   0.38s;
 $transitionEffect:  ease-in-out;
 
 @mixin transition( $type: $transitionType, $speed: $transitionSpeed, $effect: $transitionEffect ) {
