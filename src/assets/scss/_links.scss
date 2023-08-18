@@ -24,6 +24,10 @@ a, button,
 
   &:hover {
     filter: drop-shadow(0 0 .2rem rgba($shadow-color, 0.60));
+    transform: scale(1.03);
+  }
+  &:active {
+    transform: scale(0.98);
   }
 
   &.action_intent-primary {

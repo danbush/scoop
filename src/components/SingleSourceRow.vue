@@ -25,7 +25,7 @@
   <section class="swipe-wrapper" v-if="rowObject">
     <article
       class="module-tile has-content"
-      :style="{ 'background-image': 'linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(46,46,46,0.4) 35%, rgba(0,0,0,0.7) 100%), url(' + value?.article_image + ')' }"
+      :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 30%, transparent) 75%, color-mix(in srgb, var(--card-accent-color) 100%, transparent) 100%), url(' + value?.article_image + ')' }"
       v-for="(value, key) in rowObject" :key="key"
       >
       <a :href="value?.article_url">
@@ -65,6 +65,11 @@
   }
 
   .module-tile {
+    &.has-content {
+      > a {
+        justify-content: end;
+      }
+  }
 
     /*  todo:
         change this to a swipe on mobile.

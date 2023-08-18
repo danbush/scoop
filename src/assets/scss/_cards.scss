@@ -126,7 +126,7 @@
   &:hover {
     transform: scale(1.03) rotate(0.5deg);
     filter: brightness(1.08);
-    box-shadow: 0px 0px 15px 0px lighten($shadow-color, 40%);
+    box-shadow: 0px 0px 15px 0px var(--shadow-color-primary);
   }
 
   &:active {
@@ -233,7 +233,7 @@
   margin-bottom: 0.8rem;
 
   filter: drop-shadow(0 0 12px $shadow-color) drop-shadow(0 0 2px $shadow-color);
-  background-color: $shadow-color;
+  background-color: var(--white);
 
 }
 

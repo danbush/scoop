@@ -40,7 +40,7 @@ $shadow-color:  #000000;
     --button-color-primary:                var(--white);
     --button-color-secondary:              rgba(225, 225, 225, 1);
     
-    --shadow-color-primary:                #2a302d;
+    --shadow-color-primary:                rgba(42, 48, 45, 0.6);
     --shadow-color-secondary:              #f6f6f6;
 }
 
@@ -63,24 +63,28 @@ $shadow-color:  #000000;
   --button-background-secondary: #{map-get($theme, 'button-background-secondary')};
   --button-color-primary: #{map-get($theme, 'button-color-primary')};
   --button-color-secondary: #{map-get($theme, 'button-color-secondary')};
+  
+  --shadow-color-primary: #{map-get($theme, 'shadow-color-primary')};
 }
 
 // definition of various themes
 
 $theme-dark: (
-  'app-text-color':                 rgba(221, 221, 221, 1),
-  'app-background-color':           #010100,
+  'app-text-color': rgba(221, 221, 221, 1),
+  'app-background-color': #010100,
   
-  'card-header-background':         #836e4e,
-  'card-header-color':                var(--white),
+  'card-header-background': #505050,
+  'card-header-color': var(--white),
   
-  'card-body-background':           #171717,
-  'card-accent-color':              pink,
+  'card-body-background': #171717,
+  'card-accent-color': rgb(0, 0, 0),
   
-  'card-footer-background':         rgb(35, 35, 35),
+  'card-footer-background': rgb(35, 35, 35),
   
-  'button-background-primary':      rgb(255, 154, 0),
-  'button-color-primary':           rgb(248, 248, 248),
+  'button-background-primary': rgb(210, 85, 0),
+  'button-color-primary': rgb(248, 248, 248),
+  
+  'shadow-color-primary': rgb(51, 51, 51)
 );
 
 $theme-snes: (
