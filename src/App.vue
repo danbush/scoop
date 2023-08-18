@@ -24,6 +24,7 @@
   var row2: number = getRandomNumbersInRange(1,0,24)
   var row3: number = getRandomNumbersInRange(1,0,24)
   var row4: number = getRandomNumbersInRange(1,0,24)
+  var row5: number = getRandomNumbersInRange(1,0,24)
   
   document.getElementsByTagName( 'html' )[0].className = ' snes';
 
@@ -73,7 +74,7 @@
       card_title="Dig In"
       card_description=""
       >
-      <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=row1 :count=10 />
     </CardSingleSource>
 
     <CardSingle
@@ -94,14 +95,14 @@
       card_title="Dig In"
       card_description=""
       >
-      <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=row2 :count=10 />
     </CardSingleSource>
 
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-      <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=row3 :count=10 />
     </CardSingleSource>
 
     <CardGroup
@@ -130,14 +131,14 @@
       card_title="Dig In"
       card_description=""
       >
-      <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=row4 :count=10 />
     </CardSingleSource>
     
     <CardSingleSource
       card_title="Dig In"
       card_description=""
       >
-      <SingleSourceRow :source=0 :count=10 />
+      <SingleSourceRow :source=row5 :count=10 />
     </CardSingleSource>
 
   </section>
