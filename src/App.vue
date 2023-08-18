@@ -26,8 +26,6 @@
   var row4: number = getRandomNumbersInRange(1,0,24)
   var row5: number = getRandomNumbersInRange(1,0,24)
   
-  document.getElementsByTagName( 'html' )[0].className = ' snes';
-
 </script>
 
 <template>
@@ -157,33 +155,6 @@
     grid-row-gap: 20px;
 
     margin: 1rem;
-
-    @include mq('uwsmr') {
-
-      max-width: 2600px;
-      margin: 1rem auto;
-
-      &::after {
-
-        content: '';
-
-        display: block;
-        width: 400px;
-        height: 200px;
-
-        position: absolute;
-        top: 22px;
-        left: -8px;
-        z-index: -1;
-
-        background-image: url('src/assets/348FnZZ.png');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-
-      }
-
-    }
 
     /*  Note
         Yes, I know how silly this is.

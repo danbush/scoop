@@ -126,7 +126,7 @@
   &:hover {
     transform: scale(1.03) rotate(0.5deg);
     filter: brightness(1.08);
-//    box-shadow: 0px 0px 15px 0px lighten($shadow-color-primary, 40%);
+    box-shadow: 0px 0px 15px 0px var(--shadow-color-primary);
   }
 
   &:active {
@@ -205,7 +205,7 @@
     margin: 0;
 
     text-align: center;
-//    text-shadow: 0 0 12px $black, 0 0 2px $shadow-color-primary;
+    text-shadow: 0 0 12px $shadow-color, 0 0 2px $shadow-color;
 
   }
 
@@ -232,8 +232,8 @@
   width: 30px;
   margin-bottom: 0.8rem;
 
-//  filter: drop-shadow(0 0 12px $black) drop-shadow(0 0 2px $shadow-color-primary);
-//  background-color: $shadow-color-secondary;
+  filter: drop-shadow(0 0 12px $shadow-color) drop-shadow(0 0 2px $shadow-color);
+  background-color: var(--white);
 
 }
 

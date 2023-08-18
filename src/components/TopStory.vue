@@ -94,10 +94,10 @@
 
     max-width: initial;
     max-height: initial;
-    width: 3rem;
-    height: 3rem;
+    width: 2.2rem;
+    height: 2.2rem;
     margin: 0;
-    padding: .3rem;
+    padding: .25rem;
 
     vertical-align: middle;
 
