@@ -26,8 +26,6 @@
   var row4: number = getRandomNumbersInRange(1,0,24)
   var row5: number = getRandomNumbersInRange(1,0,24)
   
-  document.getElementsByTagName( 'html' )[0].className = ' snes';
-
 </script>
 
 <template>
