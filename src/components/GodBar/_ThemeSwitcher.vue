@@ -41,6 +41,23 @@
 
   <div class="toggle toggle_theme">
     <p class="toggle-label">Theme</p>
+    <select name="" id="">
+      <option
+        value="theme-default-light"
+        @click="colorMode = 'theme-light'"
+        >
+        Default (Light)
+      </option>
+      <option value="theme-default-dark">Default (Dark)</option>
+      <option value="theme-snes-light">SNES (Light)</option>
+      <option
+        value="theme-snes-dark"
+        @click="colorMode = 'theme-snes-dark'"
+        >
+        SNES (Dark)
+      </option>
+      <option value="theme-lol">LOL</option>
+    </select>
 
     <button @click="colorMode = 'theme-light'">Light Mode</button>
     <button @click="colorMode = 'theme-dark'">Dark Mode</button>
