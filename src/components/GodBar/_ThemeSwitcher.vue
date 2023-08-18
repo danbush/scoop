@@ -11,12 +11,6 @@
   https://vueuse.org/core/useColorMode/
 
   */
-/*   import { useDark, useToggle } from "@vueuse/core";
-  const isDark = useDark({
-    selector: "html",
-  });
-  const toggleDark = useToggle(isDark);
- */
   import { useColorMode } from '@vueuse/core'
   const colorMode = useColorMode({
     emitAuto: true,
