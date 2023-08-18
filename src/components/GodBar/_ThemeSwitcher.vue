@@ -27,6 +27,7 @@
       snes: 'theme-snes',
       snes_dark: 'theme-snes-dark',
       lol: 'theme-lol',
+      goots: 'theme-goots',
     },
   })
 
@@ -41,7 +42,7 @@
 
   <div class="toggle toggle_theme">
     <p class="toggle-label">Theme</p>
-    <select name="" id="">
+<!--     <select name="" id="">
       <option
         value="theme-default-light"
         @click="colorMode = 'theme-light'"
@@ -58,12 +59,13 @@
       </option>
       <option value="theme-lol">LOL</option>
     </select>
-
+ -->
     <button @click="colorMode = 'theme-light'">Light Mode</button>
     <button @click="colorMode = 'theme-dark'">Dark Mode</button>
     <button @click="colorMode = 'theme-snes'">SNES</button>
     <button @click="colorMode = 'theme-snes-dark'">SNES (Dark)</button>
     <button @click="colorMode = 'theme-lol'">4THELULZ</button>
+    <button @click="colorMode = 'theme-goots'">GOOTS</button>
       
 <!--     <button @click="mode = mode === 'dark' ? 'light' : 'dark'">
     Mode {{ mode }}
