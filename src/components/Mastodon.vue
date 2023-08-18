@@ -71,6 +71,10 @@
     margin: $card-padding-internal 0 0 0;
     color: #ffffff;
   }
+  
+  .article-logo {
+    border-radius: 50%;
+  }
 
   img {
     margin-top: calc( $card-padding-internal * $phi );
