@@ -1,4 +1,9 @@
-/* Default (light) */
+/* Default color vars */
+/* 
+  I accidentally removed some of them during this change, 
+  but it is still functional. but eventually we'll have the full default
+  theme defined here. and then the themes below will override
+*/
 :root {
 
     --black:                               rgba(0, 0, 0, 1);
@@ -31,36 +36,91 @@
     
     --shadow-color-primary:                #2a302d;
     --shadow-color-secondary:              #f6f6f6;
-
-  &.dark {
-
-    --app-text-color:                      rgba(180, 180, 180, 1);
-    --app-background-color:                rgba(30, 30, 30, 1);
-    
-    --card-header-background:              rgb(70, 70, 70);
-    --card-header-color:                   var(--white);
-
-    --card-body-background:                rgba(255, 255, 255, 0.1);
-    --card-accent-color:                   rgba(180, 180, 180, 1);
-
-    --card-footer-background:              rgb(70, 70, 70);
-    
-    --heading-color-primary:               orange;
-    --heading-color-secondary:             teal;
-    
-    --button-background-primary:           var(--black);
-    --button-background-secondary:         blue;
-    --button-color-primary:                var(--white);
-    --button-color-secondary:              rgba(225, 225, 225, 1);
-    
-    --shadow-color-primary:                #2a302d;
-    --shadow-color-secondary:              #f6f6f6;
-  
-  }
-
 }
 
-body {
-    background-color: var(--app-background-color);
-    color: var(--app-text-color);
+// eventually will move this to a theoretical _mixins.scss
+@mixin color-theme(
+  $theme: $theme-default
+) {
+  --app-text-color:         #{map-get($theme, 'app-text-color')};
+  --app-background-color:   #{map-get($theme, 'app-background-color')};
+  
+  --card-header-background: #{map-get($theme, 'card-header-background')};
+  --card-header-color:      #{map-get($theme, 'card-header-color')};
+  
+  --card-body-background:   #{map-get($theme, 'card-body-background')};
+  --card-accent-color:      #{map-get($theme, 'card-accent-color')};
+  
+  --card-footer-background: #{map-get($theme, 'card-footer-background')};
+  
+  --button-background-primary: #{map-get($theme, 'button-background-primary')};
+  --button-background-secondary: #{map-get($theme, 'button-background-secondary')};
+  --button-color-primary: #{map-get($theme, 'button-color-primary')};
+  --button-color-secondary: #{map-get($theme, 'button-color-secondary')};
+}
+
+// definition of various themes
+
+$theme-dark: (
+  'app-text-color': rgba(221, 221, 221, 1),
+  'app-background-color': #010100,
+  
+  'card-header-background': #836e4e,
+  'card-header-color': var(--white),
+  
+  'card-body-background': #171717,
+  'card-accent-color': pink,
+  
+  'card-footer-background': rgb(35, 35, 35),
+  
+  'button-background-primary': rgb(255, 154, 0),
+  'button-color-primary': rgb(248, 248, 248)
+);
+
+$theme-snes: (
+  'app-text-color': var(--snes-gray-dark),
+  'app-background-color': var(--snes-gray-light),
+  
+  'card-header-background': var(--snes-purple),
+  'card-header-color': var(--white),
+  
+  'card-body-background': var(--white),
+  'card-accent-color': var(--snes-purple),
+  
+  'card-footer-background': var(--snes-lavender),
+  
+  'button-background-primary':           var(--snes-purple),
+  'button-background-secondary':         blue,
+  'button-color-primary':                var(--white),
+  'button-color-secondary':              rgba(225, 225, 225, 1)
+);
+
+$theme-lol: (
+  'app-text-color': red,
+  'app-background-color': green,
+  
+  'card-header-background': blue,
+  'card-header-color': goldenrod,
+  
+  'card-body-background': pink,
+  'card-accent-color': black,
+  
+  'card-footer-background': yellow
+);
+
+// call the correct theme for the correct class
+
+html {
+  &.snes {
+    @include color-theme($theme-snes);
+  }
+  &.lol {
+    @include color-theme($theme-lol);
+  }
+  &.darkk {
+    @include color-theme($theme-dark);
+  }
+  &.dark {
+    @include color-theme($theme-dark);
+  }
 }
