@@ -5,6 +5,7 @@
   theme defined here. and then the themes below will override
 */
 :root {
+
     --black:                               rgba(0, 0, 0, 1);
     --white:                               rgba(255, 255, 255, 1);
 
@@ -13,11 +14,22 @@
     --snes-gray-light:                     rgb(206,201,204);
     --snes-gray-mid:                       rgb(144,138,153);
     --snes-gray-dark:                      rgb(33,26,33);
+
+    --app-text-color:                      var(--snes-gray-dark);
+    --app-background-color:                var(--snes-gray-light);
+    
+    --card-header-background:              var(--snes-purple);
+    --card-header-color:                   var(--white);
+
+    --card-body-background:                var(--white);
+    --card-accent-color:                   var(--snes-purple);
+
+    --card-footer-background:              var(--snes-lavender);
     
     --heading-color-primary:               orange;
     --heading-color-secondary:             teal;
     
-    --button-background-primary:           orange;
+    --button-background-primary:           var(--snes-purple);
     --button-background-secondary:         blue;
     --button-color-primary:                var(--white);
     --button-color-secondary:              rgba(225, 225, 225, 1);
@@ -75,7 +87,12 @@ $theme-snes: (
   'card-body-background': var(--white),
   'card-accent-color': var(--snes-purple),
   
-  'card-footer-background': var(--snes-lavender)
+  'card-footer-background': var(--snes-lavender),
+  
+  'button-background-primary':           var(--snes-purple),
+  'button-background-secondary':         blue,
+  'button-color-primary':                var(--white),
+  'button-color-secondary':              rgba(225, 225, 225, 1)
 );
 
 $theme-lol: (
