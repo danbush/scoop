@@ -103,4 +103,7 @@ html {
   &.darkk {
     @include color-theme($theme-dark);
   }
+  &.dark {
+    @include color-theme($theme-dark);
+  }
 }
