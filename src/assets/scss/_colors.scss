@@ -1,13 +1,66 @@
-// TODO: make everything within themes. at first just dark and light, but eventually expanded.
+/* Default (light) */
+:root {
 
-$background-light: #ffa34f;
-$background-lighter: #f6f6f6;
-$background: #2a302d;
-$background-dark: #43645A;
+    --black:                               rgba(0, 0, 0, 1);
+    --white:                               rgba(255, 255, 255, 1);
 
-$foreground-primary: #20201f;
+    --snes-lavender:                       rgb(181,182,228);
+    --snes-purple:                         rgb(79,67,174);
+    --snes-gray-light:                     rgb(206,201,204);
+    --snes-gray-mid:                       rgb(144,138,153);
+    --snes-gray-dark:                      rgb(33,26,33);
 
-$accent-priority-one: #ffa34f;
+    --app-text-color:                      var(--snes-gray-dark);
+    --app-background-color:                var(--snes-gray-light);
+    
+    --card-header-background:              var(--snes-purple);
+    --card-header-color:                   var(--white);
 
-$video-accent: #ff0000;
-$headlines-accent: #0000ff;
+    --card-body-background:                var(--white);
+    --card-accent-color:                   var(--snes-purple);
+
+    --card-footer-background:              var(--snes-lavender);
+    
+    --heading-color-primary:               orange;
+    --heading-color-secondary:             teal;
+    
+    --button-background-primary:           var(--snes-purple);
+    --button-background-secondary:         blue;
+    --button-color-primary:                var(--white);
+    --button-color-secondary:              rgba(225, 225, 225, 1);
+    
+    --shadow-color-primary:                #2a302d;
+    --shadow-color-secondary:              #f6f6f6;
+
+  &.dark {
+
+    --app-text-color:                      rgba(180, 180, 180, 1);
+    --app-background-color:                rgba(30, 30, 30, 1);
+    
+    --card-header-background:              rgb(70, 70, 70);
+    --card-header-color:                   var(--white);
+
+    --card-body-background:                rgba(255, 255, 255, 0.1);
+    --card-accent-color:                   rgba(180, 180, 180, 1);
+
+    --card-footer-background:              rgb(70, 70, 70);
+    
+    --heading-color-primary:               orange;
+    --heading-color-secondary:             teal;
+    
+    --button-background-primary:           var(--black);
+    --button-background-secondary:         blue;
+    --button-color-primary:                var(--white);
+    --button-color-secondary:              rgba(225, 225, 225, 1);
+    
+    --shadow-color-primary:                #2a302d;
+    --shadow-color-secondary:              #f6f6f6;
+  
+  }
+
+}
+
+body {
+    background-color: var(--app-background-color);
+    color: var(--app-text-color);
+}

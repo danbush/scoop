@@ -2,11 +2,15 @@
 
   import Header from './components/Header.vue'
 
+  /*  Import top-level cards
+      */
   import CardSingle from './components/CardSingle.vue'
   import CardGroup from './components/CardGroup.vue'
   import CardSingleSource from './components/CardSingleSource.vue'
   import CardSingleSocial from './components/CardSingleSocial.vue'
 
+  /*  Import modules, components, cards, or whatever Dan wants to call them
+      */
   import TopStory from './components/TopStory.vue'
   import MultipleHeadlines from './components/MultipleHeadlines.vue'
   import SingleVideo from './components/SingleVideo.vue'
@@ -183,6 +187,8 @@
         No, I'm not fixing it now.
         */
     @include mq('large') {
+
+      grid-template-columns: repeat(24, 1fr);
 
       > article:nth-child(1) { grid-area: 1 / 1 / 2 / 17; }
       > article:nth-child(2) { grid-area: 1 / 17 / 2 / 25; }

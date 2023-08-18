@@ -107,23 +107,4 @@
 
     }
   
-
-  .card_multiple-headlines {
-  
-    background-color: $background-lighter;
-    .card-header {
-      background-color: darken($headlines-accent, 20%);
-      color: lighten($headlines-accent, 45%)
-    }
-    
-    .article-title {
-    /*
-      NOTE: disabling for now, it's what's causing the descenders to get cut off.
-      we can find a solution at some point.
-      text-overflow: ellipsis;
-      overflow: hidden;
-    */
-    }
-    
-  }
 </style>

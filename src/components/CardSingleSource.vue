@@ -56,7 +56,7 @@
       position: absolute;
       z-index: 10;
 
-      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(90deg, rgba(var(--card-body-background),1) 0%, rgba(var(--card-body-background),0) 100%);
 
     }
 

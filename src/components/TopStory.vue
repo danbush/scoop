@@ -77,6 +77,12 @@
 
   .article-source {
     display: flex;
+    margin-bottom: $card-padding-internal;
+    align-items: center;
+  }
+
+  .article-publisher {
+    color: var(--app-text-color);
   }
 
   a.scoop-source-url {
@@ -85,41 +91,21 @@
   }
       
   .article-logo {
-    max-width: 30px;
+
+    max-width: initial;
+    max-height: initial;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    padding: .3rem;
+
     vertical-align: middle;
+
+    background-color: var(--app-text-color);
+
+    border-radius: 100%;
+
     filter: initial;
-  }
-  
-  .article-image-wraper {
-
-    display: block;
-    width: 100%;
-
-
-
-    
-    @include transition;  // move this, maybe make a class that auto-applies it to most clickable things?
-
-    &:hover {
-      transform: scale(1.03) rotate(0.5deg);
-      filter: brightness(1.08);
-      box-shadow: 0px 0px 15px 0px lighten($background, 40%);
-    }
-    &:active {
-      filter: brightness(1.25);
-      transform: scale(0.98) rotate(0.5deg);
-    }
-  }
-  
-  .item-source {
-
-    display: block;
-
-    img {
-      // sloppy, I know
-      height: 1.6rem;
-      width: auto;
-    }
 
   }
 
