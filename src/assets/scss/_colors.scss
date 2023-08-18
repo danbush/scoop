@@ -95,6 +95,24 @@ $theme-snes: (
   'button-color-secondary':              rgba(225, 225, 225, 1)
 );
 
+$theme-snes-dark: (
+  'app-text-color':                   var(--snes-gray-light),
+  'app-background-color':             var(--snes-gray-dark),
+  
+  'card-header-background':           rgb(36, 27, 101),
+  'card-header-color':                var(--white),
+  
+  'card-body-background':             rgba(255, 255, 255, 0.05),
+  'card-accent-color':                var(--snes-purple),
+  
+  'card-footer-background':           rgba(255, 255, 255, 0.05),
+  
+  'button-background-primary':        var(--snes-gray-light),
+  'button-background-secondary':      blue,
+  'button-color-primary':             var(--snes-purple),
+  'button-color-secondary':           rgba(225, 225, 225, 1),
+);
+
 $theme-lol: (
   'app-text-color': red,
   'app-background-color': green,
@@ -111,16 +129,16 @@ $theme-lol: (
 // call the correct theme for the correct class
 
 html {
-  &.snes {
+  &.theme-snes {
     @include color-theme($theme-snes);
   }
-  &.lol {
+  &.theme-lol {
     @include color-theme($theme-lol);
   }
-  &.darkk {
+  &.theme-dark {
     @include color-theme($theme-dark);
   }
-  &.dark {
-    @include color-theme($theme-dark);
+  &.theme-snes-dark {
+    @include color-theme($theme-snes-dark);
   }
 }
