@@ -22,6 +22,7 @@
       snes_dark: 'theme-snes-dark',
       lol: 'theme-lol',
       goots: 'theme-goots',
+      arc: 'theme-arc',
     },
   })
 
@@ -60,6 +61,7 @@
     <button @click="colorMode = 'theme-snes-dark'">SNES (Dark)</button>
     <button @click="colorMode = 'theme-lol'">4THELULZ</button>
     <button @click="colorMode = 'theme-goots'">GOOTS</button>
+    <button @click="colorMode = 'theme-arc'">Arc</button>
       
 <!--     <button @click="mode = mode === 'dark' ? 'light' : 'dark'">
     Mode {{ mode }}

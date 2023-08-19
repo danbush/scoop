@@ -155,6 +155,24 @@ $theme-goots: (
 
 );
 
+$theme-arc: (
+  'app-text-color':                      var(--arc-palette-foregroundPrimary),
+  'app-background-color':                var(--arc-palette-background),
+  
+  'card-header-background':              var(--arc-palette-cutoutColor),
+  'card-header-color':                   var(--arc-palette-title),
+  
+  'card-body-background':                var(--arc-palette-backgroundExtra),
+  'card-accent-color':                   var(--arc-background-gradient-color1),
+  
+  'card-footer-background':              var(--arc-palette-hover),
+  
+  'button-background-primary':           var(--arc-background-gradient-color1),
+  'button-background-secondary':         blue,
+  'button-color-primary':                var(--arc-palette-title),
+  'button-color-secondary':              rgba(225, 225, 225, 1)
+);
+
 // call the correct theme for the correct class
 
 html {
@@ -172,5 +190,8 @@ html {
   }
   &.theme-goots {
     @include color-theme($theme-goots);
+  }
+  &.theme-arc {
+    @include color-theme($theme-arc);
   }
 }
