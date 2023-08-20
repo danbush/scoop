@@ -4,14 +4,9 @@
   todo: fill out this section
   ***************************/
 
-  /*  Dark Mode toggle
-  https://www.vuemastery.com/blog/implementing-dark-mode-with-vueuse/
-
-  For future reference (additional themes:)
-  https://vueuse.org/core/useColorMode/
-
-  */
+  /*  https://vueuse.org/core/useColorMode/  */
   import { useColorMode } from '@vueuse/core'
+
   const colorMode = useColorMode({
     emitAuto: true,
     attribute: 'class',
@@ -26,42 +21,77 @@
     },
   })
 
+</script>
 
-  function toggleThemeSupport() {
-    document.body.classList.toggle('devmode-themesupport')
+<script lang="ts">
+
+  export default {
+    data () {
+      return {
+        active: false
+      }
+    },
+    methods: {
+      toggle () {
+        this.active = !this.active
+      }
+    }
   }
 
 </script>
 
 <template>
+  <!--
+    Would love to find a way to populate the options from the colorMode object's 'modes'. This works for now.
+  -->
 
   <div class="toggle toggle_theme">
     <p class="toggle-label">Theme</p>
-<!--     <select name="" id="">
+    <select v-model="colorMode">
       <option
-        value="theme-default-light"
-        @click="colorMode = 'theme-light'"
+        value="theme-light"
+        @change="colorMode = 'theme-light'"
         >
-        Default (Light)
+        Default
       </option>
-      <option value="theme-default-dark">Default (Dark)</option>
-      <option value="theme-snes-light">SNES (Light)</option>
+      <option
+        value="theme-dark"
+        @change="colorMode = 'theme-dark'"
+        >
+        Dark
+      </option>
+      <option
+        value="theme-snes"
+        @change="colorMode = 'theme-snes'"
+        >
+        SNES
+      </option>
       <option
         value="theme-snes-dark"
-        @click="colorMode = 'theme-snes-dark'"
+        @change="colorMode = 'theme-snes-dark'"
         >
         SNES (Dark)
       </option>
-      <option value="theme-lol">LOL</option>
+      <option
+        value="theme-lol"
+        @change="colorMode = 'theme-lol'"
+        >
+        LOL
+      </option>
+      <option
+        value="theme-goots"
+        @change="colorMode = 'theme-goots'"
+        >
+        GOOTS
+      </option>
+      <option
+        value="theme-arc"
+        @change="colorMode = 'theme-arc'"
+        >
+        Arc
+      </option>
     </select>
- -->
-    <button @click="colorMode = 'theme-light'">Light Mode</button>
-    <button @click="colorMode = 'theme-dark'">Dark Mode</button>
-    <button @click="colorMode = 'theme-snes'">SNES</button>
-    <button @click="colorMode = 'theme-snes-dark'">SNES (Dark)</button>
-    <button @click="colorMode = 'theme-lol'">4THELULZ</button>
-    <button @click="colorMode = 'theme-goots'">GOOTS</button>
-    <button @click="colorMode = 'theme-arc'">Arc</button>
+
       
 <!--     <button @click="mode = mode === 'dark' ? 'light' : 'dark'">
     Mode {{ mode }}
@@ -72,5 +102,28 @@
 </template>
 
 <style scoped lang="scss">
+
+  select {
+
+    // display: inline-block;
+
+    padding: .5rem 2rem .5rem .6rem;
+
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .5rem center;
+    background-size: 1rem;
+
+    border: none;
+
+    appearance: none;
+
+    option {
+      // display: block;
+      // padding: 1rem 1rem 1rem 1rem;
+    }
+
+  }
+
 
 </style>

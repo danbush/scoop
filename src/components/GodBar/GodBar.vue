@@ -18,10 +18,8 @@
 
   <div class="toolbar toolbar_GodBar">
     <StorageSwitcher />
-
-    <ThemeSwitcher />
-
     <DevSwitcher />
+    <ThemeSwitcher />
   </div>
 
 </template>
