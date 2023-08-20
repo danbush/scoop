@@ -38,3 +38,33 @@ section.module-row {
     background-repeat: no-repeat;
   }
 }
+
+.theme-nes {
+
+  .app-title {
+
+    margin-top: 1rem;
+    padding: .2rem 1.6rem .2rem 1rem;
+    border: .4rem solid rgb(221,32,32);
+    border-radius: 10rem;
+
+    position: relative;
+
+    font-family: 'Pretendo'!important;
+    color: rgb(221,32,32);
+
+    background: #ffffff;
+
+    &::after {
+      content: '®';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0.6rem;
+      font-family: sans-serif;
+      font-size: 1.2rem;
+
+    }
+
+  }
+}

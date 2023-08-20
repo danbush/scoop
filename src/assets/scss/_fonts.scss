@@ -27,6 +27,12 @@
   src: url('../fonts/IBMPlexSansCondensed-Text.woff2') format("woff2");
 }
 
+@font-face {
+  font-family: "Pretendo";
+  font-style: normal;
+  src: url('../fonts/Pretendo.ttf') format("truetype");
+}
+
 body,
 p, span, a,
 .div {

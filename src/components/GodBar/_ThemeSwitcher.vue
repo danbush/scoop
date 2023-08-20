@@ -15,7 +15,8 @@
       dark: 'theme-dark',
       snes: 'theme-snes',
       snes_dark: 'theme-snes-dark',
-      lol: 'theme-lol',
+      nes: 'theme-nes',
+      famicom: 'theme-famicom',
       goots: 'theme-goots',
       arc: 'theme-arc',
     },
@@ -73,10 +74,10 @@
         SNES (Dark)
       </option>
       <option
-        value="theme-lol"
-        @change="colorMode = 'theme-lol'"
+        value="theme-nes"
+        @change="colorMode = 'theme-nes'"
         >
-        LOL
+        NES
       </option>
       <option
         value="theme-goots"

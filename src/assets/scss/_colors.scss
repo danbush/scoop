@@ -123,17 +123,22 @@ $theme-snes-dark: (
   'button-color-secondary':         rgba(225, 225, 225, 1),
 );
 
-$theme-lol: (
-  'app-text-color':                 red,
-  'app-background-color':           green,
+$theme-nes: (
+  'app-text-color':                   rgb(13,12,12),
+  'app-background-color':             rgb(165,162,162),
   
-  'card-header-background':         blue,
-  'card-header-color':              goldenrod,
+  'card-header-background':           rgb(221,32,32),
+  'card-header-color':                rgb(255,255,255),
   
-  'card-body-background':           pink,
-  'card-accent-color':              black,
+  'card-body-background':             rgb(255,255,255),
+  'card-accent-color':                rgb(13,12,12),
   
-  'card-footer-background':         yellow,
+  'card-footer-background':           rgb(229,229,229),
+  
+  'button-background-primary':        rgb(221,32,32),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
 );
 
 $theme-goots: (
@@ -179,14 +184,14 @@ html {
   &.theme-snes {
     @include color-theme($theme-snes);
   }
-  &.theme-lol {
-    @include color-theme($theme-lol);
-  }
   &.theme-dark {
     @include color-theme($theme-dark);
   }
   &.theme-snes-dark {
     @include color-theme($theme-snes-dark);
+  }
+  &.theme-nes {
+    @include color-theme($theme-nes);
   }
   &.theme-goots {
     @include color-theme($theme-goots);
