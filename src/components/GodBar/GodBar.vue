@@ -56,7 +56,7 @@
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: $input-size;
   }
 
   /* Hide default HTML checkbox */
