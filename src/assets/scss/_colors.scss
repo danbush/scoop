@@ -214,6 +214,25 @@ $theme-goots: (
 
 );
 
+$theme-twisp: (
+  'app-text-color':                 rgb(199,157,215),
+  'app-background-color':           rgb(103,56,136),
+  
+  'card-header-background':         rgb(239,79,145),
+  'card-header-color':              rgb(255,255,255),
+  
+  'card-body-background':           rgb(54,59,116),
+  'card-accent-color':              rgb(77,27,123),
+  
+  'card-footer-background':         rgb(77,27,123),
+
+  'button-background-primary':        rgb(239,79,145),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+
+);
+
 $theme-arc: (
   'app-text-color':                      var(--arc-palette-foregroundPrimary),
   'app-background-color':                var(--arc-palette-background),
@@ -258,6 +277,9 @@ html {
   }
   &.theme-goots {
     @include color-theme($theme-goots);
+  }
+  &.theme-twisp {
+    @include color-theme($theme-twisp);
   }
   &.theme-arc {
     @include color-theme($theme-arc);

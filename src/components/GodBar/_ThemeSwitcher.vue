@@ -20,6 +20,7 @@
       gameboy: 'theme-gameboy',
       gameboy_dark: 'theme-gameboy-dark',
       goots: 'theme-goots',
+      twisp: 'theme-twisp',
       arc: 'theme-arc',
     },
   })
@@ -104,6 +105,12 @@
         @change="colorMode = 'theme-goots'"
         >
         GOOTS
+      </option>
+      <option
+        value="theme-twisp"
+        @change="colorMode = 'theme-twisp'"
+        >
+        twisp
       </option>
       <option
         value="theme-arc"
