@@ -197,19 +197,15 @@ section.module-row {
 
   }
 
+  .module-tile {
+    filter: grayscale(1) sepia(72%);
+  }
+
   .card-footer {
     background-color: var(--card-footer-background);
   }
 
 }
-
-
-.theme-twisp {
-
-  
-
-}
-
 
 /* Retro Helpers */
 .helper-pixel-corners {
