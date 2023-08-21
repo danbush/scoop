@@ -27,6 +27,30 @@
   src: url('../fonts/IBMPlexSansCondensed-Text.woff2') format("woff2");
 }
 
+@font-face {
+  font-family: "Pretendo";
+  font-style: normal;
+  src: url('../fonts/Pretendo.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "PixelEmulator";
+  font-style: normal;
+  src: url('../fonts/PixelEmulator.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Early GameBoy";
+  font-style: normal;
+  src: url('../fonts/EarlyGameBoy.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Gill Sans Condensed Bold";
+  font-style: normal;
+  src: url('../fonts/GillSansCondensedBold.otf') format("opentype");
+}
+
 body,
 p, span, a,
 .div {

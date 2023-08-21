@@ -123,17 +123,76 @@ $theme-snes-dark: (
   'button-color-secondary':         rgba(225, 225, 225, 1),
 );
 
-$theme-lol: (
-  'app-text-color':                 red,
-  'app-background-color':           green,
+$theme-nes: (
+  'app-text-color':                   rgb(13,12,12),
+  'app-background-color':             rgb(165,162,162),
   
-  'card-header-background':         blue,
-  'card-header-color':              goldenrod,
+  'card-header-background':           rgb(221,32,32),
+  'card-header-color':                rgb(255,255,255),
   
-  'card-body-background':           pink,
-  'card-accent-color':              black,
+  'card-body-background':             rgb(255,255,255),
+  'card-accent-color':                rgb(13,12,12),
   
-  'card-footer-background':         yellow,
+  'card-footer-background':           rgb(229,229,229),
+  
+  'button-background-primary':        rgb(221,32,32),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+);
+
+$theme-famicom: (
+  'app-text-color':                   rgb(0,0,0),
+  'app-background-color':             rgb(209 179 121),
+  
+  'card-header-background':           rgb(148,10,36),
+  'card-header-color':                rgb(255,255,255),
+  
+  'card-body-background':             rgb(255,255,255),
+  'card-accent-color':                rgb(132,109,33),
+  
+  'card-footer-background':           rgb(119,119,119),
+  
+  'button-background-primary':        rgb(148,10,36),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+);
+
+$theme-gameboy: (
+  'app-text-color':                   #414141,
+  'app-background-color':             #c4cfa1,
+  
+  'card-header-background':           #6b7353,
+  'card-header-color':                #414141,
+  
+  'card-body-background':             #8b956d,
+  'card-accent-color':                #414141,
+  
+  'card-footer-background':           #6b7353,
+  
+  'button-background-primary':        #c4cfa1,
+  'button-background-secondary':    blue,
+  'button-color-primary':             #414141,
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+);
+
+$theme-gameboy-dark: (
+  'app-text-color':                   rgb(0,0,0),
+  'app-background-color':             rgb(209 179 121),
+  
+  'card-header-background':           rgb(148,10,36),
+  'card-header-color':                rgb(255,255,255),
+  
+  'card-body-background':             rgb(255,255,255),
+  'card-accent-color':                rgb(132,109,33),
+  
+  'card-footer-background':           rgb(119,119,119),
+  
+  'button-background-primary':        rgb(148,10,36),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
 );
 
 $theme-goots: (
@@ -151,6 +210,25 @@ $theme-goots: (
   'button-background-primary':        rgba(225, 225, 225, 1),
   'button-background-secondary':    blue,
   'button-color-primary':             rgba(250, 139, 46, 1),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+
+);
+
+$theme-twisp: (
+  'app-text-color':                 rgb(199,157,215),
+  'app-background-color':           rgb(103,56,136),
+  
+  'card-header-background':         rgb(239,79,145),
+  'card-header-color':              rgb(255,255,255),
+  
+  'card-body-background':           rgb(54,59,116),
+  'card-accent-color':              rgb(77,27,123),
+  
+  'card-footer-background':         rgb(77,27,123),
+
+  'button-background-primary':        rgb(239,79,145),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
   'button-color-secondary':         rgba(225, 225, 225, 1),
 
 );
@@ -179,17 +257,29 @@ html {
   &.theme-snes {
     @include color-theme($theme-snes);
   }
-  &.theme-lol {
-    @include color-theme($theme-lol);
-  }
   &.theme-dark {
     @include color-theme($theme-dark);
   }
   &.theme-snes-dark {
     @include color-theme($theme-snes-dark);
   }
+  &.theme-nes {
+    @include color-theme($theme-nes);
+  }
+  &.theme-famicom {
+    @include color-theme($theme-famicom);
+  }
+  &.theme-gameboy {
+    @include color-theme($theme-gameboy);
+  }
+  &.theme-gameboy-dark {
+    @include color-theme($theme-gameboy-dark);
+  }
   &.theme-goots {
     @include color-theme($theme-goots);
+  }
+  &.theme-twisp {
+    @include color-theme($theme-twisp);
   }
   &.theme-arc {
     @include color-theme($theme-arc);

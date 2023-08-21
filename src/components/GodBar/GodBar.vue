@@ -18,10 +18,8 @@
 
   <div class="toolbar toolbar_GodBar">
     <StorageSwitcher />
-
-    <ThemeSwitcher />
-
     <DevSwitcher />
+    <ThemeSwitcher />
   </div>
 
 </template>
@@ -58,7 +56,7 @@
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: $input-size;
   }
 
   /* Hide default HTML checkbox */
