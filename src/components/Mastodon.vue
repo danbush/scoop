@@ -80,11 +80,17 @@
   }
   
   .mastodon {
+
+    @include mq('medium') {
+      
+    }
+
     img.article-image {
       margin-top: calc( $card-padding-internal * $phi );
       border-radius: $card-border-radius;
       max-height: 20rem;
     }
+
   }
 
 </style>

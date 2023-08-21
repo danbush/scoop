@@ -48,7 +48,7 @@
       display: none;
     }
 
-    @include mq('large') {
+    @include mq('medium') {
 
       display: grid;
       height: 100%;
@@ -67,6 +67,7 @@
   .module-tile {
     &.has-content {
       > a {
+        min-height: 16rem;
         justify-content: end;
       }
   }
@@ -78,7 +79,7 @@
     max-width: 100%;
 //    width: 400rem;
 
-    @include mq('large') {
+    @include mq('medium') {
 
       min-height: 30rem;
       margin-right: $card-padding-internal;

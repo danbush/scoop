@@ -56,17 +56,25 @@
 
 <style scoped lang="scss">
 
-  .module-tile {
-    margin-bottom: $card-padding-internal;
-  }
+  .card_MayHaveMissed {
+    
+    .card-body > article {
+      height: initial;
+    }
 
-  .article-footer {
+    .module-tile {
+      margin-bottom: $card-padding-internal;
+    }
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    .article-footer {
 
-    margin-top: 1.4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      margin-top: 1.4rem;
+
+    }
 
   }
 
