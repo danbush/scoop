@@ -17,6 +17,8 @@
       snes_dark: 'theme-snes-dark',
       nes: 'theme-nes',
       famicom: 'theme-famicom',
+      gameboy: 'theme-gameboy',
+      gameboy_dark: 'theme-gameboy-dark',
       goots: 'theme-goots',
       arc: 'theme-arc',
     },
@@ -84,6 +86,18 @@
         @change="colorMode = 'theme-famicom'"
         >
         Famicom
+      </option>
+      <option
+        value="theme-gameboy"
+        @change="colorMode = 'theme-gameboy'"
+        >
+        GameBoy
+      </option>
+      <option
+        value="theme-gameboy-dark"
+        @change="colorMode = 'theme-gameboy-dark'"
+        >
+        GameBoy (Dark)
       </option>
       <option
         value="theme-goots"
