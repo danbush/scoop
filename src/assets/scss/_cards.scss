@@ -81,6 +81,11 @@
 
         margin-bottom: calc( $card-padding-internal * $phi );
       
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
         &:last-of-type {
           margin-bottom: 0;
         }
@@ -151,6 +156,7 @@
       justify-content: center;
 
       width: 100%;
+      height: 100%;
       padding: calc( $card-padding-internal * $phi ) $card-padding-internal;
 
     }
