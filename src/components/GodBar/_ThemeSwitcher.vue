@@ -80,6 +80,12 @@
         NES
       </option>
       <option
+        value="theme-famicom"
+        @change="colorMode = 'theme-famicom'"
+        >
+        Famicom
+      </option>
+      <option
         value="theme-goots"
         @change="colorMode = 'theme-goots'"
         >

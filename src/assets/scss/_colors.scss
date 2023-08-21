@@ -141,6 +141,25 @@ $theme-nes: (
   'button-color-secondary':         rgba(225, 225, 225, 1),
 );
 
+$theme-famicom: (
+  'app-text-color':                   rgb(0,0,0),
+  'app-background-color':             rgb(209 179 121),
+  
+  'card-header-background':           rgb(148,10,36),
+  'card-header-color':                rgb(255,255,255),
+  
+  'card-body-background':             rgb(255,255,255),
+  'card-accent-color':                rgb(132,109,33),
+  
+  'card-footer-background':           rgb(119,119,119),
+  
+  'button-background-primary':        rgb(148,10,36),
+  'button-background-secondary':    blue,
+  'button-color-primary':             rgb(255,255,255),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+);
+
+
 $theme-goots: (
   'app-text-color':                 rgba(0, 0, 0, 1),
   'app-background-color':           rgba(39, 110, 189, 1),
@@ -192,6 +211,9 @@ html {
   }
   &.theme-nes {
     @include color-theme($theme-nes);
+  }
+  &.theme-famicom {
+    @include color-theme($theme-famicom);
   }
   &.theme-goots {
     @include color-theme($theme-goots);
