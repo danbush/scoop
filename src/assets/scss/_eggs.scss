@@ -73,6 +73,13 @@ section.module-row {
 .theme-nes,
 .theme-famicom {
 
+  h2.card-title {
+    font-family: 'PixelEmulator';
+    font-size: 1.8rem;
+    font-weight: initial;
+    line-height: 1.3;
+  }
+
   .card,
   .module-tile,
   .button {
