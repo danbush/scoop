@@ -123,3 +123,37 @@ section.module-row {
     );
   }
 }
+
+.theme-nes .module-tile:hover, .theme-famicom .module-tile:hover {
+  animation-name: powerup;
+  animation-duration: 0.35s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes powerup {
+  0% {
+    transform: scale(1);
+  }
+  14.3% {
+    transform: scale(1.03);
+  }
+  28.6% {
+    transform: scale(1);
+  }
+  43% {
+    transform: scale(1.03);
+  }
+  57.3% {
+    transform: scale(1.05);
+  }
+  71.6% {
+    transform: scale(1.03);
+  }
+  86% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
