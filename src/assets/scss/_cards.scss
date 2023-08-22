@@ -9,8 +9,6 @@
   border-radius: $card_border-radius;
   overflow: hidden;
 
-  background-color: var(--card-body-background);
-
   .card-header {
 
     padding: .7rem 1.4rem;
@@ -46,6 +44,8 @@
     min-height: initial;
     height: auto;
     padding: $card_padding-internal;
+
+    background-color: var(--card-body-background);
 
   }
 
