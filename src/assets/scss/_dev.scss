@@ -1,3 +1,29 @@
+/* Misc. dev classes */
+.dev-disable {
+
+  position: relative;
+  opacity: .5;
+
+  &::before {
+
+    content: '';
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    backdrop-filter: blur(.12rem);
+
+  }
+
+}
+
 /*
   DevMode Styles
   These will be a little flexible at first, notably until we get theming working.
@@ -16,7 +42,7 @@
   }
 
   > *:last-child {
-    padding-right: 0;;
+    padding-right: 0;
   }
 
 }
