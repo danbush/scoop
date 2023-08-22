@@ -4,60 +4,113 @@
   todo: fill out this section
   ***************************/
 
-  import CardFooter from './CardFooter.vue'
-
-  defineProps<{
-    headline: string,
-    body: string
-  }>()
+  import { chocolateSauce } from './helpers/chocolate_sauce'
+  import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
+  import { ref, onMounted } from 'vue';
+  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
-  import urlMetadata from 'url-metadata'
-  var article_1: any = {}
-  var article_1_body: string = ""
-  var article_1_logo: string = ""
-  var article_1_url: string = ""
-  urlMetadata('http://localhost:8181/https://www.theverge.com/2023/7/17/23798368/neopets-relaunch-website-flash-games', {
-    requestHeaders: {
+  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 24)]; //eventually get this thing to pick
+  
+  // Define a reactive object to store the article data
+  var articleArray = ref<any>({})
+  // Use async/await to handle asynchronous behavior
+  async function fetchArticleData() {
+    try {
+      const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
+      articleArray.value = result;
+      console.log(articleArray.value);
+    } catch (err) {
+      console.log(err);
     }
-  }).then((metadata: any) => {
-    article_1 = metadata
-    console.log(article_1)
-    article_1_body = article_1.jsonld.articleBody.substring(0,1000) + "..."
-    article_1_logo = article_1.jsonld.publisher.logo.url
-    article_1_url = article_1.canonical
-    // do stuff with the metadata
-  }).catch((err) => {
-    console.log(err)
-  })
+  }
+  // Fetch the article data when the component is mounted
+  onMounted(() => {
+    fetchArticleData();
+  }); 
 </script>
 
 <template>
-  <article class="card card-single card_top-story">
-    <header class="card-header">
-      <h2 class="card-title">Top Story</h2><span class="devtip"> // .card-single .card_top-story</span>
-    </header>
-    <div class="card-content">
-      <article class="top-story">
-        <header class="article-header">
-          <img :src="article_1['og:image']" alt="ham">
-          <div class="article-meta">
-            <span class="item-source">
-              <!-- todo: allow for image or text fallback -->
-              <img class="article-logo" :src="article_1_logo" alt="llamas">
-            </span>
-            date, author, readtime, etc.
-          </div>
-        </header>
-        <h3 class="item-title">{{ article_1['og:title'] }}</h3>
-        <div class="item-body">{{ article_1_body }}</div>
-       </article>
-    </div>
 
-    <CardFooter />
+  <article class="card_TopStory" v-if="articleArray.article_title">
+    <a
+      :href="articleArray.article_url"
+      :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
+      target="_blank"
+      class="module-tile image-only"
+      >
+    </a>
 
+    <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
+      <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+      <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+    </a>
+    <h3 class="article-title">{{ articleArray.article_title }}</h3>
+    <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
   </article>
+
+  <!--  todo: fix link upstream
+    <CardFooter :article_url="articleArray.article_url"/>
+  -->
+
 </template>
 
 <style scoped lang="scss">
+
+  .module-tile {
+
+    display: block;
+    height: 12rem;
+    margin: 0 calc($card_padding-internal * $phi ) 3rem 0;
+
+    @include mq('small') {
+      width: 100%;
+      max-height: 14rem;
+      margin-bottom: $card_padding-internal;
+    }
+
+    @include mq('medium') {
+      width: 25vi;
+      height: 25vi;
+      float: left;
+    }
+  }
+
+  .article-source {
+    display: flex;
+    margin-bottom: $card-padding-internal;
+    align-items: center;
+  }
+
+  .article-publisher {
+    color: var(--app-text-color);
+  }
+
+  a.scoop-source-url {
+    color: initial;
+    text-decoration: none;
+  }
+      
+  .article-logo {
+
+    max-width: initial;
+    max-height: initial;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 0;
+    padding: .25rem;
+
+    vertical-align: middle;
+
+    background-color: var(--app-text-color);
+
+    border-radius: 100%;
+
+    filter: initial;
+
+  }
+
+  .article-body {
+    margin-top: 0;
+  }
 
 </style>

@@ -1,32 +1,52 @@
 .card {
 
-  flex: 1 0 25%;
-  min-height: $card_min-height;
+  display: flex;
+  flex-direction: column;
 
-  background-color: $card_background-color;
+  width: 100%;
+  height: 100%;
+
   border-radius: $card_border-radius;
   overflow: hidden;
 
-  // cards that include only one item
-  &.card-single {
-
-  }
-
-  // cards that include grouped content (lists or otherwise)
-  &.card-group {
-
-  }
-
   .card-header {
+
     padding: .7rem 1.4rem;
-    position: relative;
-    background-color: $accent-priority-one;
+
+    color: var(--card-header-color);
     text-align: center;
+
+    background-color: var(--card-header-background);
+
+    .card-description {
+      display: none;
+    }
+
   }
 
   .article-header {
-    position: relative;
     margin-bottom: 1.6rem;
+  }
+  
+  a {
+    color: var(--button-color-secondary);
+    text-decoration: none;
+  }
+
+  a.scoop-source-url:visited {
+    color: initial;
+  }
+
+  .card-body {
+
+    display: block;
+    flex-grow: 1;
+    min-height: initial;
+    height: auto;
+    padding: $card_padding-internal;
+
+    background-color: var(--card-body-background);
+
   }
 
   .article-meta {
@@ -37,7 +57,6 @@
     left: 0;
     bottom: 0;
 
-    // todo: use vars/mixin
     background: rgba($color: #ffffff, $alpha: 0.8);
     border-top-right-radius: $card_border-radius;
 
@@ -47,46 +66,32 @@
 
     padding: $card_padding-internal;
 
-    * {
+    & > * {
       max-width: 100%;  //tmp
+      width: auto;
     }
 
   }
 
-  // unique cards - tmp
-  &.card_top-story {
+  &.card-group {
 
-    flex: 1 0 60%;
-    width: 100%;
+    .card-body {
 
-    background-color: $background-lighter;
-    border-radius: 8px;
-    position: relative;
+      article {
 
-    article.top-story {
-      position: relative;
-    }
+        margin-bottom: calc( $card-padding-internal * $phi );
+      
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
 
-    .item-source {
-
-      display: block;
-
-      img {
-        // sloppy, I know
-        height: 1.6rem;
-        width: auto;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      
       }
-
-    }
-
-  }
-
-  &.card_video {
-
-    flex: 1 0 35%;
-
-    iframe {
-      width: 100%;  // temporary
+  
     }
 
   }
@@ -94,7 +99,7 @@
 }
 
 .card-title {
-  
+
   display: inline-block;
 
   font-weight: bold;
@@ -103,41 +108,164 @@
 
 }
 
-.card-footer {
+.module-tile {
 
-  margin-top: 2.4rem;
-  padding: $card_padding-internal;
-  background-color: #e2e2e2;
+  width: 100%;
+  margin-bottom: $card_padding-internal;  
+  border-radius: $card-border-radius;
 
-}
+  background-size: cover; // this is probably temporary
+  background-position: center;
+  background-repeat: no-repeat;
 
+//  color: $white;
 
-.card-list {
+  overflow: hidden;
 
-  li {
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
-    margin-top: .8rem;
-    padding: $card_padding-internal;
+  @include transition;
 
-    border-radius: $card_border-radius;
-    background: #e2e2e2;
+  &:hover {
+    transform: scale(1.03) rotate(0.5deg);
+    filter: brightness(1.08);
+    box-shadow: 0px 0px 15px 0px var(--shadow-color-primary);
+  }
 
-    &:first-of-type {
-      margin-top: 0;
+  &:active {
+    filter: brightness(1.25);
+    transform: scale(0.98) rotate(0.5deg);
+    transition: all .2s ease-in-out;
+  }
+
+  // no internal content
+  &.image-only {
+    font-size: 0;
+  }
+
+  // contains text, add background overlay for contrast
+  &.has-content {
+
+    > a {
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+      padding: calc( $card-padding-internal * $phi ) $card-padding-internal;
+
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+  }
+
+  // has low-res background image, add blur effect
+  &.has-blur {
+
+    position: relative;
+
+    > a {
+      position: relative;
+      z-index: 10;
+    }
+
+    &::after {
+
+      content: '';
+
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+
+      backdrop-filter: blur(10px);
+
+      border-radius: $card-border-radius; // little hacky, but works for now.
+
     }
 
   }
 
 }
 
+.module-tile {
 
-.card-actions {
+  .article-title {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+
+    text-align: center;
+    text-shadow: 0 0 12px $shadow-color, 0 0 2px $shadow-color;
+
+  }
+
+}
+
+.article-title {
 
   display: flex;
-  justify-content: flex-end;
+  width: auto;
+  margin-top: 0.4rem;
+  margin-right: 1rem;
 
-  .button {
-    margin-left: .8rem;
-  }
+  text-decoration: none;
+
+}
+
+.article-logo {
+
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+  max-height: 30px;
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0.8rem;
+
+  filter: drop-shadow(0 0 12px $shadow-color) drop-shadow(0 0 2px $shadow-color);
+  background-color: var(--white);
+
+}
+
+.article-publisher {
+
+    margin: 0 0 0 0.5rem;
+    vertical-align: middle;
+    display: inline-block;
+    
+    font-size: 0.9rem;
+    line-height: 2.1;
+
+}
+
+.article-image-wrapper {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem $card-padding-internal;
+
+  background-size: cover; // this is probably temporary
+  background-position: center;
+  background-repeat: no-repeat;
+
+
 
 }

@@ -6,7 +6,7 @@
     - pass in props from parent (until then, URLS are dummies)
   ***************************/
   defineProps<{
-    url: string
+    article_url: string
   }>()
 </script>
 
@@ -14,7 +14,7 @@
   <footer class="card-footer">
     <div class="card-actions">
       <div class="button-group">
-        <a href="#"><button class="button" type="button">
+        <!-- <a href="#"><button class="button" type="button">
           [share]
         </button></a>
         <a href="#"><button class="button" type="button">
@@ -28,8 +28,8 @@
         </button></a>
         <a href="#"><button class="button" type="button">
           [hide]
-        </button></a>
-        <a href="#"><button class="button action_intent-primary" type="button">
+        </button></a> -->
+        <a :href="article_url" target="_blank"><button class="button action_intent-primary" type="button">
           Read More
         </button></a>
       </div>
@@ -38,7 +38,23 @@
 </template>
 
 <style scoped lang="scss">
+  .card-footer {
 
+    width: 100%;
+    margin-top: auto;
+    padding: $card_padding-internal;
 
+    background-color: var(--card-footer-background);
 
+  }
+  .card-actions {
+  
+    display: flex;
+    justify-content: flex-end;
+  
+    .button {
+      margin-left: .8rem;
+    }
+  
+  }
 </style>
