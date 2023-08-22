@@ -31,7 +31,7 @@
 
 <template>
 
-  <article class="card_top-story" v-if="articleArray.article_title">
+  <article class="card_TopStory" v-if="articleArray.article_title">
     <a
       :href="articleArray.article_url"
       :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
@@ -55,7 +55,7 @@
 </template>
 
 <style scoped lang="scss">
-  
+
   .module-tile {
 
     display: block;

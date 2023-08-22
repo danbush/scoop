@@ -33,6 +33,7 @@
   <section class="module-row">
 
     <CardSingle
+      class="card_TopStory"
       card_title="Top Story"
       card_description="A single card. Only has one bit of content (article) inside, and adds a card footer."
       >
@@ -40,6 +41,7 @@
     </CardSingle>
 
     <CardGroup
+      class="card_headlines"
       card_title="Just the Headlines"
       card_description="A card group. Contains multiple bits of content (articles) inside, NO footer."
       >
@@ -47,6 +49,7 @@
     </CardGroup>
 
     <CardGroup
+      class="card_headlines"
       card_title="Just the Headlines"
       card_description=""
       >
@@ -54,6 +57,7 @@
     </CardGroup>
 
     <CardGroup
+      class="card_MayHaveMissed"
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
@@ -62,6 +66,7 @@
     </CardGroup>
 
     <CardSingleSocial
+      class="card_social mastadon"
       card_title="From Mastodon"
       card_description="Still a test, I guess?"
       >
@@ -69,6 +74,7 @@
     </CardSingleSocial>
 
     <CardSingleSource
+      class="card_SingleSource"
       card_title="Dig In"
       card_description=""
       >
@@ -76,13 +82,15 @@
     </CardSingleSource>
 
     <CardSingle
-    card_title="New Video"
+      class="card_video"
+      card_title="New Video"
       card_description=""
       >
       <SingleVideo />
     </CardSingle>
 
     <CardSingle
+      class="card_video"
       card_title="New Video"
       card_description=""
       >
@@ -90,6 +98,7 @@
     </CardSingle>
 
     <CardSingleSource
+      class="card_SingleSource"
       card_title="Dig In"
       card_description=""
       >
@@ -97,6 +106,7 @@
     </CardSingleSource>
 
     <CardSingleSource
+      class="card_SingleSource"
       card_title="Dig In"
       card_description=""
       >
@@ -104,6 +114,7 @@
     </CardSingleSource>
 
     <CardGroup
+      class="card_headlines"
       card_title="Just the Headlines"
       card_description=""
       >
@@ -111,6 +122,7 @@
     </CardGroup>
 
     <CardGroup
+      class="card_MayHaveMissed"
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
@@ -119,6 +131,7 @@
     </CardGroup>
     
     <CardGroup
+      class="card_headlines"
       card_title="Just the Headlines"
       card_description=""
       >
@@ -126,6 +139,7 @@
     </CardGroup>
 
     <CardSingleSource
+      class="card_SingleSource"
       card_title="Dig In"
       card_description=""
       >
@@ -133,6 +147,7 @@
     </CardSingleSource>
     
     <CardSingleSource
+      class="card_headlines"
       card_title="Dig In"
       card_description=""
       >
@@ -145,41 +160,38 @@
 <style lang="scss">
   section.module-row {
 
-    display: grid;
-    /*
-    grid-template-columns: repeat(24, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    */
-
-    grid-column-gap: $card-padding-internal;
-    grid-row-gap: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    gap: $card-padding-internal;
 
     margin: 1rem;
 
-    /*  Note
-        Yes, I know how silly this is.
-        No, I'm not fixing it now.
-        */
+    > article {
+      height: auto;
+    }
+
     @include mq('large') {
 
-      grid-template-columns: repeat(24, 1fr);
+      flex-flow: row wrap;
 
-      > article:nth-child(1) { grid-area: 1 / 1 / 2 / 17; }
-      > article:nth-child(2) { grid-area: 1 / 17 / 2 / 25; }
-      > article:nth-child(3) { grid-area: 2 / 1 / 3 / 8; }
-      > article:nth-child(4) { grid-area: 2 / 8 / 3 / 18; }
-      > article:nth-child(5) { grid-area: 2 / 18 / 3 / 25; }
-      > article:nth-child(6) { grid-area: 3 / 1 / 4 / 25; }
-      > article:nth-child(7) { grid-area: 4 / 1 / 5 / 13; }
-      > article:nth-child(8) { grid-area: 4 / 13 / 5 / 25; }
-      > article:nth-child(9) { grid-area: 5 / 1 / 6 / 25; }
-      > article:nth-child(10) { grid-area: 5 / 1 / 6 / 25; }
-      > article:nth-child(11) { grid-area: 6 / 1 / 7 / 8; }
-      > article:nth-child(12) { grid-area: 6 / 8 / 7 / 18; }
-      > article:nth-child(13) { grid-area: 6 / 18 / 7 / 25; }
-      > article:nth-child(14) { grid-area: 7 / 1 / 8 / 25; }
-      > article:nth-child(15) { grid-area: 8 / 1 / 9 / 25; }
+      > article {
+        flex: 1 20%;
+        min-width: 20%;
+      }
+
+      .card_TopStory {
+        flex: 1 60%;
+      }
+
+      .card_SingleSource {
+        flex: 1 100%;
+      }
+
+      .card_MayHaveMissed {
+        flex: 2 40%;
+      }
 
     }
+    
   }
 </style>

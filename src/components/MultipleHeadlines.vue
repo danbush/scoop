@@ -61,8 +61,9 @@
 </template>
 
 <style scoped lang="scss">
+  .card_headlines {
 
-    article {
+    .card-body > article {
       
       display: flex;
       flex-direction: column;
@@ -70,41 +71,44 @@
       @include mq('medium') {
         flex-direction: row;
         flex-wrap: wrap;
-        column-gap: 1rem;
+        gap: 1rem;
+      }
+
+      @include mq('large') {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        column-gap: 0;
+      }
+
+    }
+
+    .module-tile {
+
+      @include mq('medium') {
+
+        flex: 1 calc(50% - $card-padding-internal);
+        margin-bottom: 0!important;
+
+        height: auto!important;
+
       }
 
       @include mq('large') {
 
-        flex-direction: column;
-        flex-wrap: nowrap;
-        column-gap: 0;
+        width: 100%;
 
-      }
-
-      .module-tile {
-
-        @include mq('medium') {
-
-          width: calc( 50% - ( $card-padding-internal / 2 ) );
-
-          &:nth-last-child(-n+2) {
-            margin-bottom: 0;
-          }
-
+        &:nth-last-child(2) {
+          margin-bottom: $card-padding-internal;
         }
 
-        @include mq('large') {
-
-          width: 100%;
-
-          &:nth-last-child(2) {
-            margin-bottom: $card-padding-internal;
-          }
-
+        &:nth-last-child(-n+2) {
+          margin-bottom: 0;
         }
 
       }
 
     }
+
+  }
   
 </style>
