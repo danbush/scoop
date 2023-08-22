@@ -135,6 +135,10 @@
     display: none;
   }
 
+  .toggle {
+    padding-left: 0!important;
+  }
+
   select {
 
     // display: inline-block;

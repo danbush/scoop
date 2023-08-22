@@ -4,6 +4,8 @@
   position: relative;
   opacity: .5;
 
+  pointer-events: none;
+
   &::before {
 
     content: '';
