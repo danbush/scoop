@@ -75,6 +75,12 @@
     display: flex;
     flex-direction: column;
 
+    @include mq('large') {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $card-padding-internal;
+    }
+
     .settings-panel-section {
 
       margin-bottom: 2rem;
@@ -85,6 +91,11 @@
       &:last-of-type {
         margin-bottom: 0;
         border-bottom: 0;
+      }
+
+      @include mq('large') {
+        min-width: 40%;
+        flex-grow: 1;
       }
 
       .section-title {

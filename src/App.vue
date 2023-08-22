@@ -204,7 +204,7 @@
     max-width: 100%;
     width: 100%;
     height: auto;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 2rem 0 2rem;
 
     position: relative;
     z-index: 200;
@@ -266,7 +266,6 @@
   /* SETTINGS PANEL - RELOCATE ME */
   .input-toggle.toggle_SettingsPanel {
 
-    margin-right: 1rem;
 
     label {
       display: none;
