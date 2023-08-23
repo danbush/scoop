@@ -20,11 +20,11 @@
 
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   
-  var row1: number = getRandomNumbersInRange(1,0,24)
-  var row2: number = getRandomNumbersInRange(1,0,24)
-  var row3: number = getRandomNumbersInRange(1,0,24)
-  var row4: number = getRandomNumbersInRange(1,0,24)
-  var row5: number = getRandomNumbersInRange(1,0,24)
+  var row1: number = getRandomNumbersInRange(1,0,25)
+  var row2: number = getRandomNumbersInRange(1,0,25)
+  var row3: number = getRandomNumbersInRange(1,0,25)
+  var row4: number = getRandomNumbersInRange(1,0,25)
+  var row5: number = getRandomNumbersInRange(1,0,25)
   
 </script>
 
