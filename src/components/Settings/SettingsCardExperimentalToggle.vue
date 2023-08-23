@@ -56,7 +56,20 @@
     margin-top: auto;
     padding: $card_padding-internal;
 
-    background-color: $status-warn;
+    color: var(--card-header-color);
+
+    background-color: var(--card-footer-background);
+    background-image: linear-gradient(
+      135deg,
+      var(--card-footer-background) 25%,
+      rgba(0,0,0,.1) 25%,
+      rgba(0,0,0,.1) 50%,
+      var(--card-footer-background) 50%,
+      var(--card-footer-background) 75%,
+      rgba(0,0,0,.1) 75%,
+      rgba(0,0,0,.1) 100%,
+    );
+    background-size: 56.57px 56.57px;
 
     .toggle {
 

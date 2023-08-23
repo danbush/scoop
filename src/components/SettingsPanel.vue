@@ -146,6 +146,7 @@
     }
 
     > .card {
+      height: auto;
       // max-width: initial;
       // min-width: 20%;
       // flex-grow: 1;
