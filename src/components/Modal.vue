@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
   import SettingsPanel from './SettingsPanel.vue'
+  import Toggle from './inputs/toggle.vue'
+
 
 </script>
 
@@ -12,7 +14,10 @@
 
   <div class="modal-container">
 
-    <article class="modal">
+    <!--  TODO:
+          pass in what type is open (ex: settings, peek view, etc.)
+    -->
+    <article class="modal">   
 
       <header class="modal-header">
         <slot name="header">
@@ -50,7 +55,7 @@
     width: calc( 100% - ($card-padding-internal * 2) );
     max-height: calc(100vh - calc($header-height + $card-padding-internal));
     height: auto;
-    padding: $card-padding-internal;
+    // padding: $card-padding-internal;
 
     position: absolute;
     top: $header_height;      // DO THIS BETTER
@@ -60,11 +65,10 @@
     overflow-x: auto;
     overflow-y: scroll;
 
-    color: var(--app-text-color);
-    background-color: var(--card-body-background);
+    // color: var(--app-text-color);
+    // background-color: var(--card-body-background);
 
-    border-radius: $card-border-radius;
-
+    // border-radius: $card-border-radius;
 
   }
 
@@ -80,12 +84,40 @@
     left: 0;
     right: 0;
 
-    background-color: rgba(0, 0, 0, 0.3);
+    // background-color: var(--app-background-color);
+    background-color: color-mix(in srgb, var(--app-background-color) 65%, transparent);
     backdrop-filter: blur(10px);
 
   }
 
   .modal-header {
+
+    display: flex;
+    flex-direction: column;
+
+    // TMP: make this conditional based on what type is open
+    display: none;
+
+    @include mq('large') {
+      flex-direction: row;
+    }
+
+    .modal-title {
+      @include mq('large') {
+        flex-grow: 2;
+      }
+    }
+
+    .toggle {
+
+      text-align: right;
+
+      @include mq('large') {
+        flex-shrink: 1;
+      }
+
+    }
+
   }
 
   .modal-footer {

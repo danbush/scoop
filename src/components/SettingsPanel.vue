@@ -1,6 +1,12 @@
 <script setup lang="ts">
 
   import ThemeSwitcher from './GodBar/_ThemeSwitcher.vue'
+  import Toggle from './inputs/toggle.vue'
+  import Range from './inputs/range.vue'
+
+  import SettingsCard from './Settings/SettingsCard.vue'
+  import SettingsCardExperimentalToggle from './Settings/SettingsCardExperimentalToggle.vue'
+  import SettingsOptions from './Settings/SettingsOptions.vue'
 
 </script>
 
@@ -8,61 +14,119 @@
 
   <article class="app-settings">
 
-    <section id="settings-SLUG2"  class="settings-panel-section">
-      <h4 class="section-title">Appearance &amp; Themes</h4>
-      <div class="section-description">
-        
-      </div>
-      <div class="section-panel-options">
-        <article class="settings-panel-group">
-          <h4 class="group-title">Theme</h4>
-          <ThemeSwitcher />
-        </article>   
-        <article class="settings-panel-group dev-disable">
-          <h4 class="group-title">Readability Settings</h4>
-          things like font size, contrast, etc
-        </article>
-      </div>
-    </section>
+    <SettingsCardExperimentalToggle
+      card_slug="settings_experimental"
+      card_title="Experimental Settings"
+      card_description="Enable experimental settings that are not ready for feedback. These settings may be functionally broken or not even started, but exist purely as a placeholder."
+      >
+    </SettingsCardExperimentalToggle>
 
-    <section id="settings-SLUG3"  class="settings-panel-section dev-disable">
-      <h4 class="section-title">Content &amp; Feeds</h4>
-      <div class="section-panel-options">
+    <SettingsCard
+      card_slug="settings_appearance"
+      card_title="Appearance &amp; Themes"
+      card_description="parent description"
+      >
+
+      <SettingsOptions
+        options_title="Theme"
+        options_description="child description"
+        options_experimental=false
+      >
+        <ThemeSwitcher />
+      </SettingsOptions>
+  
+      <SettingsOptions
+        options_title="Readability"
+        options_description="child description"
+        options_experimental=true
+      >
+        <Range
+          range_name="Text Size"
+          range_slug="rangeFontSize"
+          range_min=1
+          range_max="11"
+          class="dev-disable"
+        />
+      </SettingsOptions>
+
+    </SettingsCard>
+
+    <SettingsCard
+      card_slug="settings_content"
+      card_title="Content &amp; Feeds"
+      card_description="A list of feeds. One Feed to Rule Them All for now, with the idea of customizing down the road."
+      >
+
+      <SettingsOptions
+        options_title="#showthelist"
+        options_description=""
+        options_experimental=true
+      >
         #showthelist
+      </SettingsOptions>
 
-        <div class="toggle toggle_{{inputClass}}">
-        <p class="toggle-label">Show/Hide Paywalled Content</p>
-        <label class="switch">
-          <input type="checkbox" v-on:click="toggleLocalStorage" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="toggle toggle_{{inputClass}}">
-        <p class="toggle-label">Show/Hide Spoilers</p>
-        <label class="switch">
-          <input type="checkbox" v-on:click="toggleLocalStorage" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="toggle toggle_{{inputClass}}">
-        <p class="toggle-label">Show/Hide Politics</p>
-        <label class="switch">
-          <input type="checkbox" v-on:click="toggleLocalStorage" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      </div>
-    </section>
+      <SettingsOptions
+        options_title="Paywalled Content"
+        options_description="Show or hide content that rests behind a paywall."
+        options_experimental=true
+      >
+        <Toggle />
+      </SettingsOptions>
+  
+      <SettingsOptions
+        options_title="Spoilers!"
+        options_description="Show or hide content that may contain spoilers."
+        options_experimental=true
+      >
+        <Toggle />
+      </SettingsOptions>
 
-    <section id="settings-SLUG1" class="settings-panel-section dev-disable">
-      <h4 class="section-title">Account</h4>
-      <div class="section-description">
-        Future home of general account info
-      </div>
-      <div class="section-panel-options">
-        some components here!
-      </div>
-    </section>
+      <SettingsOptions
+        options_title="SvenMode"
+        options_description="Show or hide content that may contain politics."
+        options_experimental=true
+      >
+        <Toggle />
+      </SettingsOptions>      
+
+    </SettingsCard>
+
+    <SettingsCard
+      card_slug="settings_account"
+      card_title="My Account"
+      card_description="Future home of general account info"
+      >
+      components here
+    </SettingsCard>
+    
+    <SettingsCard
+      card_slug="settings_about"
+      card_title="About"
+      card_description=""
+      >
+      
+      <SettingsOptions
+        options_title="About {{ APPTITLE }}"
+        options_description=""
+        options_experimental=false
+      >
+        <p><strong>frontpage.today</strong> is a first look at a new dynamic, fun news reader experience that prioritizes personal content discovery over 'inbox zero'.</p>
+          <p>This page is open source powered by a system called <strong>scoopy</strong>, and eventually anyone will be able to self-host their own instance with their own news sources.</p>
+      </SettingsOptions>
+
+      <SettingsOptions
+        options_title="Colophon"
+        options_description=""
+        options_experimental=false
+      >
+        <ul class="colophon">
+          <li>
+            Various icons from <a href="https://iconscout.com" target="_blank">IconScout</a>
+          </li>
+        </ul>
+      </SettingsOptions>
+
+    </SettingsCard>
 
   </article>
 
@@ -74,13 +138,52 @@
 
     display: flex;
     flex-direction: column;
+    gap: $card-padding-internal;
+
+    @include mq('large') {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    > .card {
+      // max-width: initial;
+      // min-width: 20%;
+      // flex-grow: 1;
+      // flex-shrink: 1;
+    }
+
+    @include mq('large') {
+      
+      #settings_experimental {
+        flex: 1 20%;
+        // max-width: calc( 50% - ($card-padding-internal / 2) );
+//        max-width: 30%;
+        // flex-shrink: 1;
+      }
+
+      #settings_appearance {
+        flex: 1 60%;
+        // max-width: 50%;
+        // flex-grow: 2;
+      }
+
+
+    }
+
+
+  }
+
+  .app-settings-OLD {
+
+    display: flex;
+    flex-direction: column;
 
     @include mq('large') {
       flex-direction: row;
       flex-wrap: wrap;
       gap: $card-padding-internal;
     }
-
+    
     .settings-panel-section {
 
       margin-bottom: 2rem;
@@ -108,90 +211,53 @@
     .settings-panel-group {
 
       margin-bottom: 2rem;
-    
+
       &:last-of-type {
         margin-bottom: 0;
       }
 
     }
 
+    .section-panel-options {
+
+      display: flex;
+      flex-direction: column;
+
+      @include mq('large') {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > .settings-panel-group {
+          flex-grow: 1;
+        }
+
+      }
+
+    }
+
+    #settings-about {
+      width: 100%;
+/*
+      display: flex;
+      flex-direction: column;
+    
+      @include mq('large') {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .section-title {
+          width: 100%;
+        }
+
+
+
+      }
+
+*/
+
+    }
   }
-
-
-/* move this */
-.toggle {
-  
-  padding: 0 1.2rem;
-
-  .toggle-label {
-    font-size: .8rem;
-    font-weight: 300;
-  }
-
-}
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: $input-size;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
 
 </style>

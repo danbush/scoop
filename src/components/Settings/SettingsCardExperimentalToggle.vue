@@ -1,0 +1,84 @@
+<script setup lang="ts">
+  
+  import Toggle from '../inputs/toggle.vue'
+
+  defineProps<{
+    card_slug: string
+    card_title: string
+    card_description: string
+  }>()
+
+</script>
+
+<template>
+
+  <article :id="card_slug" class="card card-settings">
+    
+    <header class="card-header">
+      <hgroup>
+        <h2 class="card-title">{{card_title}}</h2>
+      </hgroup>
+    </header>
+
+    <section class="card-body">
+      <p class="card-description">{{card_description}}</p>
+      <slot />
+    </section>
+
+    <footer class="card-footer">
+      <toggle
+        inputName="Experimental Settings"
+        inputClass="toggle_experimental"
+        inputFunction="function"
+      ></toggle>
+    </footer>
+
+  </article>
+
+</template>
+
+<style lang="scss">
+
+  .card-description {
+
+    display: block;
+    margin-bottom: 1.2rem;
+
+    &:empty {
+      display: none;
+    }
+
+  }
+
+  .card-footer {
+
+    width: 100%;
+    margin-top: auto;
+    padding: $card_padding-internal;
+
+    background-color: $status-warn;
+
+    .toggle {
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    
+      p {
+
+        margin-bottom: 0;
+
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 0.2rem;
+        line-height: 2.4;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+  }
+
+</style>

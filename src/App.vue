@@ -57,7 +57,7 @@
     </div>
   </header>
 
-  <section class="module-row">
+  <section class="app-body module-row">
 
     <CardSingle
       class="card_TopStory"
@@ -259,9 +259,6 @@
     }
     
   }
-
-
-
 
   /* SETTINGS PANEL - RELOCATE ME */
   .input-toggle.toggle_SettingsPanel {
