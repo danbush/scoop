@@ -24,7 +24,8 @@ export function hashtagBuildTheList(item: number) {
 		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
 		'https://www.inverse.com/rss',
 		'https://www.space.com/feeds/all',
-		'https://feeds.npr.org/1001/rss.xml'
+		'https://feeds.npr.org/1001/rss.xml',
+		'https://www.404media.co/rss/'
 	]
 	return theList[item]
 }
