@@ -21,7 +21,7 @@
     return Array.from(numbers);
   }
   
-  const articleSet: any[] = getRandomNumbersInRange(count, 0, 24); //eventually get this thing to pick
+  const articleSet: any[] = getRandomNumbersInRange(count, 0, 25); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
@@ -83,7 +83,18 @@
     }
 
     .module-tile {
-
+      a {
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: all .38s ease-in-out, background-position 10s ease-in-out, transform 5s ease-in;
+      }
+      
+      a:hover {
+        background-position: 0%;
+        transform: scale(1.06);
+      }
+      
       @include mq('medium') {
 
         flex: 1 calc(50% - $card-padding-internal);

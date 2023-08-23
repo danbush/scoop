@@ -33,7 +33,7 @@ $transitionSpeed:   0.38s;
 $transitionEffect:  ease-in-out;
 
 @mixin transition( $type: $transitionType, $speed: $transitionSpeed, $effect: $transitionEffect ) {
-    transition: $type $speed $effect;
+    transition: $type $speed $effect, background-position 10s ease-in-out;;
 }
 
 
