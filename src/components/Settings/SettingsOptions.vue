@@ -37,7 +37,6 @@
 
     @include mq('large') {
       
-
     }
 
   }

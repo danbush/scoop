@@ -60,10 +60,14 @@
     position: absolute;
     top: $header_height;      // DO THIS BETTER
     left: 1rem;
-    z-index: 50;
+    z-index: 5000;
 
     overflow-x: auto;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     // color: var(--app-text-color);
     // background-color: var(--card-body-background);

@@ -196,6 +196,7 @@
 
   #app {
     position: relative;
+    z-index: 10;
   }
 
   header.main-header {

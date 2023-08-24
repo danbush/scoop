@@ -37,7 +37,11 @@
 
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+
+  .card {
+    height: auto;
+  }
 
   .card-description {
 
@@ -62,12 +66,12 @@
     background-image: linear-gradient(
       135deg,
       var(--card-footer-background) 25%,
-      rgba(0,0,0,.1) 25%,
-      rgba(0,0,0,.1) 50%,
+      rgba(0,0,0,.05) 25%,
+      rgba(0,0,0,.05) 50%,
       var(--card-footer-background) 50%,
       var(--card-footer-background) 75%,
-      rgba(0,0,0,.1) 75%,
-      rgba(0,0,0,.1) 100%,
+      rgba(0,0,0,.05) 75%,
+      rgba(0,0,0,.05) 100%,
     );
     background-size: 56.57px 56.57px;
 

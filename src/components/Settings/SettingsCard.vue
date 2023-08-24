@@ -29,6 +29,40 @@
 
 <style lang="scss">
 
+  .card {
+
+  }
+
+  // d'oh! this is really dumb. really need to re-think structure here.
+  .card-settings .card-settings {
+
+    border-radius: 0!important;
+ 
+    .card-header {
+
+      padding: 0 0 0.8rem 0;
+
+      color: var(--app-text-color);
+      text-align: left;
+
+      border-bottom: .2rem solid var(--card-header-background);
+    
+      .card-title {
+        text-transform: capitalize;
+      }
+
+      background: none!important;
+    
+    }
+
+    .card-body {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+  }
+
   .card-description {
 
     display: block;
