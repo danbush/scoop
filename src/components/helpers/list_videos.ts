@@ -7,9 +7,7 @@ export function listVideos(item: number) {
 		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UCeeFfhMcJa1kjtfZAGskOCA',
 		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UC3KEoMzNz8eYnwBC34RaKCQ',
 		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UCYs3kVmLLfbaRL6Af2ELMHg',
-		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UCvlj0IzjSnNoduQF0l3VGng',
-		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UChIs72whgZI9w6d6FhwGGHA',
-		
+		'https://pipedapi.scoopy.zone/rss/playlists/PLAbMhAYRuCUhawCEV2oXZGrienoKTN16X',
 		
 		
 	]
