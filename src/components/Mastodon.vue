@@ -33,7 +33,6 @@
         const articleNumber = articleSet[index];
         articleArray.value[articleNumber] = result;
       });
-      console.log(articleArray.value); // The complete object with all articles
     } catch (err) {
       console.error(err);
     }

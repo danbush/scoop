@@ -9,7 +9,10 @@
   import { ref, onMounted } from 'vue';
   import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
-  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 24)]; //eventually get this thing to pick
+  // Define props for the component
+  const { articleNumber = 4 } = defineProps<{
+    articleNumber: number
+  }>(); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
@@ -18,7 +21,6 @@
     try {
       const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
       articleArray.value = result;
-      console.log(articleArray.value);
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +33,7 @@
 
 <template>
 
-  <article class="card_TopStory" v-if="articleArray.article_title">
+  <article class="card_top-story" v-if="articleArray.article_title">
     <a
       :href="articleArray.article_url"
       :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
@@ -55,7 +57,7 @@
 </template>
 
 <style scoped lang="scss">
-
+  
   .module-tile {
 
     display: block;

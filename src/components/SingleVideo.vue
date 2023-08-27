@@ -26,7 +26,6 @@
       for (const key in articleArray.value) {
         if (key === 'article_url') {
           articleArray.value[key] = await getPipedEmbed(articleArray.value[key])
-          console.log(articleArray.value[key])
         }
         if (key === 'article_publisher') {
           articleArray.value[key] = articleArray.value[key].replace('Piped - ', '')
@@ -36,7 +35,6 @@
         }
       }
       
-      console.log(articleArray.value);
     } catch (err) {
       console.log(err);
     }
