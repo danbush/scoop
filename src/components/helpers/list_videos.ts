@@ -1,4 +1,4 @@
-export function listVideos(item: number) {
+export function listVideos(item: number = 999) {
 	var theList: Array<string> = [
 		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UCBJycsmduvYEL83R_U4JriQ',
 		'https://pipedapi.scoopy.zone/feed/unauthenticated/rss?channels=UC9Kq-yEt1iYsbUzNOoIRK0g',
@@ -11,5 +11,13 @@ export function listVideos(item: number) {
 		
 		
 	]
-	return theList[item]
+	// this is jank as HELL.
+	if (item === 999) {
+		return theList;
+		} 
+		else {
+			if (item >= 0 && item < theList.length) {
+				return theList[item];
+			} 
+		}
 }

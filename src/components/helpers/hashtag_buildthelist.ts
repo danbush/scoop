@@ -1,4 +1,4 @@
-export function hashtagBuildTheList(item: number) {
+export function hashtagBuildTheList(item: number = 999) {
 	var theList: Array<string> = [
 		'https://feeds.arstechnica.com/arstechnica/index',
 		'https://techcrunch.com/feed/',
@@ -24,8 +24,15 @@ export function hashtagBuildTheList(item: number) {
 		'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
 		'https://www.inverse.com/rss',
 		'https://www.space.com/feeds/all',
-		'https://feeds.npr.org/1001/rss.xml',
-		'https://www.404media.co/rss/'
-	]
-	return theList[item]
+		'https://feeds.npr.org/1001/rss.xml'
+	];
+	// this is jank as HELL.
+	if (item === 999) {
+		return theList;
+	  } 
+	  else {
+			if (item >= 0 && item < theList.length) {
+		  	return theList[item];
+			} 
+	  }
 }
