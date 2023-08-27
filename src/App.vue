@@ -19,12 +19,15 @@
   import Mastodon from './components/Mastodon.vue'
 
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
+  import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
   
   var row1: number = getRandomNumbersInRange(1,0,25)
   var row2: number = getRandomNumbersInRange(1,0,25)
   var row3: number = getRandomNumbersInRange(1,0,25)
   var row4: number = getRandomNumbersInRange(1,0,25)
   var row5: number = getRandomNumbersInRange(1,0,25)
+  
+  console.log("okay lets waffle this cone " + waffleCone(ContentSource.Articles, 24))
   
 </script>
 

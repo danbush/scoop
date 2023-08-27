@@ -6,6 +6,7 @@
   import { ref } from 'vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
+  import { waffleCone, ContentSource } from './helpers/waffle_cone'
   
   // Define props for the component
   const { count = 4 } = defineProps<{
@@ -21,7 +22,7 @@
     return Array.from(numbers);
   }
   
-  const articleSet: any[] = getRandomNumbersInRange(count, 0, 25); //eventually get this thing to pick
+  const articleSet: any[] = waffleCone(ContentSource.Articles, 4); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
