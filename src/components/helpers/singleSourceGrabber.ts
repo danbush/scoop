@@ -21,8 +21,6 @@ export async function singleSourceGrabber(source: number, count: number = 1, sta
 			console.log(err);
 		}
 	}
-
-	console.log(articleArray.value);
 	
 	return articleArray.value;
 }

@@ -207,7 +207,6 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 	if (isMastodonRSS(rawFeed)) {
 		try {
 			const masto_data = await parseMastodonRssItem(rawFeed)
-			console.log(parseMastodonRssItem(rawFeed))
 			article_body = masto_data?.article_body
 			article_published_date = masto_data?.article_published_date
 			article_publisher = masto_data?.article_publisher
