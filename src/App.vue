@@ -21,8 +21,9 @@
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
   
-  const articleSet = waffleCone(ContentSource.Articles, 25)
-  const articleSetForSingleSource = waffleCone(ContentSource.Articles, 25)
+  const articleSet = waffleCone(ContentSource.Articles, 24)
+  const videoSet = waffleCone(ContentSource.Videos, 2)
+  const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
   
   var row1: number = articleSetForSingleSource.slice(0, 1)
   var row2: number = articleSetForSingleSource.slice(2, 3)
@@ -65,8 +66,8 @@
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
-      <MayHaveMissed />
-      <MayHaveMissed />
+      <MayHaveMissed :article-number="articleSet.slice(19, 20)" />
+      <MayHaveMissed :article-number="articleSet.slice(20, 21)" />
     </CardGroup>
 
     <CardSingleSocial
@@ -90,7 +91,7 @@
       card_title="New Video"
       card_description=""
       >
-      <SingleVideo />
+      <SingleVideo :article-number="videoSet.slice(0, 1)" />
     </CardSingle>
 
     <CardSingle
@@ -98,7 +99,7 @@
       card_title="New Video"
       card_description=""
       >
-      <SingleVideo />
+      <SingleVideo :article-number="videoSet.slice(1, 2)" />
     </CardSingle>
 
     <CardSingleSource
@@ -130,8 +131,8 @@
       card_title="You May Have Missed"
       card_description="I'm not entirely sure what this feed... is."
       >
-      <MayHaveMissed />
-      <MayHaveMissed />
+      <MayHaveMissed :article-number="articleSet.slice(22, 23)" />
+      <MayHaveMissed :article-number="articleSet.slice(23, 24)" />
     </CardGroup>
     
     <CardGroup
