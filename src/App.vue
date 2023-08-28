@@ -88,7 +88,7 @@
 
     <CardSingle
       class="card_video"
-      card_title="New Video"
+      card_title="Cool Video"
       card_description=""
       >
       <SingleVideo :article-number="videoSet.slice(0, 1)" />
@@ -96,7 +96,7 @@
 
     <CardSingle
       class="card_video"
-      card_title="New Video"
+      card_title="Cool Video"
       card_description=""
       >
       <SingleVideo :article-number="videoSet.slice(1, 2)" />
