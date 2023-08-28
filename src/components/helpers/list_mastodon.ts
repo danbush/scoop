@@ -1,4 +1,4 @@
-export function listMastodon(item: number) {
+export function listMastodon(item: number = 999) {
 	var theList: Array<string> = [
 		'https://mastodon.social/@MissingThePt.rss',
 		'https://mastodon.social/@Popehat.rss',
@@ -9,5 +9,13 @@ export function listMastodon(item: number) {
 		
 		
 	]
-	return theList[item]
+	// this is jank as HELL.
+	if (item === 999) {
+		return theList;
+		} 
+		else {
+			if (item >= 0 && item < theList.length) {
+				return theList[item];
+			} 
+		}
 }
