@@ -45,7 +45,7 @@
       </a>
     </header>
     <section class="article-body">
-      <pre>{{ articleArray.article_body }}</pre>
+      <pre>{{ articleArray.article_body.trim() }}</pre>
     </section>
     <footer class="article-footer">
       <a :href="articleArray.article_url" target="_blank">
