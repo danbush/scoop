@@ -52,7 +52,17 @@
           type="image/svg+xml"
           data="src/assets/icon-settings.svg"
           alt="Settings icon"
+          class="toggle-image-gear"
+          v-hide="isModalVisible"
         ></object>
+        <object
+          type="image/svg+xml"
+          data="src/assets/icon-close.svg"
+          alt="Settings icon"
+          class="toggle-close"
+          v-show="isModalVisible"
+        ></object>
+
       </button>
     </div>
   </header>
@@ -183,10 +193,12 @@
 
   </section>
 
-  <Modal
-    v-show="isModalVisible"
-    @close="toggleModal()"
-  />
+  <transition name="fade">
+    <Modal
+      v-show="isModalVisible"
+      @close="toggleModal()"
+    />
+  </transition>
 
   <!-- <SettingsPanel /> -->
 
@@ -269,7 +281,6 @@
   /* SETTINGS PANEL - RELOCATE ME */
   .input-toggle.toggle_SettingsPanel {
 
-
     label {
       display: none;
     }
@@ -279,7 +290,9 @@
       display: block;
       width: 2.6rem;
       height: 2.6rem;
-      padding: .1rem;
+      // padding: .1rem;
+
+      position: relative;
 
       font-size: 0;
       // color: var(--button-color-primary);
@@ -287,16 +300,23 @@
       border: none;
       border-radius: 100%;
 
-//      background-color: var(--button-background-primary);
+      // background-color: var(--button-background-primary);
+      background-color: #ffffff;
 
       object {
 
         display: block;
-        width: 100%;
+        width: 2.2rem;
       
-        pointer-events: none;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.15rem;
 
-        path { fill:#ffffff!important; }
+        background-color: #ffffff;
+
+        border-radius: 100%;
+
+        pointer-events: none;
 
       }
 
@@ -304,5 +324,14 @@
 
   }
 
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
 
 </style>
