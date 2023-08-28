@@ -47,7 +47,7 @@
       <span class="article-publisher">{{ articleArray.article_publisher }}</span>
     </a>
     <h3 class="article-title">{{ articleArray.article_title }}</h3>
-    <div class="article-body"><pre>{{ articleArray.article_body }}</pre></div>
+    <div class="article-body"><pre>{{ articleArray.article_body.trim() }}</pre></div>
   </article>
 
   <!--  todo: fix link upstream
