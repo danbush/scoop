@@ -194,6 +194,11 @@
 
 <style lang="scss">
 
+  .app-body {
+    position: relative;
+    z-index: 10;
+  }
+
   #app {
     position: relative;
     z-index: 10;

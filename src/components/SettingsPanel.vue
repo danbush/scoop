@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
   import ThemeSwitcher from './GodBar/_ThemeSwitcher.vue'
+  import ThemeSwitcherAlt from './GodBar/_ThemeSwitcherAlt.vue'
   import Toggle from './inputs/toggle.vue'
   import Range from './inputs/range.vue'
 
@@ -33,7 +34,7 @@
         options_experimental=false
         class="card-theme"
       >
-        <ThemeSwitcher />
+        <ThemeSwitcherAlt />
       </SettingsOptions>
   
       <SettingsOptions
@@ -56,14 +57,14 @@
     <SettingsCard
       card_slug="settings_content"
       card_title="Content &amp; Feeds"
-      card_description="A list of feeds. One Feed to Rule Them All for now, with the idea of customizing down the road."
+      card_description=""
       >
 
       <SettingsOptions
         options_title="#showthelist"
         options_description=""
         options_experimental=true
-        class="dev-disable"
+        class="dev-disable content-list"
       >
         #showthelist
       </SettingsOptions>
@@ -72,7 +73,7 @@
         options_title="Paywalled Content"
         options_description="Show or hide content that rests behind a paywall."
         options_experimental=true
-        class="dev-disable"
+        class="dev-disable toggle_paywall"
       >
         <Toggle />
       </SettingsOptions>
@@ -81,7 +82,7 @@
         options_title="Spoilers!"
         options_description="Show or hide content that may contain spoilers."
         options_experimental=true
-        class="dev-disable"
+        class="dev-disable toggle_spoilers"
       >
         <Toggle />
       </SettingsOptions>
@@ -90,7 +91,7 @@
         options_title="SvenMode"
         options_description="Show or hide content that may contain politics."
         options_experimental=true
-        class="dev-disable"
+        class="dev-disable toggle_politics"
       >
         <Toggle />
       </SettingsOptions>      
@@ -112,7 +113,7 @@
       >
       
       <SettingsOptions
-        options_title="About {{ APPTITLE }}"
+        options_title="About Scoopy"
         options_description=""
         options_experimental=false
         class="card-about"
@@ -128,6 +129,8 @@
         class="card-colophon"
       >
         <ul class="colophon">
+          <li>Made with <a href="https://vuejs.org/" target="_blank">Vue.js</a> and <a href="https://vitejs.dev/" target="_blank">Vite</a></li>
+          <li><a href="https://github.com/danbush/scoop" target="_blank">View on GitHub</a></li>
           <li>
             Various icons from <a href="https://iconscout.com" target="_blank">IconScout</a>
           </li>
@@ -192,6 +195,26 @@
         }
       
       }
+
+      #settings_content {
+
+        > .card-body {
+
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+
+        }
+
+        .content-list { grid-area: 1 / 1 / 4 / 2; }
+        .toggle_paywall { grid-area: 1 / 2 / 2 / 3; }
+        .toggle_spoilers { grid-area: 2 / 2 / 3 / 3; }
+        .toggle_politics { grid-area: 3 / 2 / 4 / 3; }
+
+      }
+
 
       #settings_about {
 

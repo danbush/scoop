@@ -29,8 +29,12 @@
 
 <style lang="scss">
 
-  .card {
+  .card-settings .card {
 
+    a {
+      color: var(--button-background-primary);
+    }
+  
   }
 
   // d'oh! this is really dumb. really need to re-think structure here.

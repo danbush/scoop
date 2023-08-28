@@ -53,7 +53,8 @@
     display: flex;
     flex-direction: column;
     width: calc( 100% - ($card-padding-internal * 2) );
-    max-height: calc(100vh - calc($header-height + $card-padding-internal));
+    // max-height: calc(100vh - calc($header-height + $card-padding-internal));
+    max-height: calc(100vh - $header-height);
     height: auto;
     // padding: $card-padding-internal;
 
@@ -69,11 +70,6 @@
       display: none;
     }
 
-    // color: var(--app-text-color);
-    // background-color: var(--card-body-background);
-
-    // border-radius: $card-border-radius;
-
   }
 
   .modal-container {
@@ -88,7 +84,8 @@
     left: 0;
     right: 0;
 
-    // background-color: var(--app-background-color);
+    z-index: 50;
+
     background-color: color-mix(in srgb, var(--app-background-color) 65%, transparent);
     backdrop-filter: blur(10px);
 
@@ -128,6 +125,7 @@
   }
 
   .modal-body {
+
   }
 
 </style>
