@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
-  import ThemeSwitcher from './GodBar/_ThemeSwitcher.vue'
-  import ThemeSwitcherAlt from './GodBar/_ThemeSwitcherAlt.vue'
+  import ThemeSwitcherButtons from './Settings/_ThemeSwitcher_buttons.vue'
   import Toggle from './inputs/toggle.vue'
   import Range from './inputs/range.vue'
 
@@ -34,7 +33,7 @@
         options_experimental=false
         class="card-theme"
       >
-        <ThemeSwitcherAlt />
+        <ThemeSwitcherButtons />
       </SettingsOptions>
   
       <SettingsOptions

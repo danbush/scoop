@@ -7,14 +7,14 @@
   // import SettingsPanelToggle from './SettingsPanel/_SettingsPanelToggle.vue'
   
 defineProps<{
-  msg: string
+  appTitle: string
 }>()
 </script>
 
 <template>
 
   <header class="main-header">
-    <h1 class="app-title">scoopy</h1>
+    <h1 class="app-title">{{appTitle}}</h1>
   </header>
 
 

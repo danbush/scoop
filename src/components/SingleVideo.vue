@@ -4,13 +4,11 @@
   todo: fill out this section
   ***************************/
 
-  import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { listVideos } from './helpers/list_videos'
   import { getPipedEmbed } from './helpers/getPipedEmbed'
   import { timeAgo } from './helpers/sprinkle_timeAgo'
   import { ref, onMounted } from 'vue';
-  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
   // Define props for the component
   const { articleNumber = [0] } = defineProps<{

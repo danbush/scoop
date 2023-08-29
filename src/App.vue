@@ -22,7 +22,6 @@
   import MayHaveMissed from './components/MayHaveMissed.vue'
   import Mastodon from './components/Mastodon.vue'
 
-  import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
 
   const articleSet = waffleCone(ContentSource.Articles, 24)
@@ -39,7 +38,7 @@
 
 <template>
 
-  <Header></Header>
+  <Header appTitle="scoopy" />
 
   <section class="app-body module-row">
 

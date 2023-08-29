@@ -4,11 +4,9 @@
   todo: fill out this section
   ***************************/
 
-  import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
-  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
   // Define props for the component
   const { articleNumber = 4 } = defineProps<{
@@ -38,6 +36,7 @@
     <header class="article-header module-tile has-content">
       <a
         :href="articleArray.article_url"
+        target="_blank"
         :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 10%, transparent) 35%, color-mix(in srgb, var(--card-accent-color) 90%, transparent) 100%), url(' + articleArray.article_image + ')' }"
         >
         <img class="article-logo" :src="articleArray.article_logo" alt="cows">

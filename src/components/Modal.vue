@@ -119,11 +119,4 @@
 
   }
 
-  .modal-footer {
-  }
-
-  .modal-body {
-
-  }
-
 </style>
