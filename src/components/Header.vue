@@ -13,6 +13,11 @@ defineProps<{
 
 <template>
 
+  <header class="main-header">
+    <h1 class="app-title">scoopy</h1>
+  </header>
+
+
 </template>
 
 <style scoped lang="scss">

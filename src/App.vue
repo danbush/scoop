@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
   import Header from './components/Header.vue'
-  
-  // import SettingsPanel from './components/SettingsPanel/SettingsPanel.vue'
   import Modal from './components/Modal.vue'
+
   import { useToggle } from '@vueuse/core'
+  const [isModalVisible, toggleModal] = useToggle()  
 
   /*  Import top-level cards
       */
@@ -30,8 +30,6 @@
   var row4: number = getRandomNumbersInRange(1,0,24)
   var row5: number = getRandomNumbersInRange(1,0,24)
 
-  const [isModalVisible, toggleModal] = useToggle()
-  
 </script>
 
 <script lang="ts">
@@ -40,32 +38,7 @@
 
 <template>
 
-  <header class="main-header">
-    <h1 class="app-title">scoopy</h1>
-    <div class="input-toggle toggle_SettingsPanel">
-      <label for="toggle_SettingsPanel">Settings</label>
-      <button
-        id="toggle_SettingsPanel"
-        class="input-button"
-        @click="toggleModal()">
-        <object
-          type="image/svg+xml"
-          data="src/assets/icon-settings.svg"
-          alt="Settings icon"
-          class="toggle-image-gear"
-          v-hide="isModalVisible"
-        ></object>
-        <object
-          type="image/svg+xml"
-          data="src/assets/icon-close.svg"
-          alt="Settings icon"
-          class="toggle-close"
-          v-show="isModalVisible"
-        ></object>
-
-      </button>
-    </div>
-  </header>
+  <Header></Header>
 
   <section class="app-body module-row">
 
@@ -193,14 +166,42 @@
 
   </section>
 
+  <!-- gonna use this for "peek" as well down the road -->
+  <section id="app-modal">
+
+    <div class="input-toggle toggle_SettingsPanel">
+      <label for="toggle_SettingsPanel">Settings</label>
+      <button
+        id="toggle_SettingsPanel"
+        class="input-button"
+        @click="toggleModal()">
+        <object
+          type="image/svg+xml"
+          data="src/assets/icon-settings.svg"
+          alt="Settings icon"
+          class="toggle-image-gear"
+          v-hide="isModalVisible"
+        ></object>
+        <transition name="fade">
+          <object
+            type="image/svg+xml"
+            data="src/assets/icon-close.svg"
+            alt="Settings icon"
+            class="toggle-close"
+            v-show="isModalVisible"
+          ></object>
+        </transition>
+      </button>
+    </div>
+
+  </section>
+
   <transition name="fade">
     <Modal
       v-show="isModalVisible"
       @close="toggleModal()"
     />
   </transition>
-
-  <!-- <SettingsPanel /> -->
 
 </template>
 
@@ -281,6 +282,12 @@
   /* SETTINGS PANEL - RELOCATE ME */
   .input-toggle.toggle_SettingsPanel {
 
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+
+    z-index: 1000;
+
     label {
       display: none;
     }
@@ -302,6 +309,8 @@
 
       // background-color: var(--button-background-primary);
       background-color: #ffffff;
+
+      box-shadow: 0px 0px 15px 0px var(--app-background-color);
 
       object {
 

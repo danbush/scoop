@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
   import SettingsPanel from './SettingsPanel.vue'
-  import Toggle from './inputs/toggle.vue'
 
 </script>
 
@@ -87,8 +86,6 @@
 
     background-color: color-mix(in srgb, var(--app-background-color) 65%, transparent);
     backdrop-filter: blur(10px);
-
-    pointer-events: none; 
 
   }
 
