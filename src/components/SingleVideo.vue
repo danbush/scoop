@@ -4,7 +4,6 @@
   todo: fill out this section
   ***************************/
 
-  import CardFooter from './CardFooter.vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { listVideos } from './helpers/list_videos'
   import { getPipedEmbed } from './helpers/getPipedEmbed'

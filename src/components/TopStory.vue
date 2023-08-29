@@ -7,7 +7,7 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
-  
+
   // Define props for the component
   const { articleNumber = 4 } = defineProps<{
     articleNumber: number
@@ -49,9 +49,9 @@
     <div class="article-body"><pre>{{ articleArray.article_body.trim() }}</pre></div>
   </article>
 
-  <!--  todo: fix link upstream
-    <CardFooter :article_url="articleArray.article_url"/>
-  -->
+  <a :href="articleArray.article_url" target="_blank"><button class="button action_intent-primary" type="button">
+    Read More
+  </button></a>
 
 </template>
 
@@ -112,6 +112,11 @@
 
   .article-body {
     margin-top: 0;
+  }
+
+  .button {
+    margin-top: 2.8rem;
+    float: right;
   }
 
 </style>
