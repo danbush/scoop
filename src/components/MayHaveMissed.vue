@@ -10,7 +10,10 @@
   import { ref, onMounted } from 'vue';
   import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
-  const articleNumber: any[] = [getRandomNumbersInRange(1, 0, 24)]; //eventually get this thing to pick
+  // Define props for the component
+  const { articleNumber = 4 } = defineProps<{
+    articleNumber: number
+  }>(); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
@@ -19,7 +22,6 @@
     try {
       const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
       articleArray.value = result;
-      console.log(articleArray.value);
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +45,7 @@
       </a>
     </header>
     <section class="article-body">
-      <pre>{{ articleArray.article_body }}</pre>
+      <pre>{{ articleArray.article_body.trim() }}</pre>
     </section>
     <footer class="article-footer">
       <a :href="articleArray.article_url" target="_blank">
@@ -64,6 +66,15 @@
 
     .module-tile {
       margin-bottom: $card-padding-internal;
+      a {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: all .38s ease-in-out, background-position 10s ease-in-out;
+      }
+      a:hover {
+        background-position: 50% 0%;
+      }
     }
 
     .article-footer {
