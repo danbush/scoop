@@ -5,7 +5,12 @@
   theme defined here. and then the themes below will override
 */
 
-$shadow-color:  #000000;
+$shadow-color:      #000000;
+
+$status-default:    gray;
+$status-success:    green;
+$status-warn:       rgb(255, 255, 189);
+$status-error:      red;
 
 :root {
 

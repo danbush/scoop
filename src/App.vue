@@ -1,6 +1,10 @@
 <script setup lang="ts">
 
   import Header from './components/Header.vue'
+  import Modal from './components/Modal.vue'
+
+  import { useToggle } from '@vueuse/core'
+  const [isModalVisible, toggleModal] = useToggle()  
 
   /*  Import top-level cards
       */
@@ -20,7 +24,7 @@
 
   import { getRandomNumbersInRange } from './components/helpers/sprinkle_getRandomNumbersInRange'
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
-  
+
   const articleSet = waffleCone(ContentSource.Articles, 24)
   const videoSet = waffleCone(ContentSource.Videos, 2)
   const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
@@ -34,8 +38,10 @@
 </script>
 
 <template>
-  <Header msg="scoopy" />
-  <section class="module-row">
+
+  <Header></Header>
+
+  <section class="app-body module-row">
 
     <CardSingle
       class="card_TopStory"
@@ -160,9 +166,85 @@
     </CardSingleSource>
 
   </section>
+
+  <!-- gonna use this for "peek" as well down the road -->
+  <section id="app-modal">
+
+    <div class="input-toggle toggle_SettingsPanel">
+      <label for="toggle_SettingsPanel">Settings</label>
+      <button
+        id="toggle_SettingsPanel"
+        class="input-button"
+        @click="toggleModal()"
+        @keydown.esc="toggleModal()" tabindex="0">
+        <object
+          type="image/svg+xml"
+          data="src/assets/icon-settings.svg"
+          alt="Settings icon"
+          class="toggle-image-gear"
+          v-hide="isModalVisible"
+        ></object>
+        <transition name="fade">
+          <object
+            type="image/svg+xml"
+            data="src/assets/icon-close.svg"
+            alt="Settings icon"
+            class="toggle-close"
+            v-show="isModalVisible"
+          ></object>
+        </transition>
+      </button>
+    </div>
+
+  </section>
+
+  <transition name="fade">
+    <Modal
+      v-show="isModalVisible"
+      @close="toggleModal()"
+      @keydown.esc="toggleModal()" tabindex="0"
+    />
+  </transition>
+
 </template>
 
 <style lang="scss">
+
+  .app-body {
+    position: relative;
+    z-index: 10;
+  }
+
+  #app {
+    position: relative;
+    z-index: 10;
+  }
+
+  header.main-header {
+
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    padding: 1rem 2rem 0 2rem;
+
+    position: relative;
+    z-index: 200;
+
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    .app-title {
+      font-family: "BitterPro", 'Courier New', Courier, monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+  }
+  
   section.module-row {
 
     display: flex;
@@ -199,4 +281,69 @@
     }
     
   }
+
+  /* SETTINGS PANEL - RELOCATE ME */
+  .input-toggle.toggle_SettingsPanel {
+
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+
+    z-index: 1000;
+
+    label {
+      display: none;
+    }
+
+    button {
+
+      display: block;
+      width: 2.6rem;
+      height: 2.6rem;
+      // padding: .1rem;
+
+      position: relative;
+
+      font-size: 0;
+      // color: var(--button-color-primary);
+      
+      border: none;
+      border-radius: 100%;
+
+      // background-color: var(--button-background-primary);
+      background-color: #ffffff;
+
+      box-shadow: 0px 0px 15px 0px var(--app-background-color);
+
+      object {
+
+        display: block;
+        width: 2.2rem;
+      
+        position: absolute;
+        top: 0.2rem;
+        left: 0.15rem;
+
+        background-color: #ffffff;
+
+        border-radius: 100%;
+
+        pointer-events: none;
+
+      }
+
+    }
+
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
 </style>
