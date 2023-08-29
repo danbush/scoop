@@ -10,7 +10,6 @@
   import { getPipedEmbed } from './helpers/getPipedEmbed'
   import { timeAgo } from './helpers/sprinkle_timeAgo'
   import { ref, onMounted } from 'vue';
-  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
   // Define props for the component
   const { articleNumber = [0] } = defineProps<{

@@ -12,12 +12,12 @@
     count: number
   }>();
   
-  
   const rowObject = ref<any>(null);
   
   onMounted(async () => {
     rowObject.value = await singleSourceGrabber(source, count);
   });
+
 </script>
 
 <template>

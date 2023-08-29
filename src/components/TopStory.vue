@@ -7,7 +7,6 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
-  import { getRandomNumbersInRange } from './helpers/sprinkle_getRandomNumbersInRange'
   
   // Define props for the component
   const { articleNumber = 4 } = defineProps<{
