@@ -45,7 +45,7 @@
       <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
       <span class="article-publisher">{{ articleArray.article_publisher }}</span>
     </a>
-    <h3 class="article-title">{{ articleArray.article_title }}</h3>
+    <h3 class="article-title"><a :href="articleArray.article_url" target="_blank">{{ articleArray.article_title }}</a></h3>
     <div class="article-body"><pre>{{ articleArray.article_body.trim() }}</pre></div>
   </article>
 
@@ -74,6 +74,17 @@
       height: 25vi;
       float: left;
     }
+  }
+
+  .article-title {
+
+    a {
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
   }
 
   .article-source {
