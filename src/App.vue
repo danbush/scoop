@@ -174,7 +174,8 @@
       <button
         id="toggle_SettingsPanel"
         class="input-button"
-        @click="toggleModal()">
+        @click="toggleModal()"
+        @keydown.esc="toggleModal()" tabindex="0">
         <object
           type="image/svg+xml"
           data="src/assets/icon-settings.svg"
@@ -200,6 +201,7 @@
     <Modal
       v-show="isModalVisible"
       @close="toggleModal()"
+      @keydown.esc="toggleModal()" tabindex="0"
     />
   </transition>
 
