@@ -6,35 +6,27 @@
   import { ref } from 'vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
+  import { waffleCone, ContentSource } from './helpers/waffle_cone'
   
   // Define props for the component
-  const { count = 4 } = defineProps<{
-    count: number
+  const { count = 4, articleNumbers = [0,1,2,3] } = defineProps<{
+    count: number,
+    articleNumbers: number
   }>();
-
-  function getRandomNumbersInRange(count:number, min:number, max:number) {
-    const numbers = new Set();
-    while (numbers.size < count) {
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      numbers.add(randomNumber);
-    }
-    return Array.from(numbers);
-  }
   
-  const articleSet: any[] = getRandomNumbersInRange(count, 0, 24); //eventually get this thing to pick
+  const articleSet: any = articleNumbers; //eventually get this thing to pick
   
   // Define a reactive object to store the article data
   const articleArray = ref<any>({})
   
   // Fetch article data asynchronously for each number in articleSet
-  Promise.all(articleSet.map((number) => chocolateSauce(hashtagBuildTheList(number))))
+  Promise.all(articleSet.map((number: number) => chocolateSauce(hashtagBuildTheList(number))))
     .then((results) => {
       results.forEach((result, index) => {
         const articleNumber = articleSet[index]
         articleArray.value[articleNumber] = result
         
       })
-      console.log(articleArray.value) // The complete object with all articles
     })
     .catch((err) => {
       console.log(err)
@@ -83,7 +75,18 @@
     }
 
     .module-tile {
-
+      a {
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: all .38s ease-in-out, background-position 10s ease-in-out, transform 5s ease-in;
+      }
+      
+      a:hover {
+        background-position: 0%;
+        transform: scale(1.06);
+      }
+      
       @include mq('medium') {
 
         flex: 1 calc(50% - $card-padding-internal);
