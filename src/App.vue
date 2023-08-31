@@ -5,10 +5,7 @@
 
   /*  Import top-level cards
       */
-  import CardSingle from './components/CardSingle.vue'
   import CardGroup from './components/CardGroup.vue'
-  import CardSingleSource from './components/CardSingleSource.vue'
-  import CardSingleSocial from './components/CardSingleSocial.vue'
 
   /*  Import modules, components, cards, or whatever Dan wants to call them
       */
@@ -39,29 +36,11 @@
 
   <section class="app-body module-row settings-off">
 
-    <CardSingle
-      class="card_TopStory"
-      card_title="Top Story"
-      card_description="A single card. Only has one bit of content (article) inside, and adds a card footer."
-      >
-      <TopStory :article-number="articleSet.slice(0, 1)" />
-    </CardSingle>
+    <TopStory :article-number="articleSet.slice(0, 1)" />
 
-    <CardGroup
-      class="card_headlines"
-      card_title="Just the Headlines"
-      card_description="A card group. Contains multiple bits of content (articles) inside, NO footer."
-      >
-      <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(2, 6)" />
-    </CardGroup>
+    <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(2, 6)" />
 
-    <CardGroup
-      class="card_headlines"
-      card_title="Just the Headlines"
-      card_description=""
-      >
-      <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(6, 10)" />
-    </CardGroup>
+    <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(6, 10)" />
 
     <CardGroup
       class="card_MayHaveMissed"
@@ -72,61 +51,19 @@
       <MayHaveMissed :article-number="articleSet.slice(20, 21)" />
     </CardGroup>
 
-    <CardSingleSocial
-      class="card_social mastadon"
-      card_title="From Mastodon"
-      card_description="Still a test, I guess?"
-      >
-      <Mastodon :count=3 />
-    </CardSingleSocial>
+    <Mastodon :count=3 />
 
-    <CardSingleSource
-      class="card_SingleSource"
-      card_title="Dig In"
-      card_description=""
-      >
-      <SingleSourceRow :source=row1 :count=10 />
-    </CardSingleSource>
+    <SingleSourceRow :source=row1 :count=10 />
 
-    <CardSingle
-      class="card_video"
-      card_title="Cool Video"
-      card_description=""
-      >
-      <SingleVideo :article-number="videoSet.slice(0, 1)" />
-    </CardSingle>
+    <SingleVideo :article-number="videoSet.slice(0, 1)" />
+      
+    <SingleVideo :article-number="videoSet.slice(1, 2)" />
 
-    <CardSingle
-      class="card_video"
-      card_title="Cool Video"
-      card_description=""
-      >
-      <SingleVideo :article-number="videoSet.slice(1, 2)" />
-    </CardSingle>
+    <SingleSourceRow :source=row2 :count=10 />
 
-    <CardSingleSource
-      class="card_SingleSource"
-      card_title="Dig In"
-      card_description=""
-      >
-      <SingleSourceRow :source=row2 :count=10 />
-    </CardSingleSource>
+    <SingleSourceRow :source=row3 :count=10 />
 
-    <CardSingleSource
-      class="card_SingleSource"
-      card_title="Dig In"
-      card_description=""
-      >
-      <SingleSourceRow :source=row3 :count=10 />
-    </CardSingleSource>
-
-    <CardGroup
-      class="card_headlines"
-      card_title="Just the Headlines"
-      card_description=""
-      >
-      <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(10, 14)" />
-    </CardGroup>
+    <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(10, 14)" />
 
     <CardGroup
       class="card_MayHaveMissed"
@@ -137,29 +74,11 @@
       <MayHaveMissed :article-number="articleSet.slice(23, 24)" />
     </CardGroup>
     
-    <CardGroup
-      class="card_headlines"
-      card_title="Just the Headlines"
-      card_description=""
-      >
-      <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(14, 18)" />
-    </CardGroup>
+    <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(14, 18)" />
 
-    <CardSingleSource
-      class="card_SingleSource"
-      card_title="Dig In"
-      card_description=""
-      >
-      <SingleSourceRow :source=row4 :count=10 />
-    </CardSingleSource>
+    <SingleSourceRow :source=row4 :count=10 />
     
-    <CardSingleSource
-      class="card_headlines"
-      card_title="Dig In"
-      card_description=""
-      >
-      <SingleSourceRow :source=row5 :count=10 />
-    </CardSingleSource>
+    <SingleSourceRow :source=row5 :count=10 />
 
   </section>
 

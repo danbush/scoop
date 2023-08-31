@@ -7,6 +7,7 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { ref, onMounted } from 'vue';
+  import CardSingle from './CardSingle.vue'
 
   // Define props for the component
   const { articleNumber = 4 } = defineProps<{
@@ -37,29 +38,30 @@
 </script>
 
 <template>
-
-  <article class="card_top-story" v-if="articleArray.article_title">
-    <iframe v-if="isYoutube" :src="articleArray.article_image" class="module-tile image-only" />
-    <a
-      v-else
-      :href="articleArray.article_url"
-      :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
-      target="_blank"
-      class="module-tile image-only"
-      >
-    </a>
-
-    <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
-      <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
-      <span class="article-publisher">{{ articleArray.article_publisher }}</span>
-    </a>
-    <h3 class="article-title"><a :href="articleArray.article_url" target="_blank">{{ articleArray.article_title }}</a></h3>
-    <div class="article-body"><pre>{{ articleArray.article_body.trim() }}</pre></div>
-  </article>
-
-  <a :href="articleArray.article_url" target="_blank"><button class="button action_intent-primary" type="button">
-    Read More
-  </button></a>
+  <CardSingle class="card_TopStory" card_title="Top Story" v-if="articleArray.article_title">
+    <article class="card_top-story">
+      <iframe v-if="isYoutube" :src="articleArray.article_image" class="module-tile image-only" />
+      <a
+        v-else
+        :href="articleArray.article_url"
+        :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
+        target="_blank"
+        class="module-tile image-only"
+        >
+      </a>
+  
+      <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
+        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+        <span class="article-publisher">{{ articleArray.article_publisher }}</span>
+      </a>
+      <h3 class="article-title"><a :href="articleArray.article_url" target="_blank">{{ articleArray.article_title }}</a></h3>
+      <div class="article-body"><pre>{{ articleArray.article_body.trim() }}</pre></div>
+    </article>
+  
+    <a :href="articleArray.article_url" target="_blank"><button class="button action_intent-primary" type="button">
+      Read More
+    </button></a>
+  </CardSingle>
 
 </template>
 
