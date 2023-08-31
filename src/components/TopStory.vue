@@ -15,11 +15,17 @@
   
   // Define a reactive object to store the article data
   var articleArray = ref<any>({})
+  
+  var isYoutube = false
+  
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
       const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
       articleArray.value = result;
+      if (articleArray.value.article_image.includes('youtube.com')) {
+        isYoutube = true
+      }
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +39,9 @@
 <template>
 
   <article class="card_top-story" v-if="articleArray.article_title">
+    <iframe v-if="isYoutube" :src="articleArray.article_image" class="module-tile image-only" />
     <a
+      v-else
       :href="articleArray.article_url"
       :style="{ 'background-image': 'url(' + articleArray.article_image + ')' }"
       target="_blank"
@@ -75,16 +83,16 @@
       float: left;
     }
   }
-
+  
   .article-title {
-
+  
     a {
       color: inherit;
       font-family: inherit;
       font-size: inherit;
       line-height: inherit;
     }
-
+  
   }
 
   .article-source {
@@ -124,10 +132,10 @@
   .article-body {
     margin-top: 0;
   }
-
+  
   .button {
     margin-top: 2.8rem;
     float: right;
   }
-
+  
 </style>
