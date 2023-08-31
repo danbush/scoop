@@ -4,13 +4,9 @@
 
 </script>
 
-<script lang="ts">
-
-</script>
-
 <template>
 
-  <div class="modal-container">
+  <div class="modal-container settings-off">
 
     <!--  TODO:
           pass in what type is open (ex: settings, peek view, etc.)
@@ -86,6 +82,8 @@
 
     background-color: color-mix(in srgb, var(--app-background-color) 65%, transparent);
     backdrop-filter: blur(10px);
+    
+    transition: all 0.5s ease-in-out;
 
   }
 
@@ -94,8 +92,8 @@
     display: flex;
     flex-direction: column;
 
-    // TMP: make this conditional based on what type is open
-    display: none;
+    /* TMP: make this conditional based on what type is open
+    display: none;*/
 
     @include mq('large') {
       flex-direction: row;
