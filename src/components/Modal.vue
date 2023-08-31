@@ -2,6 +2,10 @@
 
   import SettingsPanel from './SettingsPanel.vue'
   import ToggleSettings from './helpers/toggle_settings'
+  
+  window.addEventListener('keyup', function() {
+      ToggleSettings(); // declared in your component methods
+  });
 
 </script>
 
