@@ -18,7 +18,7 @@
   import SingleSourceRow from './components/SingleSourceRow.vue'
   import MayHaveMissed from './components/MayHaveMissed.vue'
   import Mastodon from './components/Mastodon.vue'
-
+  
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
 
   const articleSet = waffleCone(ContentSource.Articles, 24)
@@ -30,16 +30,6 @@
   var row3: number = articleSetForSingleSource.slice(3, 4)
   var row4: number = articleSetForSingleSource.slice(4, 5)
   var row5: number = articleSetForSingleSource.slice(5, 6)
-  
-  function toggleSettings() {
-    document.querySelector('.modal-container').classList.toggle('settings-on')
-    document.querySelector('.modal-container').classList.toggle('settings-off')
-    document.querySelector('#app-modal').classList.toggle('settings-on')
-    document.querySelector('#app-modal').classList.toggle('settings-off')
-    document.querySelector('.app-body').classList.toggle('settings-on')
-    document.querySelector('.app-body').classList.toggle('settings-off')
-    document.querySelector('html').classList.toggle('lock-scroll')
-  }
   
 </script>
 
@@ -173,35 +163,7 @@
 
   </section>
 
-  <!-- gonna use this for "peek" as well down the road -->
-  <section id="app-modal" class="settings-off">
-    <div class="input-toggle toggle_SettingsPanel">
-      <label for="toggle_SettingsPanel">Settings</label>
-      <button
-        id="toggle_SettingsPanel"
-        class="input-button"
-        v-on:click="toggleSettings"
-         tabindex="0">
-        <object
-          type="image/svg+xml"
-          data="src/assets/icon-settings.svg"
-          alt="Settings icon"
-          class="toggle-image-gear"
-        ></object>
-          <object
-            type="image/svg+xml"
-            data="src/assets/icon-close.svg"
-            alt="Settings icon"
-            class="toggle-close"
-          ></object>
-      </button>
-    </div>
-  
-  </section>
-  
-  <Modal
-   tabindex="0"
-  />
+  <Modal tabindex="0" />
 
 </template>
 
@@ -210,71 +172,6 @@
   html.lock-scroll {
     overflow-y: hidden;
     height: 100%;
-  }
-  
-  .app-body.settings-on {
-    transform: scale(0.95);
-    transition: all 0.2s ease-in-out;
-    margin-top: -10vh;
-  }
-  .app-body.settings-off {
-    transform: scale(1);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .modal-container.settings-off {
-    top: -200vh;
-    filter: blur(10px);
-    opacity: 0;
-    pointer-events: none;
-  }
-  .modal-container.settings-on {
-    top: 0;
-    filter: blur(0);
-    opacity: 100;
-    pointer-events:initial;
-    transition: top 0.25s ease-in-out;
-  }
-  .settings-off {
-    .toggle-close {
-      transition: opacity 0.9s ease-in-out;
-      opacity: 0;
-    }
-    .toggle-image-gear {
-      transition: opacity 0.9s ease-in-out;
-      opacity: initial;
-    }
-    button#toggle_SettingsPanel {
-      transition: transform 0.6s ease-in-out, opacity 0.3s ease-in-out;
-      &:hover {
-        transform: rotate(45deg) scale(0.9);
-      }
-      &:active {
-        transform: rotate(180deg) scale(0.7);
-      }
-    }
-  }
-  .settings-on {
-    .modal-title {
-      display: none;
-    }
-    .toggle-close {
-      opacity: initial;
-      transition: opacity 0.9s ease-in-out;
-    }
-    .toggle-image-gear {
-      opacity: off;
-      transition: opacity 0.9s ease-in-out;
-    }
-    button#toggle_SettingsPanel {
-      transition: transform 0.6s ease-in-out, opacity 0.3s ease-in-out;
-      &:hover {
-        transform: scale(0.9);
-      }
-      &:active {
-        transform: scale(0.7);
-      }
-    }
   }
 
   .app-body {
