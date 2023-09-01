@@ -66,6 +66,11 @@
   }
 
   .module-tile {
+    /* i know we have an scss transition but it didnt seem to actually work. so eventually this will be a part of that instead of manual probably */
+    transition: all .38s ease-in-out, background-position 10s ease-in-out;
+    &:hover {
+      background-position: 0% 0%;
+    }
     &.has-content {
       > a {
         min-height: 16rem;
