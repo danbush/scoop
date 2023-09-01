@@ -7,6 +7,7 @@
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { hashtagBuildTheList } from './helpers/hashtag_buildthelist'
   import { waffleCone, ContentSource } from './helpers/waffle_cone'
+  import CardGroup from './CardGroup.vue'
   
   // Define props for the component
   const { count = 4, articleNumbers = [0,1,2,3] } = defineProps<{
@@ -25,7 +26,6 @@
       results.forEach((result, index) => {
         const articleNumber = articleSet[index]
         articleArray.value[articleNumber] = result
-        
       })
     })
     .catch((err) => {
@@ -35,8 +35,8 @@
 </script>
 
 <template>
-    <article v-if="Object.keys(articleArray).length > 0">
-
+  <CardGroup class="card_headlines" card_title="Just the Headlines" v-if="Object.keys(articleArray).length > 0">
+    <article>
         <article class="module-tile has-content" v-for="number in articleSet" :key="number">
           <a
             :style="{
@@ -45,14 +45,17 @@
             target="_blank"
             >
             <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
-            <h5 class="article-title">{{ articleArray[number]?.article_title }}</h5>
+            <h5 :class="{ 'article-title': true, 'text-shrink': articleArray[number]?.article_title.length > 170 }">{{ articleArray[number]?.article_title }}</h5>
           </a>
         </article>
-
     </article>
+  </CardGroup>
 </template>
 
 <style scoped lang="scss">
+  h5.text-shrink {
+    font-size: 0.8em;
+  }
   .card_headlines {
 
     .card-body > article {

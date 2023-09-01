@@ -8,3 +8,13 @@ body {
     background-color: var(--app-background-color);
     color: var(--app-text-color);
 }
+
+button {
+  transition: transform 0.43s ease-in-out;
+  &:hover {
+    transform: scale(0.9);
+  }
+  &:active {
+    transform: scale(0.7);
+  }
+}
