@@ -26,7 +26,6 @@
       results.forEach((result, index) => {
         const articleNumber = articleSet[index]
         articleArray.value[articleNumber] = result
-        
       })
     })
     .catch((err) => {
@@ -46,7 +45,7 @@
             target="_blank"
             >
             <img class="article-logo" :src="articleArray[number]?.article_logo" alt="cows">
-            <h5 class="article-title">{{ articleArray[number]?.article_title }}</h5>
+            <h5 :class="{ 'article-title': true, 'text-shrink': articleArray[number]?.article_title.length > 170 }">{{ articleArray[number]?.article_title }}</h5>
           </a>
         </article>
     </article>
@@ -54,6 +53,9 @@
 </template>
 
 <style scoped lang="scss">
+  h5.text-shrink {
+    font-size: 0.8em;
+  }
   .card_headlines {
 
     .card-body > article {
