@@ -4,6 +4,10 @@
 
 // TODO: move to where appropriate later
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--app-background-color);
     color: var(--app-text-color);

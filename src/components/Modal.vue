@@ -1,13 +1,7 @@
 <script setup lang="ts">
 
   import SettingsPanel from './SettingsPanel.vue'
-  import ToggleSettings from './helpers/toggle_settings'
-  
- window.addEventListener('keyup', function(event) {
-   if(event.key === "Escape") {
-     ToggleSettings();
-   }
- });
+  import ToggleSettings from './helpers/toggles'
 </script>
 
 <template>
