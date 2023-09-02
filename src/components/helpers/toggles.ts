@@ -12,6 +12,12 @@ export function GoToTop() {
 	window.scrollTo(0,0);
 }
 
+export function ToggleKeyCommands() {
+	document.querySelector('.keyboard-commands').classList.toggle('keyboard-commands-on')
+	document.querySelector('.keyboard-commands').classList.toggle('keyboard-commands-off')
+	return;
+}
+
 document.addEventListener('keyup', function(event) {
 	event.preventDefault();  // Prevent any default action
 	switch (event.key) {
@@ -20,6 +26,9 @@ document.addEventListener('keyup', function(event) {
 			break;
 		case "t":
 			GoToTop();
+			break;
+		case "?":
+			ToggleKeyCommands();
 			break;
 	}
 });
