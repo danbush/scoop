@@ -52,7 +52,12 @@ async function fetchAppleTouchIcon(url: string) {
 					return null;
 				}
 			}
-
+			
+			// VERY VERY TEMPORARY, JUST FOR FRONTPAGE.TODAY WHILE 404MEDIA FIGURES ITSELF OUT
+			if (appleTouchIconUrl.includes('404media')) {
+				appleTouchIconUrl = "https://icon.horse/icon/" + '404media.co'
+			}
+			
 			return appleTouchIconUrl;
 		} else {
 			// Regular expression to extract the regular favicon URL
