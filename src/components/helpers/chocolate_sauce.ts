@@ -115,7 +115,8 @@ function removeHTMLTags(html: any) {
 		.replace(/&pound;/g, '£')
 		.replace(/&euro;/g, '€')
 		.replace(/&quot;/g, '"')
-		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
+		.replace(/<[^>]+>/g, '')
+		.replace(/\s([^\s<]+)\s*$/,'\u00A0$1'); // Remove other HTML tags
 }
 
 function removeThumborFromUrl(url: string): string {
