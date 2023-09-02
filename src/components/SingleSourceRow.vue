@@ -30,7 +30,7 @@
         v-for="(value, key) in rowObject" :key="key"
         >
         <a :href="value?.article_url" target="_blank">
-          <img class="article-logo" :src="value?.article_logo" alt="cows">
+          <img class="article-logo" :src="value?.article_logo" :alt="articleArray.article_publisher">
           <h5 class="article-title">{{ value?.article_title }}</h5>
         </a>
       </article>
