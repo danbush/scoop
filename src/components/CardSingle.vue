@@ -6,7 +6,7 @@
 
   defineProps<{
     card_title: string
-    card_description: string
+    
   }>()
 
 </script>
