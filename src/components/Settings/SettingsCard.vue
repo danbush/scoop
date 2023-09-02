@@ -3,7 +3,7 @@
   defineProps<{
     card_slug: string
     card_title: string
-    
+    card_description: string
   }>()
 
 </script>
