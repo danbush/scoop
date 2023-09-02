@@ -11,6 +11,8 @@ import fetch from 'node-fetch';
 import { decode } from 'html-entities';
 import { timeAgo } from './sprinkle_timeAgo'
 
+const proxyUrl: string = 'http://localhost:8181'
+
 
 async function fetchUrl(url: string) {
 	try {
@@ -38,7 +40,7 @@ async function fetchAppleTouchIcon(url: string) {
 			// Check if the URL is absolute
 			if (!appleTouchIconUrl.startsWith('http://') && !appleTouchIconUrl.startsWith('https://')) {
 				// Modify the URL to be an absolute URL using the base URL of the original page
-				const corsProxy = 'http://localhost:8181/';
+				const corsProxy = proxyUrl + '/';
 				const modifiedUrl = url.replace(corsProxy, ''); // Remove the corsProxy part from the URL
 				const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
 				if (baseDomainMatch && baseDomainMatch[0]) {
@@ -69,7 +71,7 @@ async function fetchAppleTouchIcon(url: string) {
 					return shortcutIconUrl;
 				} else {
 					// Fallback to using the base domain to fetch the icon from icon.horse
-					const corsProxy = 'http://localhost:8181/';
+					const corsProxy = proxyUrl + '/';
 					const modifiedUrl = url.replace(corsProxy, ''); // Remove the corsProxy part from the URL
 					const baseDomainMatch = modifiedUrl.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i);
 					if (baseDomainMatch && baseDomainMatch[0]) {
@@ -167,10 +169,10 @@ async function parseMastodonRssItem(rawItem: string) {
 		var article_image = '';
 		
 		
-		var metadata: any = await urlMetadata('http://localhost:8181/' + article_url, {
+		var metadata: any = await urlMetadata(proxyUrl + '/' + article_url, {
 			requestHeaders: {
 				'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-				'Origin': 'http://localhost:8181',
+				'Origin': proxyUrl,
 				'X-Requested-With': 'XMLHttpRequest'
 			}
 		});
@@ -191,7 +193,7 @@ async function parseMastodonRssItem(rawItem: string) {
 
 export async function chocolateSauce(url: string, item: number = 0, starter: number = 0) {
 	// Set some defaults
-	url = 'http://localhost:8181/' + url;
+	url = proxyUrl + '/' + url;
 	var article: any = {};
 	var article_title: string = '';
 	var article_body: string = '';
@@ -265,7 +267,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			article_published_date = feed.items[item].pubDate;
 			
 
-			const proxied_article_url = "http://localhost:8181/" + article_url;
+			const proxied_article_url = proxyUrl + '/' + article_url;
 
 			if (typeof article_image === 'object') {
 				const mediaContentRegex = /<media:content[^>]*url=["']([^"']+)["'][^>]*\/?>/i;
@@ -344,7 +346,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			article_image = article['og:image'];
 			article_title = article['og:title'];
 			article_publisher = article['og:site_name'];
-			const proxied_article_url = "http://localhost:8181/" + article_url;
+			const proxied_article_url = proxyUrl + '/' + article_url;
 			if (article.jsonld.articlebody) {
 				article_body = article.jsonld.articleBody.substring(0, 350) + '...';
 			} else {

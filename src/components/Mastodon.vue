@@ -6,6 +6,7 @@
   import { ref, onMounted } from 'vue'
   import { chocolateSauce } from './helpers/chocolate_sauce'
   import { listMastodon } from './helpers/list_mastodon'
+  import CardSingleSocial from './CardSingleSocial.vue'
 
   // Define props for the component
   const { count = 4 } = defineProps<{
@@ -45,23 +46,24 @@
 </script>
 
 <template>
-
-  <article
-    class="mastodon module-tile has-content has-blur"
-    :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 30%, transparent) 35%, color-mix(in srgb, var(--card-accent-color) 100%, transparent) 100%), url(' + articleArray[number]?.article_logo + ')' }"
-    v-for="number in articleSet" :key="number"
-    >
-    <a 
-      :href="articleArray[number]?.article_url"
-      target="_blank"
+  <CardSingleSocial class="card_social mastodon" card_title="Mastodon" v-if="Object.keys(articleArray).length > 0">
+    <article
+      class="mastodon module-tile has-content has-blur"
+      :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 30%, transparent) 35%, color-mix(in srgb, var(--card-accent-color) 100%, transparent) 100%), url(' + articleArray[number]?.article_logo + ')' }"
+      v-for="number in articleSet" :key="number"
       >
-      <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
-      <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
-      <img class="article-image" :src="articleArray[number]?.article_image" alt="">
-      <p class="article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
-    </a>
-  </article>
-
+      <a 
+        :href="articleArray[number]?.article_url"
+        target="_blank"
+        v-if="articleArray[number]?.article_body"
+        >
+        <img class="article-logo" :src="articleArray[number]?.article_logo" alt="">
+        <h5 class="article-title"><pre>{{ articleArray[number]?.article_body }}</pre></h5>
+        <img class="article-image" :src="articleArray[number]?.article_image" alt="">
+        <p class="article-publisher">{{ articleArray[number]?.article_publisher }} || {{ articleArray[number]?.article_published_date }}</p>
+      </a>
+    </article>
+  </CardSingleSocial>
 </template>
 
 <style scoped lang="scss">

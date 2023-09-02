@@ -4,12 +4,9 @@
   todo: fill out this section
   ***************************/
 
-  import CardFooter from './CardFooter.vue'
-  
   defineProps<{
     card_title: string
     card_description: string
-    card_url_main: string
   }>()
 
 </script>
@@ -27,8 +24,6 @@
     <section class="card-body">
       <slot />
     </section>
-
-    <CardFooter />
 
   </article>
 </template>
