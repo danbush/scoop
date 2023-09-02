@@ -128,7 +128,7 @@
       padding: 3rem;
       opacity: 1;
       box-shadow: 0px 0px 15px 0px #000000;
-      transform: rotate(-0.2deg);
+      transform: rotate(-0.4deg);
   }
   
   span.keyboard-key {
