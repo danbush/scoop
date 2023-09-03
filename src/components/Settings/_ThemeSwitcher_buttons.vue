@@ -20,6 +20,7 @@
       gameboy: 'theme-gameboy',
       gameboy_dark: 'theme-gameboy-dark',
       goots: 'theme-goots',
+      takahe: 'theme-takahe',
       twisp: 'theme-twisp',
       arc: 'theme-arc',
     },
@@ -61,6 +62,7 @@
     <button @click="colorMode = 'theme-gameboy'" class="button-theme-gameboy">GameBoy</button>
     <!-- <button @click="colorMode = 'theme-gameboy-dark'" class="button-theme-gameboy-dark">GameBoy (Dark)</button> -->
     <button @click="colorMode = 'theme-goots'" class="button-theme-goots">GOOTS</button>
+    <button @click="colorMode = 'theme-takahe'" class="button-theme-takahe">takahē</button>
     <button @click="colorMode = 'theme-twisp'" class="button-theme-twisp">twisp</button>
     <button @click="colorMode = 'theme-arc'" class="button-theme-arc">Arc</button>
   </div>
@@ -145,6 +147,11 @@
       background-position: 0 0;
       background-repeat: no-repeat;
       background-size: 90%;
+    }
+
+    &.button-theme-takahe {
+      color: #ffffff;
+      background-color: rgb(9, 162, 215);
     }
 
     &.button-theme-twisp {
