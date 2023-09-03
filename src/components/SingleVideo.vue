@@ -13,7 +13,7 @@
   
   // Define props for the component
   const { articleNumber = [0] } = defineProps<{
-    articleNumber: number
+    articleNumber: number | number[]
   }>();
   
   // Define a reactive object to store the article data

@@ -24,11 +24,11 @@
   const videoSet = waffleCone(ContentSource.Videos, 2)
   const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
   
-  var row1: number = articleSetForSingleSource.slice(0, 1)
-  var row2: number = articleSetForSingleSource.slice(2, 3)
-  var row3: number = articleSetForSingleSource.slice(3, 4)
-  var row4: number = articleSetForSingleSource.slice(4, 5)
-  var row5: number = articleSetForSingleSource.slice(5, 6)
+  var row1: number[] | number = articleSetForSingleSource.slice(0, 1)
+  var row2: number[] | number = articleSetForSingleSource.slice(2, 3)
+  var row3: number[] | number = articleSetForSingleSource.slice(3, 4)
+  var row4: number[] | number = articleSetForSingleSource.slice(4, 5)
+  var row5: number[] | number = articleSetForSingleSource.slice(5, 6)
   
   
   

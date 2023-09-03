@@ -12,7 +12,7 @@
   // Define props for the component
   const { count = 4, articleNumbers = [0,1,2,3] } = defineProps<{
     count: number,
-    articleNumbers: number
+    articleNumbers: number | number[]
   }>();
   
   const articleSet: any = articleNumbers; //eventually get this thing to pick
