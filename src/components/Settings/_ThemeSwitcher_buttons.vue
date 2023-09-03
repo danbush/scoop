@@ -51,18 +51,18 @@
 
   <div class="toggle toggle_theme toggle_theme-alt">
     <p class="toggle-label">Theme</p>
-    <button @click="colorMode = 'theme-light'" class="button-theme-light">Light</button>
+    <button @click="colorMode = 'light'" class="button-theme-light">Light</button>
 
-    <button @click="colorMode = 'theme-dark'" class="button-theme-dark">Dark</button>
-    <button @click="colorMode = 'theme-snes'" class="button-theme-snes">SNES</button>
+    <button @click="colorMode = 'dark'" class="button-theme-dark">Dark</button>
+    <button @click="colorMode = 'snes'" class="button-theme-snes">SNES</button>
     <!-- <button @click="colorMode = 'theme-snes-dark'" class="button-theme-snes-dark">SNES (Dark)</button> -->
-    <button @click="colorMode = 'theme-nes'" class="button-theme-nes">NES</button>
-    <button @click="colorMode = 'theme-famicom'" class="button-theme-famicom">Famicom</button>
-    <button @click="colorMode = 'theme-gameboy'" class="button-theme-gameboy">GameBoy</button>
+    <button @click="colorMode = 'nes'" class="button-theme-nes">NES</button>
+    <button @click="colorMode = 'famicom'" class="button-theme-famicom">Famicom</button>
+    <button @click="colorMode = 'gameboy'" class="button-theme-gameboy">GameBoy</button>
     <!-- <button @click="colorMode = 'theme-gameboy-dark'" class="button-theme-gameboy-dark">GameBoy (Dark)</button> -->
-    <button @click="colorMode = 'theme-goots'" class="button-theme-goots">GOOTS</button>
-    <button @click="colorMode = 'theme-twisp'" class="button-theme-twisp">twisp</button>
-    <button @click="colorMode = 'theme-arc'" class="button-theme-arc">Arc</button>
+    <button @click="colorMode = 'goots'" class="button-theme-goots">GOOTS</button>
+    <button @click="colorMode = 'twisp'" class="button-theme-twisp">twisp</button>
+    <button @click="colorMode = 'arc'" class="button-theme-arc">Arc</button>
   </div>
 
 </template>

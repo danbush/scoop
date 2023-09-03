@@ -54,67 +54,67 @@
     <select v-model="colorMode">
       <option
         value="theme-light"
-        @change="colorMode = 'theme-light'"
+        @change="colorMode = 'light'"
         >
         Default
       </option>
       <option
         value="theme-dark"
-        @change="colorMode = 'theme-dark'"
+        @change="colorMode = 'dark'"
         >
         Dark
       </option>
       <option
         value="theme-snes"
-        @change="colorMode = 'theme-snes'"
+        @change="colorMode = 'snes'"
         >
         SNES
       </option>
       <option
         value="theme-snes-dark"
-        @change="colorMode = 'theme-snes-dark'"
+        @change="colorMode = 'snes-dark'"
         >
         SNES (Dark)
       </option>
       <option
         value="theme-nes"
-        @change="colorMode = 'theme-nes'"
+        @change="colorMode = 'nes'"
         >
         NES
       </option>
       <option
         value="theme-famicom"
-        @change="colorMode = 'theme-famicom'"
+        @change="colorMode = 'famicom'"
         >
         Famicom
       </option>
       <option
         value="theme-gameboy"
-        @change="colorMode = 'theme-gameboy'"
+        @change="colorMode = 'gameboy'"
         >
         GameBoy
       </option>
       <option
         value="theme-gameboy-dark"
-        @change="colorMode = 'theme-gameboy-dark'"
+        @change="colorMode = 'gameboy-dark'"
         >
         GameBoy (Dark)
       </option>
       <option
         value="theme-goots"
-        @change="colorMode = 'theme-goots'"
+        @change="colorMode = 'goots'"
         >
         GOOTS
       </option>
       <option
         value="theme-twisp"
-        @change="colorMode = 'theme-twisp'"
+        @change="colorMode = 'twisp'"
         >
         twisp
       </option>
       <option
         value="theme-arc"
-        @change="colorMode = 'theme-arc'"
+        @change="colorMode = 'arc'"
         >
         Arc
       </option>
