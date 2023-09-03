@@ -11,9 +11,9 @@
 
 <template>
 
-  <div class="range range_{{inputClass}}">
+  <div class="range">
     <p class="toggle-label">{{range_name}}</p>
-    <input type="range" :id="range_slug" :min="range_min" max="range_max" value="" step="10" />
+    <input type="range" :id="range_slug" :min="range_min" :max="range_max" value="" />
   </div>
 
 </template>

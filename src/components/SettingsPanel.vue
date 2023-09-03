@@ -45,8 +45,8 @@
         <Range
           range_name="Text Size"
           range_slug="rangeFontSize"
-          range_min=1
-          range_max="11"
+          :range_min='1'
+          :range_max='10'
           class="dev-disable"
         />
       </SettingsOptions>
@@ -74,7 +74,10 @@
         options_experimental=true
         class="dev-disable toggle_paywall"
       >
-        <Toggle />
+        <Toggle
+          input_name="placeholder"
+          input_class="placeholder"
+         />
       </SettingsOptions>
   
       <SettingsOptions
@@ -83,7 +86,10 @@
         options_experimental=true
         class="dev-disable toggle_spoilers"
       >
-        <Toggle />
+        <Toggle
+          input_name="placeholder"
+          input_class="placeholder"
+         />
       </SettingsOptions>
 
       <SettingsOptions
@@ -92,7 +98,10 @@
         options_experimental=true
         class="dev-disable toggle_politics"
       >
-        <Toggle />
+        <Toggle
+          input_name="placeholder"
+          input_class="placeholder"
+         />
       </SettingsOptions>      
 
     </SettingsCard>
@@ -237,10 +246,6 @@
 
       .card-theme .card-body {
         flex: 1 20%;
-      }
-
-      .card-readability {
-
       }
 
     }

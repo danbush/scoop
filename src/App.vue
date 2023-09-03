@@ -48,7 +48,6 @@
     <CardGroup
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
-      card_description="I'm not entirely sure what this feed... is."
       >
       <MayHaveMissed :article-number="articleSet.slice(19, 20)" />
       <MayHaveMissed :article-number="articleSet.slice(20, 21)" />
@@ -71,8 +70,7 @@
     <CardGroup
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
-      card_description="I'm not entirely sure what this feed... is."
-      >
+            >
       <MayHaveMissed :article-number="articleSet.slice(22, 23)" />
       <MayHaveMissed :article-number="articleSet.slice(23, 24)" />
     </CardGroup>

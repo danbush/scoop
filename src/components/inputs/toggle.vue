@@ -1,20 +1,18 @@
 <script setup lang="ts">
 
   defineProps<{
-    inputName: string,        // label
-    inputClass: string,       // custom class
-    inputState: string,       // vue.js state
-    inputFunction: string,    //
+    input_name: string,        // label
+    input_class: string,       // custom class
   }>()
 
 </script>
 
 <template>
 
-  <div class="toggle toggle_{{inputClass}}">
-    <p class="toggle-label">{{inputName}}</p>
+  <div class="toggle toggle_{{input_class}}">
+    <p class="toggle-label">{{input_name}}</p>
     <label class="switch">
-      <input type="checkbox" v-on:click="toggleLocalStorage" />
+      <input type="checkbox" />
       <span class="slider round"></span>
     </label>
   </div>
