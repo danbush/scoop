@@ -27,9 +27,8 @@
 
     <footer class="card-footer">
       <toggle
-        inputName="Experimental Settings"
-        inputClass="toggle_experimental"
-        inputFunction="function"
+        input_name="Experimental Settings"
+        input_class="toggle_experimental"
       ></toggle>
     </footer>
 
