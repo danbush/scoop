@@ -266,7 +266,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 
 			article_title = removeHTMLTags(feed?.items[item].title);
 			article_body = removeHTMLTags(decode(feed?.items[item].description));
-			article_image = feed?.items[item]?.media[item] ?? null;
+			article_image = feed?.items[item]?.media[item];
 			article_logo = null
 			article_publisher = removeHTMLTags(feed?.title)
 			article_publisher_url = getBaseUrl(article_url);
