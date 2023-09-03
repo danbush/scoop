@@ -32,7 +32,7 @@
           :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 30%, transparent) 75%, color-mix(in srgb, var(--card-accent-color) 100%, transparent) 100%), url(' + value?.article_image + ')' }"
           >
           <a :href="value?.article_url" target="_blank">
-            <img class="article-logo" :src="value?.article_logo" alt="cows">
+            <img class="article-logo" :src="value?.article_logo" alt="articleArray.article_publisher">
             <h5 class="article-title">{{ value?.article_title }}</h5>
           </a>
         </article>
