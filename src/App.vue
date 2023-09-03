@@ -16,6 +16,8 @@
   import MayHaveMissed from './components/MayHaveMissed.vue'
   import Mastodon from './components/Mastodon.vue'
   
+  import { ToggleKeyCommands } from './components/helpers/toggles'
+  
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
 
   const articleSet = waffleCone(ContentSource.Articles, 24)
@@ -28,6 +30,8 @@
   var row4: number = articleSetForSingleSource.slice(4, 5)
   var row5: number = articleSetForSingleSource.slice(5, 6)
   
+  
+  
 </script>
 
 <template>
@@ -35,13 +39,12 @@
   <Header appTitle="scoopy" />
 
   <section class="app-body module-row settings-off">
-
     <TopStory :article-number="articleSet.slice(0, 1)" />
-
+    
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(2, 6)" />
-
+    
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(6, 10)" />
-
+    
     <CardGroup
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
@@ -49,21 +52,21 @@
       <MayHaveMissed :article-number="articleSet.slice(19, 20)" />
       <MayHaveMissed :article-number="articleSet.slice(20, 21)" />
     </CardGroup>
-
+    
     <Mastodon :count=3 />
-
+    
     <SingleSourceRow :source=row1 :count=10 />
-
+    
     <SingleVideo :article-number="videoSet.slice(0, 1)" />
       
     <SingleVideo :article-number="videoSet.slice(1, 2)" />
-
+    
     <SingleSourceRow :source=row2 :count=10 />
-
+    
     <SingleSourceRow :source=row3 :count=10 />
-
+    
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(10, 14)" />
-
+    
     <CardGroup
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
@@ -73,18 +76,66 @@
     </CardGroup>
     
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(14, 18)" />
-
+    
     <SingleSourceRow :source=row4 :count=10 />
     
     <SingleSourceRow :source=row5 :count=10 />
-
   </section>
 
   <Modal tabindex="0" />
+    
+  <section class="keyboard-commands keyboard-commands-off" v-on:click="ToggleKeyCommands">
+    <ul>
+      <li>
+        <span class="keyboard-key">Escape</span> Toggle settings modal
+      </li>
+      <li>
+        <span class="keyboard-key">T</span> Scroll to top of page
+      </li>
+      <li>
+        <span class="keyboard-key">?</span> Toggle keyboard shortcuts
+      </li>
+    </ul>
+  </section>
 
 </template>
 
 <style lang="scss">
+  section.keyboard-commands {
+    transition: all 0.3s ease;
+    z-index: 20;
+  }
+  
+  section.keyboard-commands.keyboard-commands-off {
+    bottom: 1px;
+    right: 1px;
+    position: fixed;
+    opacity: 0;
+    transform: scale(0.1);
+    transform-origin: bottom right 60px;
+  }
+  
+  section.keyboard-commands.keyboard-commands-on {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      border-radius: 24px;
+      background-color: #000000b0;
+      color: white;
+      backdrop-filter: blur(10px);
+      padding: 3rem;
+      opacity: 1;
+      box-shadow: 0px 0px 15px 0px #000000;
+      transform: rotate(-0.4deg);
+  }
+  
+  span.keyboard-key {
+      border: 2px solid white;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 10px;
+      line-height: 4.2rem;
+  }
   
   html.lock-scroll {
     overflow-y: hidden;

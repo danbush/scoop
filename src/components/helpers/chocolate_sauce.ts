@@ -52,7 +52,12 @@ async function fetchAppleTouchIcon(url: string) {
 					return null;
 				}
 			}
-
+			
+			// VERY VERY TEMPORARY, JUST FOR FRONTPAGE.TODAY WHILE 404MEDIA FIGURES ITSELF OUT
+			if (appleTouchIconUrl.includes('404media')) {
+				appleTouchIconUrl = "https://icon.horse/icon/" + '404media.co'
+			}
+			
 			return appleTouchIconUrl;
 		} else {
 			// Regular expression to extract the regular favicon URL
@@ -110,7 +115,8 @@ function removeHTMLTags(html: any) {
 		.replace(/&pound;/g, '£')
 		.replace(/&euro;/g, '€')
 		.replace(/&quot;/g, '"')
-		.replace(/<[^>]+>/g, ''); // Remove other HTML tags
+		.replace(/<[^>]+>/g, '')
+		.replace(/\s([^\s<]+)\s*$/,'\u00A0$1'); // Remove other HTML tags
 }
 
 function removeThumborFromUrl(url: string): string {
