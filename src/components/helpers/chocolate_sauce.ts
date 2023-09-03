@@ -203,8 +203,8 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 	var article: any = {};
 	var article_title: string = '';
 	var article_body: string = '';
-	var article_image: string = '';
-	var article_logo: string = '';
+	var article_image: any = '';
+	var article_logo: string | null = '';
 	var article_url: string = '';
 	var article_publisher: string = '';
 	var article_publisher_url: string = '';
@@ -217,11 +217,11 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			const masto_data = await parseMastodonRssItem(rawFeed)
 			article_body = masto_data?.article_body
 			article_published_date = masto_data?.article_published_date
-			article_publisher = masto_data?.article_publisher
-			article_logo = masto_data?.article_logo
-			article_publisher_url = masto_data?.article_publisher_url
-			article_url = masto_data?.article_url
-			article_image = masto_data?.article_image
+			article_publisher = masto_data?.article_publisher ?? ''
+			article_logo = masto_data?.article_logo ?? ''
+			article_publisher_url = masto_data?.article_publisher_url ?? ''
+			article_url = masto_data?.article_url ?? ''
+			article_image = masto_data?.article_image ?? ''
 			
 			return {
 				article,
@@ -264,13 +264,13 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 					article_url = "no article url, what the fuck dude";
 			}
 
-			article_title = removeHTMLTags(feed.items[item].title);
-			article_body = removeHTMLTags(decode(feed.items[item].description));
-			article_image = feed.items[item].media[item];
+			article_title = removeHTMLTags(feed?.items[item].title);
+			article_body = removeHTMLTags(decode(feed?.items[item].description));
+			article_image = feed?.items[item]?.media[item] ?? null;
 			article_logo = null
-			article_publisher = removeHTMLTags(feed.title)
+			article_publisher = removeHTMLTags(feed?.title)
 			article_publisher_url = getBaseUrl(article_url);
-			article_published_date = feed.items[item].pubDate;
+			article_published_date = feed?.items[item].pubDate;
 			
 
 			const proxied_article_url = proxyUrl + '/' + article_url;
@@ -283,7 +283,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 					article_image = mediaContentMatch[1];
 				}
 			}
-			if ((!article_image || typeof article_image !== 'string') && !article_publisher.includes('NYT')) {
+			if ((!article_image || typeof article_image !== 'string' || article_image === '') && !article_publisher.includes('NYT')) {
 				var metadata: any = await urlMetadata(proxied_article_url, {
 					requestHeaders: {
 						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
