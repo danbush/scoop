@@ -72,7 +72,7 @@
       </option>
       <option
         value="theme-snes-dark"
-        @change="colorMode = 'snes-dark'"
+        @change="colorMode = 'snes_dark'"
         >
         SNES (Dark)
       </option>
@@ -96,7 +96,7 @@
       </option>
       <option
         value="theme-gameboy-dark"
-        @change="colorMode = 'gameboy-dark'"
+        @change="colorMode = 'gameboy_dark'"
         >
         GameBoy (Dark)
       </option>
@@ -120,11 +120,6 @@
       </option>
     </select>
 
-      
-<!--     <button @click="mode = mode === 'dark' ? 'light' : 'dark'">
-    Mode {{ mode }}
-    </button>
- -->    
   </div>
 
 </template>
@@ -157,11 +152,6 @@
     border: none;
 
     appearance: none;
-
-    option {
-      // display: block;
-      // padding: 1rem 1rem 1rem 1rem;
-    }
 
   }
 
