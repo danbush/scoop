@@ -9,7 +9,7 @@
   
   // Define props for the component
   const { source = 1, count = 10 } = defineProps<{
-    source: number | number[],
+    source: number,
     count: number
   }>();
   
@@ -17,9 +17,8 @@
   const rowObject = ref<any>(null);
   
   onMounted(async () => {
-    if (typeof source === "number") {
-      rowObject.value = await singleSourceGrabber(source, count); 
-    }
+    rowObject.value = await singleSourceGrabber(source, count);
+    console.log(rowObject.value[0])
   });
 </script>
 

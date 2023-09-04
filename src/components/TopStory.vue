@@ -11,7 +11,7 @@
 
   // Define props for the component
   const { articleNumber = 4 } = defineProps<{
-    articleNumber: number | number[]
+    articleNumber: number
   }>(); //eventually get this thing to pick
   
   // Define a reactive object to store the article data
@@ -22,12 +22,10 @@
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      if (typeof articleNumber === "number"){
-        const listItem = hashtagBuildTheList(articleNumber)
-        if (typeof listItem === "string") {
-          const result = await chocolateSauce(listItem);
-          articleArray.value = result;
-        }
+      const listItem: string | Array<string> | undefined = hashtagBuildTheList(articleNumber);
+      if (typeof listItem === "string") {
+        const result = await chocolateSauce(listItem);
+        articleArray.value = result;
       }
       if (articleArray.value.article_image.includes('youtube.com')) {
         isYoutube = true
