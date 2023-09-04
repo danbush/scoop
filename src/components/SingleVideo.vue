@@ -21,9 +21,13 @@
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      const result = await chocolateSauce(listVideos(articleNumber));
-      
-      articleArray.value = result;
+      if (typeof articleNumber === "number"){
+        const listItem = listVideos(articleNumber)
+        if (typeof listItem === "string") {
+          const result = await chocolateSauce(listItem);
+          articleArray.value = result;
+        }
+      }
       // Loop through the articles and set it up for video component.
       for (const key in articleArray.value) {
         if (key === 'article_url') {

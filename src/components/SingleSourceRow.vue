@@ -17,8 +17,9 @@
   const rowObject = ref<any>(null);
   
   onMounted(async () => {
-    rowObject.value = await singleSourceGrabber(source, count);
-    console.log(rowObject.value[0])
+    if (typeof source === "number") {
+      rowObject.value = await singleSourceGrabber(source, count); 
+    }
   });
 </script>
 
