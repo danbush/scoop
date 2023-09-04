@@ -29,7 +29,8 @@
   
   async function fetchData() {
     try {
-      const results = await Promise.all(articleSet.map((number) => chocolateSauce(listMastodon(number))));
+      const mastodonResults = articleSet.map(number => listMastodon(number)).filter(Boolean);
+      const results = await Promise.all(mastodonResults.map((str) => chocolateSauce(str as string)));
       results.forEach((result, index) => {
         const articleNumber = articleSet[index];
         articleArray.value[articleNumber] = result;

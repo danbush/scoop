@@ -12,7 +12,7 @@
   import CardSingle from './CardSingle.vue'
   
   // Define props for the component
-  const { articleNumber = [0] } = defineProps<{
+  const { articleNumber = 0 } = defineProps<{
     articleNumber: number
   }>();
   
@@ -21,19 +21,22 @@
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      const result = await chocolateSauce(listVideos(articleNumber));
-      
-      articleArray.value = result;
-      // Loop through the articles and set it up for video component.
-      for (const key in articleArray.value) {
-        if (key === 'article_url') {
-          articleArray.value[key] = await getPipedEmbed(articleArray.value[key])
-        }
-        if (key === 'article_publisher') {
-          articleArray.value[key] = articleArray.value[key].replace('Piped - ', '')
-        }
-        if (key === 'article_published_date') {
-          articleArray.value[key] = timeAgo(articleArray.value[key])
+      const listItem: string | Array<string> | undefined = listVideos(articleNumber);
+      if (typeof listItem === "string") {
+        const result = await chocolateSauce(listItem);
+        articleArray.value = result;
+        
+        // Loop through the articles and set it up for video component.
+        for (const key in articleArray.value) {
+          if (key === 'article_url') {
+            articleArray.value[key] = await getPipedEmbed(articleArray.value[key])
+          }
+          if (key === 'article_publisher') {
+            articleArray.value[key] = articleArray.value[key].replace('Piped - ', '').replace('Piped -&nbsp;', '').replace('Piped -', '')
+          }
+          if (key === 'article_published_date') {
+            articleArray.value[key] = timeAgo(articleArray.value[key])
+          }
         }
       }
       

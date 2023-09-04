@@ -24,11 +24,11 @@
   const videoSet = waffleCone(ContentSource.Videos, 2)
   const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
   
-  var row1: number = articleSetForSingleSource.slice(0, 1)
-  var row2: number = articleSetForSingleSource.slice(2, 3)
-  var row3: number = articleSetForSingleSource.slice(3, 4)
-  var row4: number = articleSetForSingleSource.slice(4, 5)
-  var row5: number = articleSetForSingleSource.slice(5, 6)
+  var row1: number = articleSetForSingleSource.slice(0, 1)[0]
+  var row2: number = articleSetForSingleSource.slice(2, 3)[0]
+  var row3: number = articleSetForSingleSource.slice(3, 4)[0]
+  var row4: number = articleSetForSingleSource.slice(4, 5)[0]
+  var row5: number = articleSetForSingleSource.slice(5, 6)[0]
   
   
   
@@ -39,7 +39,7 @@
   <Header appTitle="scoopy" />
 
   <section class="app-body module-row settings-off">
-    <TopStory :article-number="articleSet.slice(0, 1)" />
+    <TopStory :article-number="articleSet.slice(0, 1)[0]" />
     
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(2, 6)" />
     
@@ -49,17 +49,17 @@
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
       >
-      <MayHaveMissed :article-number="articleSet.slice(19, 20)" />
-      <MayHaveMissed :article-number="articleSet.slice(20, 21)" />
+      <MayHaveMissed :article-number="articleSet.slice(19, 20)[0]" />
+      <MayHaveMissed :article-number="articleSet.slice(20, 21)[0]" />
     </CardGroup>
     
     <Mastodon :count=3 />
     
     <SingleSourceRow :source=row1 :count=10 />
     
-    <SingleVideo :article-number="videoSet.slice(0, 1)" />
+    <SingleVideo :article-number="videoSet.slice(0, 1)[0]" />
       
-    <SingleVideo :article-number="videoSet.slice(1, 2)" />
+    <SingleVideo :article-number="videoSet.slice(1, 2)[0]" />
     
     <SingleSourceRow :source=row2 :count=10 />
     
@@ -71,8 +71,8 @@
       class="card_MayHaveMissed"
       card_title="You May Have Missed"
             >
-      <MayHaveMissed :article-number="articleSet.slice(22, 23)" />
-      <MayHaveMissed :article-number="articleSet.slice(23, 24)" />
+      <MayHaveMissed :article-number="articleSet.slice(22, 23)[0]" />
+      <MayHaveMissed :article-number="articleSet.slice(23, 24)[0]" />
     </CardGroup>
     
     <MultipleHeadlines :count=4 :article-numbers="articleSet.slice(14, 18)" />

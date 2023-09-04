@@ -11,12 +11,16 @@ export async function singleSourceGrabber(source: number, count: number = 1, sta
 		const articleNumber = starter + i;
 		try {
 			// Fetch article data and store it in articleArray using the articleNumber as the key
-			const result = await chocolateSauce(hashtagBuildTheList(source), articleNumber);
-			articleArray.value[articleNumber] = result;
-			if (!articleArray.value[articleNumber].article_image || typeof articleArray.value[articleNumber].article_image === 'object') {
-				articleArray.value[articleNumber].article_image = articleArray.value[articleNumber].article.items[articleNumber].media[0].url;
+			const listResult = hashtagBuildTheList(source);
+			if (typeof listResult === 'string') {
+				const result = await chocolateSauce(listResult, articleNumber);
+				
+				articleArray.value[articleNumber] = result;
+				if (!articleArray.value[articleNumber].article_image || typeof articleArray.value[articleNumber].article_image === 'object') {
+					articleArray.value[articleNumber].article_image = articleArray.value[articleNumber].article.items[articleNumber].media[0].url;
+				}
+				articleArray.value[articleNumber].article_logo = articleArray.value[0].article_logo
 			}
-			articleArray.value[articleNumber].article_logo = articleArray.value[0].article_logo
 		} catch (err) {
 			console.log(err);
 		}

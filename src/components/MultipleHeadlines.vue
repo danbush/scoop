@@ -12,7 +12,7 @@
   // Define props for the component
   const { count = 4, articleNumbers = [0,1,2,3] } = defineProps<{
     count: number,
-    articleNumbers: number
+    articleNumbers: number | number[]
   }>();
   
   const articleSet: any = articleNumbers; //eventually get this thing to pick
@@ -21,17 +21,26 @@
   const articleArray = ref<any>({})
   
   // Fetch article data asynchronously for each number in articleSet
-  Promise.all(articleSet.map((number: number) => chocolateSauce(hashtagBuildTheList(number))))
-    .then((results) => {
-      results.forEach((result, index) => {
-        const articleNumber = articleSet[index]
-        articleArray.value[articleNumber] = result
-      })
+  Promise.all(
+    articleSet.map((number: number) => {
+      const listItem = hashtagBuildTheList(number);
+      if (typeof listItem === 'string') {
+        return chocolateSauce(listItem);
+      }
     })
-    .catch((err) => {
-      console.log(err)
-    })
-
+  )
+  .then((results) => {
+    results.forEach((result, index) => {
+      if (result !== null) {  // skip the default values
+        const articleNumber = articleSet[index];
+        articleArray.value[articleNumber] = result;
+      }
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+  
 </script>
 
 <template>
