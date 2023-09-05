@@ -14,18 +14,7 @@
         class="input-button"
         v-on:click="ToggleSettings"
          tabindex="0">
-        <object
-          type="image/svg+xml"
-          data="src/assets/icon-settings.svg"
-          alt="Settings icon"
-          class="toggle-image-gear"
-        ></object>
-          <object
-            type="image/svg+xml"
-            data="src/assets/icon-close.svg"
-            alt="Settings icon"
-            class="toggle-close"
-          ></object>
+        <span class="settings-icon"></span>
       </button>
     </div>
   
@@ -87,6 +76,16 @@
     transition: top 0.25s ease-in-out !important;
   }
   .settings-off {
+    .settings-icon {
+      height: 100%;
+      background-image: url(src/assets/icon-settings.svg);
+      width: 100%;
+      background-size: 2.2rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+      transition: background-image 0.3s ease-in-out;
+    }
     .toggle-close {
       transition: opacity 0.9s ease-in-out;
       opacity: 0;
@@ -106,6 +105,16 @@
     }
   }
   .settings-on {
+    .settings-icon {
+      height: 100%;
+      background-image: url(src/assets/icon-close.svg);
+      width: 100%;
+      background-size: 2.2rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+      transition: background-image 0.3s ease-in-out;
+    }
     .modal-title {
       display: none;
     }
