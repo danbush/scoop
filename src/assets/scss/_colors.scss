@@ -219,6 +219,25 @@ $theme-goots: (
 
 );
 
+$theme-takahe: (
+  'app-text-color':                 rgba(4, 5, 10, 1),
+  'app-background-color':           rgba(37, 61, 99, 1),
+  
+  'card-header-background':         rgba(251, 89, 90, 1),
+  'card-header-color':              rgba(243, 243, 243, 1),
+  
+  'card-body-background':           rgba(243, 243, 243, 1),
+  'card-accent-color':              rgba(4, 5, 10, 1),
+  
+  'card-footer-background':         rgba(251, 89, 90, 1),
+
+  'button-background-primary':      rgba(251, 89, 90, 1),
+  'button-background-secondary':    blue,
+  'button-color-primary':           rgba(243, 243, 243, 1),
+  'button-color-secondary':         rgba(225, 225, 225, 1),
+
+);
+
 $theme-twisp: (
   'app-text-color':                 rgb(199,157,215),
   'app-background-color':           rgb(103,56,136),
@@ -282,6 +301,9 @@ html {
   }
   &.theme-goots {
     @include color-theme($theme-goots);
+  }
+  &.theme-takahe {
+    @include color-theme($theme-takahe);
   }
   &.theme-twisp {
     @include color-theme($theme-twisp);

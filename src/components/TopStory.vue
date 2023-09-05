@@ -22,8 +22,11 @@
   // Use async/await to handle asynchronous behavior
   async function fetchArticleData() {
     try {
-      const result = await chocolateSauce(hashtagBuildTheList(articleNumber));
-      articleArray.value = result;
+      const listItem: string | Array<string> | undefined = hashtagBuildTheList(articleNumber);
+      if (typeof listItem === "string") {
+        const result = await chocolateSauce(listItem);
+        articleArray.value = result;
+      }
       if (articleArray.value.article_image.includes('youtube.com')) {
         isYoutube = true
       }
