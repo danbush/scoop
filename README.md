@@ -31,6 +31,7 @@ docker run --rm testcab/cors-anywhere
     - actually figure out CORS lolz
 ]
 
+## Everything below this point is standard Vue.js boilerplate readme malarky \/\/\/
 
 ## Recommended IDE Setup
 
