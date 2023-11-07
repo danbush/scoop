@@ -64,7 +64,7 @@ async function fetchAppleTouchIcon(url: string) {
 			const faviconRegex = /<link[^>]*rel=["']icon["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i;
 			const faviconMatch = html.match(faviconRegex);
 
-			if (faviconMatch) {
+			if (faviconMatch && (faviconMatch[1].includes('https://'))) {
 				const faviconUrl = faviconMatch[1];
 				return faviconUrl;
 			} else {
@@ -84,6 +84,9 @@ async function fetchAppleTouchIcon(url: string) {
 						const shortcutIconUrl = "https://icon.horse/icon/" + baseDomain;
 						return shortcutIconUrl;
 					} else {
+						if (url.includes('news.ycombinator.com')) {
+							return "https://icon.horse/icon/" + 'news.ycombinator.com/'
+						}
 						console.log('Invalid URL format.');
 						return null;
 					}
