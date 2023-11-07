@@ -29,6 +29,12 @@ export function hashtagBuildTheList(item: number = 999) {
 		'https://www.thewrap.com/feed/',
 		'https://www.techmeme.com/feed.xml',
 		'https://www.mediagazer.com/feed.xml',
+		'https://www.livescience.com/feeds/all',
+		'https://editorial.rottentomatoes.com/feed/',
+		'https://aftermath.site/rss',
+		'https://www.theautopian.com/feed/',
+		'https://www.wired.com/rss/',
+		'https://futurism.com/feed'
 	];
 	// this is jank as HELL.
 	if (item === 999) {
