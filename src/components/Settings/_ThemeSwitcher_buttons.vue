@@ -162,8 +162,8 @@
     }
     
     &.button-theme-2024 {
-      color: color(display-p3 0.373 0.424 0.561);
-      background-color: color(display-p3 0.808 0.863 0.882);
+      color: color(display-p3 0.937 0.933 0.902);
+      background-color: color(display-p3 0.16 0.181 0.24);
     }
 
     &.button-theme-arc {
