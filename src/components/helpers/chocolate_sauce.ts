@@ -122,6 +122,7 @@ function removeHTMLTags(html: any) {
 		.replace('\n\n\n', '\n\n')
 		.replace(/\n{4,}/g, '\n')
 		.replace(/(\n\s*){4,}/g, '')
+		.replace(/data-(medium|large)-file="[^"]*"/g, '')
 		.replace(/\s([^\s<]+)\s*$/,'\u00A0$1'); // Remove other HTML tags
 }
 
