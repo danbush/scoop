@@ -119,6 +119,9 @@ function removeHTMLTags(html: any) {
 		.replace(/&euro;/g, '€')
 		.replace(/&quot;/g, '"')
 		.replace(/<[^>]+>/g, '')
+		.replace('\n\n\n', '\n\n')
+		.replace(/\n{4,}/g, '\n')
+		.replace(/(\n\s*){4,}/g, '')
 		.replace(/\s([^\s<]+)\s*$/,'\u00A0$1'); // Remove other HTML tags
 }
 
@@ -266,9 +269,18 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			} else {
 					article_url = "no article url, what the fuck dude";
 			}
+			
+			function truncateString(str: string, maxLength: number): string {
+					if (str.length <= maxLength) {
+							return str;
+					} else {
+							// Trim the string to the desired length and add "..."
+							return `${str.substring(0, maxLength - 3)}...`;
+					}
+			}
 
 			article_title = removeHTMLTags(feed?.items[item].title);
-			article_body = removeHTMLTags(decode(feed?.items[item].description));
+			article_body = truncateString(removeHTMLTags(decode(feed?.items[item].description)), 1000);
 			article_image = feed?.items[item]?.media[item];
 			article_logo = null
 			article_publisher = removeHTMLTags(feed?.title)
