@@ -42,7 +42,7 @@
         target="_blank"
         :style="{ 'background-image': 'linear-gradient(180deg, color-mix(in srgb, var(--card-accent-color) 0%, transparent) 0%, color-mix(in srgb, var(--card-accent-color) 10%, transparent) 35%, color-mix(in srgb, var(--card-accent-color) 90%, transparent) 100%), url(' + articleArray.article_image + ')' }"
         >
-        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+        <img class="article-logo" :src="articleArray?.article_logo || (articleArray?.article_url ? 'https://icon.horse/icon/' + articleArray.article_url.replace(/^https?:\/\/([^\/]+).*$/, '$1') : '')" :alt="articleArray.article_publisher">
         <h3 class="article-title">{{ articleArray.article_title }}</h3>
       </a>
     </header>

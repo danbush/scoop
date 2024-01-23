@@ -53,7 +53,7 @@
             :href="articleArray[number]?.article_url"
             target="_blank"
             >
-            <img class="article-logo" :src="articleArray[number]?.article_logo" :alt="articleArray[number]?.article_publisher">
+            <img class="article-logo" :src="articleArray[number]?.article_logo || (articleArray[number]?.article_url ? 'https://icon.horse/icon/' + articleArray[number].article_url.replace(/^https?:\/\/([^\/]+).*$/, '$1') : '')" :alt="articleArray[number]?.article_publisher">
             <h5 :class="{ 'article-title': true, 'text-shrink': articleArray[number]?.article_title.length > 170 }">{{ articleArray[number]?.article_title }}</h5>
           </a>
         </article>
