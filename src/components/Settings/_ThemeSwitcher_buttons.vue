@@ -22,6 +22,7 @@
       goots: 'theme-goots',
       takahe: 'theme-takahe',
       twisp: 'theme-twisp',
+      2024: 'theme-2024',
       arc: 'theme-arc',
     },
   })
@@ -64,6 +65,7 @@
     <button @click="colorMode = 'goots'" class="button-theme-goots">GOOTS</button>
     <button @click="colorMode = 'takahe'" class="button-theme-takahe">takahē</button>
     <button @click="colorMode = 'twisp'" class="button-theme-twisp">twisp</button>
+    <button @click="colorMode = '2024'" class="button-theme-2024">2024</button>
     <button @click="colorMode = 'arc'" class="button-theme-arc">Arc</button>
   </div>
 
@@ -157,6 +159,11 @@
     &.button-theme-twisp {
       color: #ffffff;
       background-color: rgb(239,79,145);
+    }
+    
+    &.button-theme-2024 {
+      color: color(display-p3 0.373 0.424 0.561);
+      background-color: color(display-p3 0.808 0.863 0.882);
     }
 
     &.button-theme-arc {

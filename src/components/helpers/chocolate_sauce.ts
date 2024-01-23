@@ -119,6 +119,10 @@ function removeHTMLTags(html: any) {
 		.replace(/&euro;/g, '€')
 		.replace(/&quot;/g, '"')
 		.replace(/<[^>]+>/g, '')
+		.replace('\n\n\n', '\n\n')
+		.replace(/\n{4,}/g, '\n')
+		.replace(/(\n\s*){4,}/g, '')
+		.replace(/data-(medium|large)-file="[^"]*"/g, '')
 		.replace(/\s([^\s<]+)\s*$/,'\u00A0$1'); // Remove other HTML tags
 }
 
@@ -149,6 +153,15 @@ function isMastodonRSS(xmlString: string): boolean {
 	return generatorRegex.test(xmlString);
 }
 
+function truncateString(str: string, maxLength: number): string {
+		if (str.length <= maxLength) {
+				return str;
+		} else {
+				// Trim the string to the desired length and add "..."
+				return `${str.substring(0, maxLength - 3)}...`;
+		}
+}
+
 async function parseMastodonRssItem(rawItem: string) {
 	try {
 		const descriptionRegex = /<item>[\s\S]*?<description>(.*?)<\/description>[\s\S]*?<\/item>/i;
@@ -171,12 +184,15 @@ async function parseMastodonRssItem(rawItem: string) {
 
 		var article_body = descriptionMatch ? removeHTMLTags(decode(descriptionMatch[1].trim())) : '';
 		const article_published_date = pubDateMatch ? timeAgo(Date.parse(pubDateMatch[1])) : '';
-		const article_logo = imageMatch ? imageMatch[1] : '';
+		var article_logo = imageMatch ? imageMatch[1] : '';
 		const article_publisher = titleMatch ? titleMatch[1] : '';
 		const article_publisher_url = publisherLinkMatch ? publisherLinkMatch[1] : '';
 		const article_url = itemLinkMatch ? itemLinkMatch[1] : '';
 		var article_image = '';
 		
+		if (!article_logo || article_logo == '') {
+			article_logo = 'https://icon.horse/icon/' + article_url.replace(/^https?:\/\/([^\/]+).*$/, '$1')
+		}
 		
 		var metadata: any = await urlMetadata(proxyUrl + '/' + article_url, {
 			requestHeaders: {
@@ -254,7 +270,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 		}
 
 	// Check if it is rss/atom, or other
-	} else if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss')) {
+	} else if (url.includes('.rss') || url.includes('.atom') || url.includes('feed.') || url.includes('feeds.') || url.includes('.xml') || url.includes('/feed') || url.includes('/rss') || url.includes('/rss/')) {
 		try {
 			const feed = htmlparser2.parseFeed(rawFeed, {
 				xmlMode: true
@@ -262,20 +278,18 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			article = feed;
 			// Check if the id is a link (starts with "http://" or "https://")
 			if (feed && feed.items && feed.items[item]) {
-					article_url = feed.items[item].link || "no article url, what the fuck dude";
+					article_url = feed.items[item].link || feed.items[item].description || "no article url, what the heck dude";
 			} else {
 					article_url = "no article url, what the fuck dude";
 			}
 
 			article_title = removeHTMLTags(feed?.items[item].title);
-			article_body = removeHTMLTags(decode(feed?.items[item].description));
+			article_body = truncateString(removeHTMLTags(decode(feed?.items[item].description)), 1000);
 			article_image = feed?.items[item]?.media[item];
 			article_logo = null
-			article_publisher = removeHTMLTags(feed?.title)
+			article_publisher = removeHTMLTags(feed?.title || getBaseUrl(article_url).replace('https://','').replace('.com','').replace('www.',''))
 			article_publisher_url = getBaseUrl(article_url);
 			article_published_date = feed?.items[item].pubDate;
-			
-
 			const proxied_article_url = proxyUrl + '/' + article_url;
 
 			if (typeof article_image === 'object') {
@@ -286,6 +300,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 					article_image = mediaContentMatch[1];
 				}
 			}
+			
 			if ((!article_image || typeof article_image !== 'string' || article_image === '') && !article_publisher.includes('NYT')) {
 				var metadata: any = await urlMetadata(proxied_article_url, {
 					requestHeaders: {
@@ -295,6 +310,9 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 					}
 				});
 				article_image = removeThumborFromUrl(metadata['og:image']);
+				if (!article_image) {
+					article_image = removeThumborFromUrl(metadata['twitter:image:src']);
+				}
 				
 			} else if (article_publisher.includes('NYT')) {
 				const html = await fetchUrl(url);
@@ -317,7 +335,7 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 			} else {
 				console.log('Apple Touch Icon not found for the given URL.');
 			}
-
+			
 			return {
 				article,
 				article_title,

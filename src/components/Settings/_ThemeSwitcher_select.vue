@@ -21,6 +21,7 @@
       gameboy_dark: 'theme-gameboy-dark',
       goots: 'theme-goots',
       twisp: 'theme-twisp',
+      2024: 'theme-2024',
       arc: 'theme-arc',
     },
   })
@@ -111,6 +112,12 @@
         @change="colorMode = 'twisp'"
         >
         twisp
+      </option>
+      <option
+        value="theme-2024"
+        @change="colorMode = '2024'"
+        >
+        2024
       </option>
       <option
         value="theme-arc"

@@ -6,6 +6,8 @@ export function listMastodon(item: number = 999) {
 		'https://mastodon.social/@scalzi.rss',
 		'https://tapbots.social/@paul.rss',
 		'https://mastodon.social/@dcseifert.rss',
+		'https://idiots.chat/@hippo_bot.rss',
+		'https://front-end.social/@chriscoyier.rss'
 		
 		
 	]

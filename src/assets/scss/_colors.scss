@@ -256,6 +256,24 @@ $theme-twisp: (
   'button-color-secondary':         rgba(225, 225, 225, 1),
 
 );
+$theme-2024: (
+  'app-text-color':                 color(display-p3 0.937 0.933 0.902),
+  'app-background-color':           color(display-p3 0.16 0.181 0.24),
+  
+  'card-header-background':         color(display-p3 0.6 0.557 0.608),
+  'card-header-color':              color(display-p3 0.933 0.886 0.831),
+  
+  'card-body-background':           color(display-p3 0.373 0.424 0.561),
+  'card-accent-color':              color(display-p3 0.6 0.557 0.608),
+  
+  'card-footer-background':         color(display-p3 0.706 0.431 0.306),
+
+  'button-background-primary':        color(display-p3 0.706 0.431 0.306),
+  'button-background-secondary':    color(display-p3 0.922 0.855 0.635),
+  'button-color-primary':             color(display-p3 0.933 0.886 0.831),
+  'button-color-secondary':         color(display-p3 0.808 0.863 0.882),
+
+);
 
 $theme-arc: (
   'app-text-color':                      var(--arc-palette-foregroundPrimary),
@@ -307,6 +325,9 @@ html {
   }
   &.theme-twisp {
     @include color-theme($theme-twisp);
+  }
+  &.theme-2024 {
+    @include color-theme($theme-2024);
   }
   &.theme-arc {
     @include color-theme($theme-arc);

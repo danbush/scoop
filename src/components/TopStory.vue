@@ -54,7 +54,7 @@
       </a>
   
       <a class="scoop-source-url article-source" :href="articleArray.article_url" target="_blank">
-        <img class="article-logo" :src="articleArray.article_logo" :alt="articleArray.article_publisher">
+        <img class="article-logo" :src="articleArray?.article_logo || (articleArray?.article_url ? 'https://icon.horse/icon/' + articleArray.article_url.replace(/^https?:\/\/([^\/]+).*$/, '$1') : '')" :alt="articleArray.article_publisher">
         <span class="article-publisher">{{ articleArray.article_publisher }}</span>
       </a>
       <h3 class="article-title"><a :href="articleArray.article_url" target="_blank">{{ articleArray.article_title }}</a></h3>
