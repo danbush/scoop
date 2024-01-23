@@ -275,7 +275,6 @@ export async function chocolateSauce(url: string, item: number = 0, starter: num
 				xmlMode: true
 			});
 			article = feed;
-			console.log("hey girl, here's the article", article)
 			// Check if the id is a link (starts with "http://" or "https://")
 			if (feed && feed.items && feed.items[item]) {
 					article_url = feed.items[item].link || feed.items[item].description || "no article url, what the heck dude";
