@@ -30,7 +30,13 @@
   var row4: number = articleSetForSingleSource.slice(4, 5)[0]
   var row5: number = articleSetForSingleSource.slice(5, 6)[0]
   
+  // Create a meta element
+  const metaTag = document.createElement('meta');
+  metaTag.name = 'theme-color';
+  metaTag.content = getComputedStyle(document.body).getPropertyValue('background-color');
   
+  // Append the meta element to the head of the document
+  document.head.appendChild(metaTag);
   
 </script>
 
