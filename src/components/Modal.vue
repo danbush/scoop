@@ -2,6 +2,10 @@
 
   import SettingsPanel from './SettingsPanel.vue'
   import ToggleSettings from './helpers/toggles'
+  
+  function reloadPage() {
+    location.reload();
+  }
 </script>
 
 <template>
@@ -13,6 +17,18 @@
         id="toggle_SettingsPanel"
         class="input-button"
         v-on:click="ToggleSettings"
+         tabindex="0">
+        <span class="settings-icon"></span>
+      </button>
+    </div>
+  
+  </section>
+  <section id="app-modal" class="reload-button">
+    <div class="input-toggle">
+      <button
+        id="button_reload"
+        class="input-button"
+        v-on:click="reloadPage()"
          tabindex="0">
         <span class="settings-icon"></span>
       </button>
@@ -52,6 +68,22 @@
 </template>
 
 <style lang="scss">
+  #button_reload {
+    display: none;
+    @include mq('small', max) {
+      width: 3rem;
+      height: 3rem;
+      bottom: 2.5rem;
+      position: fixed;
+      z-index: 1000;
+      left: 6rem; 
+      display: block;
+      border-radius: 100%;
+      ::before {
+        content: "R";
+      }
+    }
+  }
   .app-body.settings-on {
     transform: scale(0.95);
     transition: all 0.2s ease-in-out;

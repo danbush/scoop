@@ -229,9 +229,9 @@
     
     @include mq('small', max) {
       top: initial;
-      bottom: 1rem;
+      bottom: 2.5rem;
       right: initial;
-      left: 2rem;
+      left: 2.2rem;
     }
 
     z-index: 1000;
@@ -246,6 +246,11 @@
       width: 2.6rem;
       height: 2.6rem;
       // padding: .1rem;
+      
+      @include mq('small', max) {
+        width: 3rem;
+        height:3rem;
+      }
 
       position: relative;
 
