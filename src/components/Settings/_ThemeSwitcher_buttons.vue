@@ -26,6 +26,13 @@
       arc: 'theme-arc',
     },
   })
+  var metaTag: any;
+  
+  function updateMetaTheme() {
+    setTimeout(() => {
+      metaTag = document.querySelector('meta[name="theme-color"]')?.setAttribute("content", getComputedStyle(document.body).getPropertyValue('background-color'));
+    }, 0);
+  }
 
 </script>
 
@@ -53,20 +60,20 @@
 
   <div class="toggle toggle_theme toggle_theme-alt">
     <p class="toggle-label">Theme</p>
-    <button @click="colorMode = 'light'" class="button-theme-light">Light</button>
+    <button @click="colorMode = 'light;';updateMetaTheme()" class="button-theme-light">Light</button>
 
-    <button @click="colorMode = 'dark'" class="button-theme-dark">Dark</button>
-    <button @click="colorMode = 'snes'" class="button-theme-snes">SNES</button>
-    <!-- <button @click="colorMode = 'theme-snes-dark'" class="button-theme-snes-dark">SNES (Dark)</button> -->
-    <button @click="colorMode = 'nes'" class="button-theme-nes">NES</button>
-    <button @click="colorMode = 'famicom'" class="button-theme-famicom">Famicom</button>
-    <button @click="colorMode = 'gameboy'" class="button-theme-gameboy">GameBoy</button>
-    <!-- <button @click="colorMode = 'theme-gameboy-dark'" class="button-theme-gameboy-dark">GameBoy (Dark)</button> -->
-    <button @click="colorMode = 'goots'" class="button-theme-goots">GOOTS</button>
-    <button @click="colorMode = 'takahe'" class="button-theme-takahe">takahē</button>
-    <button @click="colorMode = 'twisp'" class="button-theme-twisp">twisp</button>
-    <button @click="colorMode = '2024'" class="button-theme-2024">2024</button>
-    <button @click="colorMode = 'arc'" class="button-theme-arc">Arc</button>
+    <button @click="colorMode = 'dark';updateMetaTheme()" class="button-theme-dark">Dark</button>
+    <button @click="colorMode = 'snes';updateMetaTheme()" class="button-theme-snes">SNES</button>
+    <!-- <button @click="colorMode = 'theme-snes-dark';updateMetaTheme()" class="button-theme-snes-dark">SNES (Dark)</button> -->
+    <button @click="colorMode = 'nes';updateMetaTheme()" class="button-theme-nes">NES</button>
+    <button @click="colorMode = 'famicom';updateMetaTheme()" class="button-theme-famicom">Famicom</button>
+    <button @click="colorMode = 'gameboy';updateMetaTheme()" class="button-theme-gameboy">GameBoy</button>
+    <!-- <button @click="colorMode = 'theme-gameboy-dark';updateMetaTheme()" class="button-theme-gameboy-dark">GameBoy (Dark)</button> -->
+    <button @click="colorMode = 'goots';updateMetaTheme()" class="button-theme-goots">GOOTS</button>
+    <button @click="colorMode = 'takahe';updateMetaTheme()" class="button-theme-takahe">takahē</button>
+    <button @click="colorMode = 'twisp';updateMetaTheme()" class="button-theme-twisp">twisp</button>
+    <button @click="colorMode = '2024';updateMetaTheme()" class="button-theme-2024">2024</button>
+    <button @click="colorMode = 'arc';updateMetaTheme()" class="button-theme-arc">Arc</button>
   </div>
 
 </template>

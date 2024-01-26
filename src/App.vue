@@ -20,7 +20,7 @@
   
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
 
-  const articleSet = waffleCone(ContentSource.Articles, 35)
+  const articleSet = waffleCone(ContentSource.Articles, 36)
   const videoSet = waffleCone(ContentSource.Videos, 2)
   const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
   
@@ -30,7 +30,13 @@
   var row4: number = articleSetForSingleSource.slice(4, 5)[0]
   var row5: number = articleSetForSingleSource.slice(5, 6)[0]
   
+  // Create a meta element
+  const metaTag = document.createElement('meta');
+  metaTag.name = 'theme-color';
+  metaTag.content = getComputedStyle(document.body).getPropertyValue('background-color');
   
+  // Append the meta element to the head of the document
+  document.head.appendChild(metaTag);
   
 </script>
 
@@ -220,6 +226,13 @@
     position: fixed;
     top: 1rem;
     right: 2rem;
+    
+    @include mq('small', max) {
+      top: initial;
+      bottom: 2.5rem;
+      right: initial;
+      left: 2.2rem;
+    }
 
     z-index: 1000;
 
@@ -233,6 +246,11 @@
       width: 2.6rem;
       height: 2.6rem;
       // padding: .1rem;
+      
+      @include mq('small', max) {
+        width: 3rem;
+        height:3rem;
+      }
 
       position: relative;
 
