@@ -220,6 +220,13 @@
     position: fixed;
     top: 1rem;
     right: 2rem;
+    
+    @include mq('small', max) {
+      top: initial;
+      bottom: 1rem;
+      right: initial;
+      left: 2rem;
+    }
 
     z-index: 1000;
 
