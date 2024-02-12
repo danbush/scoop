@@ -36,7 +36,8 @@ export function hashtagBuildTheList(item: number = 999) {
 		'https://www.wired.com/feed/rss',
 		'https://futurism.com/feed',
 		'https://gamersnexus.net/rss.xml',
-		'https://retrododo.com/category/news/feed/'
+		'https://retrododo.com/category/news/feed/',
+		'https://feeds.macrumors.com/MacRumors-All'
 	];
 	// this is jank as HELL.
 	if (item === 999) {
