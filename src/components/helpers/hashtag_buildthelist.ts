@@ -4,7 +4,7 @@ export function hashtagBuildTheList(item: number = 999) {
 		'https://techcrunch.com/feed/',
 		'https://news.ycombinator.com/rss',
 		'https://www.theverge.com/rss/index.xml',
-		'https://www.polygon.com/rss/index.xml',
+		'https://gameinformer.com/rss.xml',
 		'http://feeds.feedburner.com/ign/news',
 		'https://www.pocketgamer.com/index.rss',
 		'https://deadline.com/feed/',

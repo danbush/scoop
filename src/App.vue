@@ -20,7 +20,7 @@
   
   import { waffleCone, ContentSource } from './components/helpers/waffle_cone'
 
-  const articleSet = waffleCone(ContentSource.Articles, 37)
+  const articleSet = waffleCone(ContentSource.Articles, 26)
   const videoSet = waffleCone(ContentSource.Videos, 2)
   const articleSetForSingleSource = waffleCone(ContentSource.Articles, 6)
   

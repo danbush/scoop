@@ -1,8 +1,8 @@
 export function listMastodon(item: number = 999) {
 	var theList: Array<string> = [
 		'https://mastodon.social/@MissingThePt.rss',
-		'https://mastodon.social/@Popehat.rss',
-		'https://botsin.space/@kottke.rss',
+		'https://bsky.app/profile/did:plc:s6j27rxb3ic2rxw73ixgqv2p/rss',
+		'https://mastodon.social/@kottke.rss',
 		'https://mastodon.social/@scalzi.rss',
 		'https://tapbots.social/@paul.rss',
 		'https://mastodon.social/@dcseifert.rss',
