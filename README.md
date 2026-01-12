@@ -1,5 +1,7 @@
 # scoop
 
+# This was an experiment that has grown beyond this repository. This is no longer an accurate representation of this project, please stay tuned for a much bigger swing at this same idea.
+
 ## NOTE:
 Project temporarily requires CORS Anywhere to run.
 
